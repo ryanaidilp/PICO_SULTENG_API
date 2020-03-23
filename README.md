@@ -37,7 +37,7 @@ Mengembalikan data kasus COVID-19 di semua Kabupaten di Sulawesi Tengah.
 - **Code:**
     
   200
-  **Content:**
+- **Content:**
 
 ```
 {
