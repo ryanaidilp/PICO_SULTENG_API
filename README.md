@@ -34,8 +34,9 @@ Mengembalikan data kasus COVID-19 di semua Kabupaten di Sulawesi Tengah.
   Content-Type: application/json
 
 - **Success Response :**
-- **Code: 200**
-
+- **Code: **
+      
+      200
   **Content:**
 
 ```
