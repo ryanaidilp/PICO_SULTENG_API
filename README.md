@@ -2,9 +2,9 @@
 
 API untuk aplikasi PICO (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
 
-## #Kabupaten
+## #Data Kabupaten
 
-* Objek Pasien
+* Objek Kabupaten
 
 ```
 {
@@ -19,7 +19,7 @@ API untuk aplikasi PICO (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
 
 **GET /kabupaten**
 ----
-Mengembalikan data kasus COVID-19 di semua Kabupaten.
+Mengembalikan data kasus COVID-19 di semua Kabupaten di Sulawesi Tengah.
 
 - **URL Params**
   
@@ -51,7 +51,7 @@ Mengembalikan data kasus COVID-19 di semua Kabupaten.
 **GET /kabupaten/:no**
 ----
 
-Mengembalikan data kabupaten yang dipilih.
+Mengembalikan data Kabupaten yang dipilih.
 
 - **URL Params**
   
