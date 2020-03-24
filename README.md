@@ -78,7 +78,7 @@ Mengembalikan data Kabupaten yang dipilih.
     **Content:**  ``{ "error" : "Data Kabupaten/Kota tidak ditemukan"}``
 
 
-**PATCH /kabupaten/:nama_kabupaten**
+**PUT /kabupaten/:nama_kabupaten**
 ----
 Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah diperbarui.
 
