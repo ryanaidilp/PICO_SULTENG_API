@@ -13,7 +13,11 @@ API untuk aplikasi PICO (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
   "PDP": 0,
   "positif": 0,
   "negatif": 0,
-  "meninggal": 0
+  "meninggal": 0,
+  "selesai_pengawasan": 0,
+  "dalam_pengawasan": 0,
+  "selesai_pemantauan": 0,
+  "dalam_pemantauan": 0
 }
 ```
 
@@ -93,7 +97,11 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
    "PDP": 0,
    "positif": 0,
    "negatif": 0,
-   "meninggal": 0
+   "meninggal": 0,
+   "selesai_pengawasan": 0,
+   "dalam_pengawasan": 0,
+   "selesai_pemantauan": 0,
+   "dalam_pemantauan": 0
   }
   ```
 
