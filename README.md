@@ -119,3 +119,79 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
   - **Code:** 404
 
     **Content:**  ``{ "error" : "Data Kabupaten/Kota tidak ditemukan"}``
+
+## #Data Rumah Sakit
+
+* Objek Rumah Sakit
+
+```
+{
+  "no": 1,
+  "nama": "RSUD Undata Palu",
+  "alamat": "Jl. R. E. Martadinata, Tondo Kecamatan Mantikulore 94119",
+  "telpon": "04514908020",
+  "email": "rsundata@yahoo.com",
+  "longitude": "119.88185800",
+  "latitude": "-0.85783860"
+}
+```
+
+**GET /rumahsakit**
+----
+Mengembalikan data rumah sakit rujukan COVID-19 di semua Kabupaten di Sulawesi Tengah.
+
+- **URL Params**
+  
+  None
+  
+- **Data Params**
+  
+   None
+
+- **Headers**
+
+  Content-Type: application/json
+
+- **Success Response :**
+- **Code:**
+    
+  200
+- **Content:**
+
+```
+{ 
+   [
+     {<objek_rumah_sakit>},
+     {<objek_rumah_sakit>},
+     {<objek_rumah_sakit>},
+   ],
+}
+```
+
+**GET /rumahsakit/:no**
+----
+
+Mengembalikan data Rumah Sakit yang dipilih.
+
+- **URL Params**
+  
+  *Required:* `no=[integer]`
+
+- **Data Params**
+  
+  None
+
+- **Headers**
+
+  Content-Type: application/json
+
+- **Success Response:**
+- **Code:** 
+  
+  200
+- **Content**: `{ <objek_rumah_sakit> }`
+
+- **Error Response:**
+  - **Code:** 404
+
+    **Content:**  ``{ "error" : "Data Rumah Sakit tidak ditemukan"}``
