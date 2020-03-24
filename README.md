@@ -8,7 +8,6 @@ API untuk aplikasi PICO (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
 
 ```
 {
-  "no": 5, 
   "kabupaten": "Donggala",
   "ODP": 0,
   "PDP": 0,
@@ -50,14 +49,14 @@ Mengembalikan data kasus COVID-19 di semua Kabupaten di Sulawesi Tengah.
 }
 ```
 
-**GET /kabupaten/:no**
+**GET /kabupaten/:nama_kabupaten**
 ----
 
 Mengembalikan data Kabupaten yang dipilih.
 
 - **URL Params**
   
-  *Required:* `no=[integer]`
+  *Required:* `nama_kabupaten=[string]`
 
 - **Data Params**
   
@@ -79,13 +78,13 @@ Mengembalikan data Kabupaten yang dipilih.
     **Content:**  ``{ "error" : "Data Kabupaten/Kota tidak ditemukan"}``
 
 
-**PATCH /kabupaten/:no**
+**PATCH /kabupaten/:nama_kabupaten**
 ----
 Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah diperbarui.
 
 - **URL Params**
   
-  *Required:* `no=[integer]`
+  *Required:* `nama_kabupaten=[string]`
 - **Data Params**
   
   ```
