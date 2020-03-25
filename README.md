@@ -14,7 +14,7 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
 
 ```json
 {
-  "no":, 0,
+  "no": 5,
   "kabupaten": "Donggala",
   "ODP": 0,
   "PDP": 0,
