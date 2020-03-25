@@ -12,8 +12,9 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
 
 * Objek Kabupaten
 
-```
+```json
 {
+  "no":, 0,
   "kabupaten": "Donggala",
   "ODP": 0,
   "PDP": 0,
@@ -59,14 +60,14 @@ Mengembalikan data kasus COVID-19 di semua Kabupaten di Sulawesi Tengah.
 }
 ```
 
-**GET /kabupaten/:nama_kabupaten**
+**GET /kabupaten/:no**
 ----
 
 Mengembalikan data Kabupaten yang dipilih.
 
 - **URL Params**
   
-  *Required:* `nama_kabupaten=[string]`
+  *Required:* `no=[integer]`
 
 - **Data Params**
   
@@ -88,17 +89,19 @@ Mengembalikan data Kabupaten yang dipilih.
     **Content:**  ``{ "error" : "Data Kabupaten/Kota tidak ditemukan"}``
 
 
-**PUT /kabupaten/:nama_kabupaten**
+**PUT /kabupaten/:no**
 ----
 Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah diperbarui.
 
 - **URL Params**
   
-  *Required:* `nama_kabupaten=[string]`
+  *Required:* `no=[integer]`
 - **Data Params**
   
-  ```
+  ```json
   {
+   "no": 5,
+   "kabupaten": "Donggala",
    "ODP": 0,
    "PDP": 0,
    "positif": 0,
@@ -118,8 +121,8 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
 - **Success Response:**
 - **Code:** 
   
-  200
-- **Content**: `{ <objek_kabupaten> }`
+  201
+- **Content**: `{ "status": "updated" }`
 
 - **Error Response:**
   - **Code:** 404
@@ -130,7 +133,7 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
 
 * Objek Rumah Sakit
 
-```
+```json
 {
   "no": 1,
   "nama": "RSUD Undata Palu",
@@ -160,12 +163,12 @@ Mengembalikan data rumah sakit rujukan COVID-19 di semua Kabupaten di Sulawesi T
 
 - **Success Response :**
 - **Code:**
-    
+
   200
 - **Content:**
 
 ```
-{ 
+{
    [
      {<objek_rumah_sakit>},
      {<objek_rumah_sakit>},
