@@ -24,5 +24,9 @@ $router->get("/key", function () {
 $router->get("/kabupaten", "KabupatenController@getAllKabupaten");
 $router->get("/kabupaten/{no}", "KabupatenController@getKabupatenByNo");
 $router->put("/kabupaten/{no}", "KabupatenController@updateKabupaten");
+$router->get("/provinsi", "ProvinsiController@index");
+$router->get("/provinsi/{code}", "ProvinsiController@get");
+$router->put("/provinsi/{code}", "ProvinsiController@update");
+
 $router->get("/rumahsakit", "RumahSakitController@getAllRumahSakit");
 $router->get("/rumahsakit/{no}", "RumahSakitController@getRumahSakitByNo");

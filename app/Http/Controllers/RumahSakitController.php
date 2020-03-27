@@ -3,24 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\RumahSakit;
-use Illuminate\Http\Request;
 
 class RumahSakitController extends Controller
 {
     public function getAllRumahsakit()
     {
-        return response(RumahSakit::all(), 200)
+        return response(
+            $this->setJson(RumahSakit::all(), true, []),
+            200
+        )
             ->header("Content-Type", "Application/json");
     }
 
     public function getRumahSakitByNo($no)
     {
-        $rumahsakit = RumahSakit::where('no', $no)->firstOrFail();
-        if ($rumahsakit === null) {
-            return response(['status' => 'failed', 'message' => 'not found'], 404);
+        $hospital = RumahSakit::where('no', $no)->first();
+        if ($hospital === null) {
+            return response(
+                $this->setJson($hospital, true, ['code' => 404, 'message' => 'Hospital not found!']),
+                404
+            );
         } else {
-            return response(RumahSakit::where('no', $no)->firstOrFail(), 200)
+            return response(
+                $this->setJson(RumahSakit::where('no', $no)->first(), true, []),
+                200
+            )
                 ->header("Content-Type", "Application/json");
         }
+    }
+    private function setJson($data, $succes, $errors)
+    {
+        return [
+            'data' => $data,
+            'success' => $succes,
+            'errors' => $errors
+        ];
     }
 }

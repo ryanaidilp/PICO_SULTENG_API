@@ -1,6 +1,4 @@
 # PICO SulTeng API
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
 [![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
 [![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
 
@@ -14,15 +12,15 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
 
 ```json
 {
-  "no":, 0,
+  "no": 5,
   "kabupaten": "Donggala",
-  "ODP": 0,
+  "ODP": 6,
   "PDP": 0,
   "positif": 0,
   "negatif": 0,
   "meninggal": 0,
   "selesai_pengawasan": 0,
-  "dalam_pengawasan": 0,
+  "dalam_pengawasan": 6,
   "selesai_pemantauan": 0,
   "dalam_pemantauan": 0
 }
@@ -49,14 +47,16 @@ Mengembalikan data kasus COVID-19 di semua Kabupaten di Sulawesi Tengah.
   200
 - **Content:**
 
-```
+```json
 {
-   "kabupaten": 
+   "data": 
    [
-     {<objek_kabupaten>},
-     {<objek_kabupaten>},
-     {<objek_kabupaten>},
+     <objek_kabupaten>,
+     <objek_kabupaten>,
+     <objek_kabupaten>,
    ],
+   "success": true,
+   "errors":[]
 }
 ```
 
@@ -81,12 +81,31 @@ Mengembalikan data Kabupaten yang dipilih.
 - **Code:** 
   
   200
-- **Content**: `{ <objek_kabupaten> }`
+- **Content**: 
+```json
+{ 
+    "data":
+    <objek_kabupaten> ,
+    "success": true,
+    "errors":[]
+}
+```
 
 - **Error Response:**
   - **Code:** 404
 
-    **Content:**  ``{ "error" : "Data Kabupaten/Kota tidak ditemukan"}``
+    **Content:**  
+```json
+{ 
+    "data":[],
+    "success":false,
+    "errors" : 
+    {
+        "code": 404,
+        "message":"Ditrict not found!"
+    }
+}
+```
 
 
 **PUT /kabupaten/:no**
@@ -100,17 +119,7 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
   
   ```json
   {
-   "no": 5,
-   "kabupaten": "Donggala",
-   "ODP": 0,
-   "PDP": 0,
-   "positif": 0,
-   "negatif": 0,
-   "meninggal": 0,
-   "selesai_pengawasan": 0,
-   "dalam_pengawasan": 0,
-   "selesai_pemantauan": 0,
-   "dalam_pemantauan": 0
+     <objek_kabupaten>, 
   }
   ```
 
@@ -122,12 +131,177 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
 - **Code:** 
   
   201
-- **Content**: `{ "status": "updated" }`
+- **Content**: 
+```json
+{ 
+    "data":"Data updated successfully!",
+    "success":true,
+    "errors":[]
+}
+```
 
 - **Error Response:**
   - **Code:** 404
 
-    **Content:**  ``{ "error" : "Data Kabupaten/Kota tidak ditemukan"}``
+    **Content:**  
+```json
+{ 
+  "data":[],
+  "success":false,
+  "errors":
+  {
+     "code":404,
+     "message":"District not found!"
+  }
+}
+```
+
+## #Data Provinsi
+
+Properti Map Id digunakan pada [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android) .
+
+* Objek Provinsi
+
+```json
+{
+  "kode_provinsi":31,
+  "provinsi":"DKI Jakarta",
+  "positif":515,
+  "sembuh":46,
+  "meninggal":25,
+  "map_id":"ID.JR" 
+}
+```
+
+**GET /provinsi**
+----
+Mengembalikan data kasus COVID-19 di semua Provinsi di Seluruh Indonesia.
+
+- **URL Params**
+  
+  None
+- **Data Params**
+  
+   None
+
+- **Headers**
+
+  Content-Type: application/json
+
+- **Success Response :**
+- **Code:**
+    
+  200
+- **Content:**
+
+```json
+{
+   "data": 
+   [
+     <objek_provinsi>,
+     <objek_provinsi>,
+     <objek_provinsi>,
+   ],
+   "success": true,
+   "errors":[]
+}
+```
+
+**GET /provinsi/:no**
+----
+
+Mengembalikan data Provinsi yang dipilih.
+
+- **URL Params**
+  
+  *Required:* `no=[integer]`
+
+- **Data Params**
+  
+  None
+
+- **Headers**
+
+  Content-Type: application/json
+
+- **Success Response:**
+- **Code:** 
+  
+  200
+- **Content**: 
+```json
+{ 
+    "data":<objek_provinsi> ,
+    "success":true,
+    "errors":[]
+}
+```
+
+- **Error Response:**
+  - **Code:** 404
+
+    **Content:**  
+```json
+{ 
+    "data":[],
+    "success":false,
+    "errors" : 
+    {
+        "code": 404,
+        "message":"Province not found!"
+    }
+}
+```
+
+
+**PUT /provinsi/:no**
+----
+Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbarui.
+
+- **URL Params**
+  
+  *Required:* `no=[integer]`
+- **Data Params**
+  
+  ```json
+  {
+      <objek_province>
+  }
+  ```
+
+- **Headers**
+
+  Content-Type: application/json
+
+- **Success Response:**
+- **Code:** 
+  
+  201
+- **Content**: 
+```json
+{ 
+    "data":"Data updated successfully!",
+    "success":true,
+    "errors":[]
+}
+```
+
+- **Error Response:**
+  - **Code:** 404
+
+    **Content:**  
+```json
+{ 
+  "data":[],
+  "success":false,
+  "errors":
+  {
+     "code":404,
+     "message":"Province not found!"
+  }
+}
+```
+
 
 ## #Data Rumah Sakit
 
@@ -169,11 +343,14 @@ Mengembalikan data rumah sakit rujukan COVID-19 di semua Kabupaten di Sulawesi T
 
 ```
 {
+   "data":
    [
      {<objek_rumah_sakit>},
      {<objek_rumah_sakit>},
      {<objek_rumah_sakit>},
    ],
+   "success":true,
+   "errors":[]
 }
 ```
 
@@ -198,13 +375,27 @@ Mengembalikan data Rumah Sakit yang dipilih.
 - **Code:** 
   
   200
-- **Content**: `{ <objek_rumah_sakit> }`
+- **Content**: 
+  ```json
+  { 
+    "data":<objek_rumah_sakit>,
+    "success":true,
+    "errors":[]
+  }
+  ```
 
 - **Error Response:**
   - **Code:** 404
 
-    **Content:**  ``{ "error" : "Data Rumah Sakit tidak ditemukan"}``
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    **Content:**  
+    ```json
+    { 
+        "data" : [],
+        "success":false,
+        "errors":
+        {
+           "code": 404,
+           "message":"Hospital not found!"
+        }
+    }
+    ```

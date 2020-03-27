@@ -7,54 +7,87 @@ use Illuminate\Http\Request;
 
 class KabupatenController extends Controller
 {
+
     public function getKabupatenByNo($no)
     {
-        $kabupaten = Kabupaten::where('no', $no)->firstOrFail();
-        $response = null;
-        if ($kabupaten === null) {
-            return response(['status' => 'failed', 'message' => 'not found'], 404);
+        $district = Kabupaten::where('no', $no)->first();
+        if ($district === null) {
+            return response($this->setJson([], false, [
+                'code' => 404,
+                'message' => 'District not found!'
+            ]), 404);
         } else {
-            $response = response($kabupaten, 200)
+            $response = response($this->setJson($district, true, []), 200)
                 ->header("Content-Type", 'Application/json');
         }
         return $response;
     }
 
-    public function getAllKabupaten(Request $request)
+    public function getAllKabupaten()
     {
-        $kabupaten = Kabupaten::all();
-        return response($kabupaten, 200)
+        return response($this->setJson(Kabupaten::all(), true, []), 200)
             ->header('Content-Type', 'application/json');
     }
 
     public function updateKabupaten($no, Request $request)
     {
-        $kabupaten = Kabupaten::where('no', $no)->firstOrFail();
-        $kabupaten->ODP = $kabupaten->ODP - $request->get("PDP");
-        $kabupaten->PDP = $request->get("PDP") - $request->get("negatif") - $request->get("positive");
-        $kabupaten->selesai_pengawasan = $request->get("positif") + $request->get("negatif");
-        $kabupaten->dalam_pengawasan = $kabupaten->PDP;
-        $kabupaten->selesai_pemantauan = $request->get("selesai_pemantauan");
-        $kabupaten->dalam_pemantauan = $kabupaten->ODP;
-        $kabupaten->meninggal = $request->get('meninggal');
+        $district = Kabupaten::where('no', $no)->first();
+        $PDP = 0;
+        $ODP = 0;
+        if ($request->has("PDP")) {
+            $PDP = $request->get("PDP");
+        } else {
+            $PDP = $request->get("PDP") - $request->get("negatif") - $request->get("positif");
+        }
+        if ($request->has("ODP")) {
+            $ODP = $request->get("ODP");
+        } else {
+            $ODP = $district->ODP - $request->get("PDP");
+        }
+        if ($request->has("positif")) {
+            $district->positif = $request->get("positif");
+        }
+        if ($request->has('negatif')) {
+            $district->negatif = $request->get('negatif');
+        }
+        $district->ODP = $ODP;
+        $district->PDP = $PDP;
+        $district->selesai_pengawasan = $request->get("positif") + $request->get("negatif");
+        $district->dalam_pengawasan = $district->PDP - $district->selesai_pengawasan;
+        $district->selesai_pemantauan = $request->get("selesai_pemantauan");
+        $district->dalam_pemantauan = $district->ODP;
+        $district->meninggal = $request->get('meninggal');
         $update = Kabupaten::where('no', $no)->update(
             [
-                'ODP' => $kabupaten->ODP,
-                'PDP' => $kabupaten->PDP,
-                'selesai_pengawasan' => $kabupaten->selesai_pengawasan,
-                'dalam_pengawasan' => $kabupaten->dalam_pengawasan,
-                'selesai_pemantauan' => $kabupaten->selesai_pemantauan,
-                'dalam_pemantauan' => $kabupaten->dalam_pemantauan,
-                'meninggal' => $kabupaten->meninggal,
+                'ODP' => $district->ODP,
+                'PDP' => $district->PDP,
+                'positif' => $district->positif,
+                'negatif' => $district->negatif,
+                'selesai_pengawasan' => $district->selesai_pengawasan,
+                'dalam_pengawasan' => $district->dalam_pengawasan,
+                'selesai_pemantauan' => $district->selesai_pemantauan,
+                'dalam_pemantauan' => $district->dalam_pemantauan,
+                'meninggal' => $district->meninggal,
             ]
         );
         if ($update) {
-            $message = [
-                'status' => 'updated'
-            ];
-            return response($message, 201);
+            return response($this->setJson("Data Updated Successfully!", true, []), 201)
+                ->header("Content-Type", "application/json");
         } else {
-            return response(['status' => "failed"], 400);
+            return response($this->setJson([], false, [
+                'code' => 400,
+                'message' => 'Failed to update!'
+            ]))
+                ->header("Content-Type", 'Application/json');
         }
+    }
+
+    private function setJson($data, $succes, $errors)
+    {
+        return [
+            'data' => $data,
+            'success' => $succes,
+            'errors' => $errors
+        ];
     }
 }
