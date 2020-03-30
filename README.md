@@ -3,9 +3,34 @@
 [![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
 
 API untuk aplikasi PICO (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah. 
-
 Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)
 
+## #Penggunaan
+   Akses API nya melalui https://banuacoders.com/api/pico lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
+   - Kabupaten
+     
+     https://banuacoders.com/api/pico/kabupaten
+     
+   - Kabupaten berdasarkan no
+     
+     https://banuacoders.com/api/pico/kabupaten/6
+     
+   - Provinsi
+     
+     https://banuacoders.com/api/pico/provinsi
+     
+   - Provinsi berdasarkan kode provinsi
+   
+     https://banuacoders.com/api/pico/kabupaten/72
+     
+   - Rumah Sakit 
+   
+     https://banuacoders.com/api/pico/rumahsakit
+     
+   - Rumah Sakit berdasarkan no
+   
+     https://banuacoders.com/api/pico/rumahsakit/1
+     
 ## #Data Kabupaten
 
 * Objek Kabupaten
