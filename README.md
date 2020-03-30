@@ -21,7 +21,7 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
      
    - Provinsi berdasarkan kode provinsi
    
-     https://banuacoders.com/api/pico/kabupaten/72
+     https://banuacoders.com/api/pico/provinsi/72
      
    - Rumah Sakit 
    
