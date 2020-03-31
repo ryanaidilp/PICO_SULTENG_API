@@ -1,8 +1,6 @@
 # PICO SulTeng API
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
 
-API untuk aplikasi PICO (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah. 
+API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah. 
 Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)
 
 ## #Penggunaan
