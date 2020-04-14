@@ -1,10 +1,14 @@
-# PICO SulTeng API
+﻿# PICO SulTeng API
 
 API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah. 
 Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)
 
 ## #Penggunaan
    Akses API nya melalui https://banuacoders.com/api/pico lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
+   - Posko
+
+      https://banuacoders.com/api/pico/posko
+
    - Kabupaten
      
      https://banuacoders.com/api/pico/kabupaten
@@ -28,7 +32,69 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
    - Rumah Sakit berdasarkan no
    
      https://banuacoders.com/api/pico/rumahsakit/1
-     
+
+
+## # Data Posko
+
+* Objek Posko
+
+```JSON
+{
+    "no" : 1,
+    "nama": "Banggai",
+    "posko" : 
+    [
+        {
+             "no": 1,
+             "nama": "dr. Anang (Kepala Dinkes Banggai)",
+             "no_hp": 
+             [
+                    "081xxxxxxxx"
+             ]
+        },
+        {
+            "no":  2,
+            "nama" : "Ibu Nur Datu Adam (Jubir)",
+            "no_hp":
+            [
+                "085xxxxxxxx"
+            ]
+        }
+    ]
+}
+```
+
+ **GET /posko**
+----
+Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Tengah.
+- **URL Params**
+  
+  None
+- **Data Params**
+  
+   None
+
+- **Headers**
+
+  Content-Type: application/json
+
+- **Success Response :**
+  - **Code :**   200
+  - **Content:**
+
+    ```json
+    {
+       "success": true,
+       "errors": [],
+       "data": 
+       [
+         <objek_posko>,
+         <objek_posko>,
+         <objek_posko>,
+       ]
+    }
+    ```
+
 ## #Data Kabupaten
 
 * Objek Kabupaten
@@ -65,23 +131,21 @@ Mengembalikan data kasus COVID-19 di semua Kabupaten di Sulawesi Tengah.
   Content-Type: application/json
 
 - **Success Response :**
-- **Code:**
-    
-  200
-- **Content:**
+    - **Code :**   200
+    - **Content:**
 
-```json
-{
-   "data": 
-   [
-     <objek_kabupaten>,
-     <objek_kabupaten>,
-     <objek_kabupaten>,
-   ],
-   "success": true,
-   "errors":[]
-}
-```
+        ```json
+        {
+           "success": true,
+           "errors": [],
+           "data": 
+           [
+             <objek_kabupaten>,
+             <objek_kabupaten>,
+             <objek_kabupaten>,
+           ]
+        }
+        ```
 
 **GET /kabupaten/:no**
 ----
@@ -101,34 +165,30 @@ Mengembalikan data Kabupaten yang dipilih.
   Content-Type: application/json
 
 - **Success Response:**
-- **Code:** 
-  
-  200
-- **Content**: 
-```json
-{ 
-    "data":
-    <objek_kabupaten> ,
-    "success": true,
-    "errors":[]
-}
-```
+    - **Code :**  200
+    - **Content**: 
+        ```json
+        { 
+            "success": true,
+            "errors": [],
+            "data": <objek_kabupaten> 
+        }
+        ```
 
 - **Error Response:**
-  - **Code:** 404
-
-    **Content:**  
-```json
-{ 
-    "data":[],
-    "success":false,
-    "errors" : 
-    {
-        "code": 404,
-        "message":"Ditrict not found!"
-    }
-}
-```
+    - **Code :** 404
+    - **Content:**  
+        ```json
+        { 
+           "success": false,
+            "errors" : 
+             {
+                "code": 404,
+                "message": "Ditrict not found!"
+             },
+             "data": []
+        }
+        ```
 
 
 **PUT /kabupaten/:no**
@@ -151,33 +211,31 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
   Content-Type: application/json
 
 - **Success Response:**
-- **Code:** 
-  
-  201
-- **Content**: 
-```json
-{ 
-    "data":"Data updated successfully!",
-    "success":true,
-    "errors":[]
-}
-```
+  - **Code :**  201
+  - **Content**: 
+    ```json
+    { 
+        "success": true,
+        "errors": [],
+        "data": "Data updated successfully!"
+    }
+    ```
 
 - **Error Response:**
   - **Code:** 404
 
-    **Content:**  
-```json
-{ 
-  "data":[],
-  "success":false,
-  "errors":
-  {
-     "code":404,
-     "message":"District not found!"
-  }
-}
-```
+   - **Content:**  
+      ```json
+      { 
+        "success": false,
+        "errors":
+          {
+             "code": 404,
+             " message": "District not found!"
+          },
+        "data": [],
+      }
+      ```
 
 ## #Data Provinsi
 
@@ -212,23 +270,21 @@ Mengembalikan data kasus COVID-19 di semua Provinsi di Seluruh Indonesia.
   Content-Type: application/json
 
 - **Success Response :**
-- **Code:**
-    
-  200
-- **Content:**
+  - **Code :** 200
+  - **Content:**
 
-```json
-{
-   "data": 
-   [
-     <objek_provinsi>,
-     <objek_provinsi>,
-     <objek_provinsi>,
-   ],
-   "success": true,
-   "errors":[]
-}
-```
+    ```json
+    {
+       "success": true,
+       "errors": [],
+       "data": 
+       [
+         <objek_provinsi>,
+         <objek_provinsi>,
+         <objek_provinsi>,
+       ],
+    }
+    ```
 
 **GET /provinsi/:no**
 ----
@@ -248,33 +304,31 @@ Mengembalikan data Provinsi yang dipilih.
   Content-Type: application/json
 
 - **Success Response:**
-- **Code:** 
-  
-  200
-- **Content**: 
-```json
-{ 
-    "data":<objek_provinsi> ,
-    "success":true,
-    "errors":[]
-}
-```
+    - **Code :**  200
+  - **Content**: 
+    ```json
+    { 
+        "success": true,
+        "errors": [],
+        "data": <objek_provinsi> ,
+    }
+    ```
 
 - **Error Response:**
-  - **Code:** 404
+  - **Code :** 404
 
-    **Content:**  
-```json
-{ 
-    "data":[],
-    "success":false,
-    "errors" : 
-    {
-        "code": 404,
-        "message":"Province not found!"
-    }
-}
-```
+   - **Content:**  
+      ```json
+      { 
+          "success": false,
+          "errors" : 
+           {
+               "code": 404,
+               "message": "Province not found!"
+           },
+          "data": [],
+      }
+      ```
 
 
 **PUT /provinsi/:no**
@@ -297,33 +351,31 @@ Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbar
   Content-Type: application/json
 
 - **Success Response:**
-- **Code:** 
-  
-  201
-- **Content**: 
-```json
-{ 
-    "data":"Data updated successfully!",
-    "success":true,
-    "errors":[]
-}
-```
+  - **Code :**   201
+  - **Content**: 
+      ```json
+      { 
+        "success": true,
+        "errors": [],
+        "data": "Data updated successfully!"
+      }
+      ```
 
 - **Error Response:**
   - **Code:** 404
 
-    **Content:**  
-```json
-{ 
-  "data":[],
-  "success":false,
-  "errors":
-  {
-     "code":404,
-     "message":"Province not found!"
-  }
-}
-```
+  -  **Content:**  
+      ```json
+      { 
+        "success": false,
+        "errors":
+        {
+           "code": 404,
+           "message": "Province not found!"
+        },
+        "data": []
+      }
+      ```
 
 
 ## #Data Rumah Sakit
@@ -359,23 +411,21 @@ Mengembalikan data rumah sakit rujukan COVID-19 di semua Kabupaten di Sulawesi T
   Content-Type: application/json
 
 - **Success Response :**
-- **Code:**
+  - **Code :**  200
+  - **Content:**
 
-  200
-- **Content:**
-
-```
-{
-   "data":
-   [
-     {<objek_rumah_sakit>},
-     {<objek_rumah_sakit>},
-     {<objek_rumah_sakit>},
-   ],
-   "success":true,
-   "errors":[]
-}
-```
+      ```json
+      {
+         "success": true,
+         "errors": [],
+         "data":
+         [
+           {<objek_rumah_sakit>},
+           {<objek_rumah_sakit>},
+           {<objek_rumah_sakit>},
+         ],
+      }
+      ```
 
 **GET /rumahsakit/:no**
 ----
@@ -395,30 +445,28 @@ Mengembalikan data Rumah Sakit yang dipilih.
   Content-Type: application/json
 
 - **Success Response:**
-- **Code:** 
-  
-  200
-- **Content**: 
-  ```json
-  { 
-    "data":<objek_rumah_sakit>,
-    "success":true,
-    "errors":[]
-  }
-  ```
-
-- **Error Response:**
-  - **Code:** 404
-
-    **Content:**  
+  - **Code :**   200
+  - **Content**: 
     ```json
-    { 
-        "data" : [],
-        "success":false,
-        "errors":
-        {
-           "code": 404,
-           "message":"Hospital not found!"
-        }
+    {
+      "success": true,
+      "errors": [],
+      "data": {<objek_rumah_sakit>},
     }
     ```
+
+- **Error Response:**
+  - **Code :** 404
+
+  -    **Content:**  
+        ```json
+          { 
+              "success": false,
+              "errors":
+              {
+                 "code": 404,
+                 "message": "Hospital not found!"
+              },
+              "data" :  [],
+          }
+        ```
