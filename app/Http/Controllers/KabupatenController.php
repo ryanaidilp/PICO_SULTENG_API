@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class KabupatenController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('throttle:1,2');
+    }
+
     public function getKabupatenByNo($no)
     {
         $district = Kabupaten::where('no', $no)->first();
@@ -31,63 +36,52 @@ class KabupatenController extends Controller
 
     public function updateKabupaten($no, Request $request)
     {
-        $district = Kabupaten::where('no', $no)->first();
-        $PDP = 0;
-        $ODP = 0;
-        if ($request->has("PDP")) {
-            $PDP = $request->get("PDP");
-        } else {
-            $PDP = $request->get("PDP") - $request->get("negatif") - $request->get("positif");
-        }
-        if ($request->has("ODP")) {
-            $ODP = $request->get("ODP");
-        } else {
-            $ODP = $district->ODP - $request->get("PDP");
-        }
-        if ($request->has("positif")) {
-            $district->positif = $request->get("positif");
-        }
-        if ($request->has('negatif')) {
-            $district->negatif = $request->get('negatif');
-        }
-        $district->ODP = $ODP;
-        $district->PDP = $PDP;
-        $district->selesai_pengawasan = $request->get("positif") + $request->get("negatif");
-        $district->dalam_pengawasan = $district->PDP - $district->selesai_pengawasan;
-        $district->selesai_pemantauan = $request->get("selesai_pemantauan");
-        $district->dalam_pemantauan = $district->ODP;
-        $district->meninggal = $request->get('meninggal');
-        $update = Kabupaten::where('no', $no)->update(
-            [
-                'ODP' => $district->ODP,
-                'PDP' => $district->PDP,
-                'positif' => $district->positif,
-                'negatif' => $district->negatif,
-                'selesai_pengawasan' => $district->selesai_pengawasan,
-                'dalam_pengawasan' => $district->dalam_pengawasan,
-                'selesai_pemantauan' => $district->selesai_pemantauan,
-                'dalam_pemantauan' => $district->dalam_pemantauan,
-                'meninggal' => $district->meninggal,
-            ]
-        );
-        if ($update) {
-            return response($this->setJson("Data Updated Successfully!", true, []), 201)
-                ->header("Content-Type", "application/json");
+        if ($request->has('API_KEY')) {
+            $API_KEY = $request->get('API_KEY');
+            if ($API_KEY == "Rahasia") {
+                $update = Kabupaten::where('no', $no)->update(
+                    [
+                        'ODP' => $request->get('ODP'),
+                        'PDP' => $request->get('PDP'),
+                        'positif' => $request->get("positif"),
+                        'negatif' => $request->get("negatif"),
+                        'selesai_pengawasan' => $request->get("selesai_pengawasan"),
+                        'dalam_pengawasan' => $request->get("dalam_pengawasan"),
+                        'selesai_pemantauan' => $request->get("selesai_pemantauan"),
+                        'dalam_pemantauan' => $request->get("dalam_pemantauan"),
+                        'meninggal' => $request->get('meninggal'),
+                    ]
+                );
+                if ($update) {
+                    return response($this->setJson("Data Updated Successfully!", true, []), 201)
+                        ->header("Content-Type", "application/json");
+                } else {
+                    return response($this->setJson([], false, [
+                        'code' => 400,
+                        'message' => 'Failed to update!'
+                    ]), 400)
+                        ->header("Content-Type", 'Application/json');
+                }
+            } else {
+                return response($this->setJson([], false, [
+                    'code' => 401,
+                    'message' => 'Invalid API Key, Unauthorized Acess!'
+                ]), 401);
+            }
         } else {
             return response($this->setJson([], false, [
-                'code' => 400,
-                'message' => 'Failed to update!'
-            ]))
-                ->header("Content-Type", 'Application/json');
+                'code' => 401,
+                'message' => 'Unauthorized Acess!'
+            ]), 401);
         }
     }
 
     private function setJson($data, $succes, $errors)
     {
         return [
-            'data' => $data,
             'success' => $succes,
-            'errors' => $errors
+            'errors' => $errors,
+            'data' => $data
         ];
     }
 }

@@ -17,9 +17,9 @@ $router->get('/', function () use ($router) {
 });
 
 // Generate App Key
-$router->get("/key", function () {
+$router->get("/key", ['middleware' => 'throttle:2,1', function () {
     return Str::random(32);
-});
+}]);
 
 $router->get("/kabupaten", "KabupatenController@getAllKabupaten");
 $router->get("/kabupaten/{no}", "KabupatenController@getKabupatenByNo");
@@ -30,3 +30,4 @@ $router->put("/provinsi/{code}", "ProvinsiController@update");
 
 $router->get("/rumahsakit", "RumahSakitController@getAllRumahSakit");
 $router->get("/rumahsakit/{no}", "RumahSakitController@getRumahSakitByNo");
+$router->get("/posko", "PoskoController@getAllPosko");

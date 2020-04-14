@@ -6,6 +6,12 @@ use App\RumahSakit;
 
 class RumahSakitController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('throttle:1,2');
+    }
+
     public function getAllRumahsakit()
     {
         return response(
@@ -34,9 +40,9 @@ class RumahSakitController extends Controller
     private function setJson($data, $succes, $errors)
     {
         return [
-            'data' => $data,
             'success' => $succes,
-            'errors' => $errors
+            'errors' => $errors,
+            'data' => $data
         ];
     }
 }
