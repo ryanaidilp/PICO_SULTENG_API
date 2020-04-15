@@ -38,7 +38,7 @@ class KabupatenController extends Controller
     {
         if ($request->has('API_KEY')) {
             $API_KEY = $request->get('API_KEY');
-            if ($API_KEY == "Rahasia") {
+            if ($API_KEY == "API_KEY") {
                 $update = Kabupaten::where('no', $no)->update(
                     [
                         'ODP' => $request->get('ODP'),

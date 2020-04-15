@@ -35,7 +35,7 @@ class ProvinsiController extends Controller
     {
         if ($request->has('API_KEY')) {
             $API_KEY = $request->get('API_KEY');
-            if ($API_KEY == 'Rahasia') {
+            if ($API_KEY == 'API_KEY') {
                 $province = Provinsi::where("kode_provinsi", $code)->first();
                 if ($province === null) {
                     return response($this->setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']));
