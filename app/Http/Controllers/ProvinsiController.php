@@ -26,7 +26,7 @@ class ProvinsiController extends Controller
             return response($this->setJson($province, true, []), 200)
                 ->header("Content-Type", "application/json");
         } else {
-            return response($this->setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']))
+            return response($this->setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404)
                 ->header("Content-Type", "application/json");
         }
     }
@@ -38,7 +38,7 @@ class ProvinsiController extends Controller
             if ($API_KEY == 'API_KEY') {
                 $province = Provinsi::where("kode_provinsi", $code)->first();
                 if ($province === null) {
-                    return response($this->setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']));
+                    return response($this->setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404);
                 } else {
                     $update = Provinsi::where("kode_provinsi", $code)->update(
                         [
@@ -54,20 +54,20 @@ class ProvinsiController extends Controller
                         return response($this->setJson([], false, [
                             'code' => 400,
                             'message' => 'Failed to update!'
-                        ]))
+                        ]), 400)
                             ->header("Content-Type", 'Application/json');
                     }
                 }
             } else {
                 return response($this->setJson([], false, [
                     'code' => 401,
-                    'message' => 'Invalid API Key, Unauthorized Acess!'
+                    'message' => 'Invalid API Key, Unauthorized Access!'
                 ]), 401);
             }
         } else {
             return response($this->setJson([], false, [
                 'code' => 401,
-                'message' => 'Unauthorized Acess!'
+                'message' => 'Unauthorized Access!'
             ]), 401);
         }
     }

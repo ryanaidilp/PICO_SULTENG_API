@@ -65,13 +65,13 @@ class KabupatenController extends Controller
             } else {
                 return response($this->setJson([], false, [
                     'code' => 401,
-                    'message' => 'Invalid API Key, Unauthorized Acess!'
+                    'message' => 'Invalid API Key, Unauthorized Access!'
                 ]), 401);
             }
         } else {
             return response($this->setJson([], false, [
                 'code' => 401,
-                'message' => 'Unauthorized Acess!'
+                'message' => 'Unauthorized Access!'
             ]), 401);
         }
     }
