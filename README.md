@@ -107,6 +107,7 @@ Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Ten
   "PDP": 0,
   "positif": 0,
   "negatif": 0,
+  "sembuh": 0,
   "meninggal": 0,
   "selesai_pengawasan": 0,
   "dalam_pengawasan": 6,

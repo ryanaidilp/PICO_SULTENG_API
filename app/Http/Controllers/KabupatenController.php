@@ -44,6 +44,7 @@ class KabupatenController extends Controller
                         'ODP' => $request->get('ODP'),
                         'PDP' => $request->get('PDP'),
                         'positif' => $request->get("positif"),
+                        'sembuh' => $request->get('sembuh'),
                         'negatif' => $request->get("negatif"),
                         'selesai_pengawasan' => $request->get("selesai_pengawasan"),
                         'dalam_pengawasan' => $request->get("dalam_pengawasan"),
