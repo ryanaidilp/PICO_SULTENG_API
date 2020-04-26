@@ -14,7 +14,7 @@ class PoskoController extends Controller
         $this->middleware('throttle:1,2');
     }
 
-    public function getAllPosko()
+    public function index()
     {
         $kabupaten = Kabupaten::all();
         $data = array();

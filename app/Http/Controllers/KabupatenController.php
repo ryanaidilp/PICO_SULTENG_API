@@ -13,7 +13,7 @@ class KabupatenController extends Controller
         $this->middleware('throttle:1,2');
     }
 
-    public function getKabupatenByNo($no)
+    public function show($no)
     {
         $district = Kabupaten::where('no', $no)->first();
         if ($district === null) {
@@ -28,13 +28,13 @@ class KabupatenController extends Controller
         return $response;
     }
 
-    public function getAllKabupaten()
+    public function index()
     {
         return response($this->setJson(Kabupaten::all(), true, []), 200)
             ->header('Content-Type', 'application/json');
     }
 
-    public function updateKabupaten($no, Request $request)
+    public function update($no, Request $request)
     {
         if ($request->has('API_KEY')) {
             $API_KEY = $request->get('API_KEY');
@@ -54,7 +54,7 @@ class KabupatenController extends Controller
                     ]
                 );
                 if ($update) {
-                    return response($this->setJson("Data Updated Successfully!", true, []), 201)
+                    return response($this->setJson("Data Updated Successfully!", true, []), 200)
                         ->header("Content-Type", "application/json");
                 } else {
                     return response($this->setJson([], false, [

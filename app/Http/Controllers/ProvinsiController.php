@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Provinsi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ProvinsiController extends Controller
 {
@@ -19,7 +20,7 @@ class ProvinsiController extends Controller
             ->header("Content-Type", "application/json");
     }
 
-    public function get($code)
+    public function show($code)
     {
         $province = Provinsi::where("kode_provinsi", $code)->first();
         if ($province != null) {
@@ -48,7 +49,7 @@ class ProvinsiController extends Controller
                         ]
                     );
                     if ($update) {
-                        return response($this->setJson("Data Updated Successfully!", true, []), 201)
+                        return response($this->setJson("Data Updated Successfully!", true, []), 200)
                             ->header("Content-Type", "application/json");
                     } else {
                         return response($this->setJson([], false, [
@@ -57,6 +58,47 @@ class ProvinsiController extends Controller
                         ]), 400)
                             ->header("Content-Type", 'Application/json');
                     }
+                }
+            } else {
+                return response($this->setJson([], false, [
+                    'code' => 401,
+                    'message' => 'Invalid API Key, Unauthorized Access!'
+                ]), 401);
+            }
+        } else {
+            return response($this->setJson([], false, [
+                'code' => 401,
+                'message' => 'Unauthorized Access!'
+            ]), 401);
+        }
+    }
+
+    public function updateAll(Request $request)
+    {
+        if ($request->has('API_KEY')) {
+            $API_KEY = $request->get('API_KEY');
+            if ($API_KEY == 'API_KEY') {
+                $response = Http::get("https://api.kawalcorona.com/indonesia/provinsi");
+                if ($response->successful()) {
+                    $arrayProvince = $response->json();
+                    foreach ($arrayProvince as $prov) {
+                        $positif = $prov['attributes']['Kasus_Posi'];
+                        $sembuh = $prov['attributes']['Kasus_Semb'];
+                        $meninggal = $prov['attributes']['Kasus_Meni'];
+                        Provinsi::where('kode_provinsi', $prov['attributes']['Kode_Provi'])
+                            ->update([
+                                'positif' => $positif,
+                                'sembuh' => $sembuh,
+                                'meninggal' => $meninggal
+
+                            ]);
+                    }
+                    return response($this->setJson(["Successfully updated all province data!"], true, []), 200);
+                } else {
+                    return response($this->setJson([], false, [
+                        'code' => 400,
+                        'message' => 'Failed to update province!'
+                    ]), 400);
                 }
             } else {
                 return response($this->setJson([], false, [

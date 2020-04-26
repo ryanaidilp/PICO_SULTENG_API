@@ -12,7 +12,7 @@ class RumahSakitController extends Controller
         $this->middleware('throttle:1,2');
     }
 
-    public function getAllRumahsakit()
+    public function index()
     {
         return response(
             $this->setJson(RumahSakit::all(), true, []),
@@ -21,7 +21,7 @@ class RumahSakitController extends Controller
             ->header("Content-Type", "Application/json");
     }
 
-    public function getRumahSakitByNo($no)
+    public function show($no)
     {
         $hospital = RumahSakit::where('no', $no)->first();
         if ($hospital === null) {

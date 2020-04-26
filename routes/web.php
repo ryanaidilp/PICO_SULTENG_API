@@ -16,18 +16,14 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-// Generate App Key
-$router->get("/key", ['middleware' => 'throttle:2,1', function () {
-    return Str::random(32);
-}]);
-
-$router->get("/kabupaten", "KabupatenController@getAllKabupaten");
-$router->get("/kabupaten/{no}", "KabupatenController@getKabupatenByNo");
-$router->put("/kabupaten/{no}", "KabupatenController@updateKabupaten");
+$router->get("/kabupaten", "KabupatenController@index");
+$router->get("/kabupaten/{no}", "KabupatenController@show");
+$router->put("/kabupaten/{no}", "KabupatenController@update");
 $router->get("/provinsi", "ProvinsiController@index");
-$router->get("/provinsi/{code}", "ProvinsiController@get");
+$router->get("/provinsi/{code}", "ProvinsiController@show");
 $router->put("/provinsi/{code}", "ProvinsiController@update");
+$router->put("/provinsi", "ProvinsiController@updateAll");
 
-$router->get("/rumahsakit", "RumahSakitController@getAllRumahSakit");
-$router->get("/rumahsakit/{no}", "RumahSakitController@getRumahSakitByNo");
-$router->get("/posko", "PoskoController@getAllPosko");
+$router->get("/rumahsakit", "RumahSakitController@index");
+$router->get("/rumahsakit/{no}", "RumahSakitController@show");
+$router->get("/posko", "PoskoController@index");
