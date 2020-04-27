@@ -212,7 +212,7 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
   Content-Type: application/json
 
 - **Success Response:**
-  - **Code :**  201
+  - **Code :**  200
   - **Content**: 
     ```json
     { 
@@ -352,7 +352,7 @@ Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbar
   Content-Type: application/json
 
 - **Success Response:**
-  - **Code :**   201
+  - **Code :**   200
   - **Content**: 
       ```json
       { 
