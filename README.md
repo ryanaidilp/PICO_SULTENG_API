@@ -471,3 +471,7 @@ Mengembalikan data Rumah Sakit yang dipilih.
               "data" :  [],
           }
         ```
+ ## License
+[MIT](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) License
+
+Copyright (c) 2020 [Fajrian Aidil Pratama](https://www.linkedin.com/in/ryanaidilp/)
