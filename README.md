@@ -1,5 +1,7 @@
 ﻿# PICO SulTeng API
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
 Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)  
 
