@@ -14,15 +14,15 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
 
 ## Penggunaan
 
-- **API** &nbsp;
-Akses API nya melalui <https://banuacoders.com/api/pico> lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
-  - **Posko** : <https://banuacoders.com/api/pico/posko>
-  - **Kabupaten** : <https://banuacoders.com/api/pico/kabupaten>
-  - **Kabupaten berdasarkan no** : <https://banuacoders.com/api/pico/kabupaten/6>
-  - **Provinsi** :  <https://banuacoders.com/api/pico/provinsi>
-  - **Provinsi berdasarkan kode provinsi** : <https://banuacoders.com/api/pico/provinsi/72>
-  - **Rumah Sakit**  : <https://banuacoders.com/api/pico/rumahsakit>
-  - **Rumah Sakit berdasarkan no** : <https://banuacoders.com/api/pico/rumahsakit/1>
+- **API** 
+  - Akses API nya melalui <https://banuacoders.com/api/pico> lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
+    - **Posko** : <https://banuacoders.com/api/pico/posko>
+    - **Kabupaten** : <https://banuacoders.com/api/pico/kabupaten>
+    - **Kabupaten berdasarkan no** : <https://banuacoders.com/api/pico/kabupaten/6>
+    - **Provinsi** :  <https://banuacoders.com/api/pico/provinsi>
+    - **Provinsi berdasarkan kode provinsi** : <https://banuacoders.com/api/pico/provinsi/72>
+    - **Rumah Sakit**  : <https://banuacoders.com/api/pico/rumahsakit>
+    - **Rumah Sakit berdasarkan no** : <https://banuacoders.com/api/pico/rumahsakit/1>
   &nbsp;
 - **Repository**
   - Clone repository ini ke local.
@@ -436,3 +436,5 @@ Mengembalikan data Rumah Sakit yang dipilih.
 [MIT](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) License
 
 Copyright (c) 2020 [Fajrian Aidil Pratama](https://www.linkedin.com/in/ryanaidilp/)
+
+
