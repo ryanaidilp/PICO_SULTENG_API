@@ -2,8 +2,15 @@
 
 API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah. 
 Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)
+## Sumber Data
+- **Data COVID-19 Sulawesi Tengah** :
+   - [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
+   - [Dinas Kesehatan Provinsi Sulawesi Tengah](https://dinkes.sultengprov.go.id)
+- **Data COVID-19 Nasional** :
+  - [Kawal Corona](https://kawalcorona.com/api)
+  - [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/)
 
-## #Penggunaan
+## Penggunaan
    Akses API nya melalui https://banuacoders.com/api/pico lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
    - Posko
 
@@ -34,7 +41,7 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
      https://banuacoders.com/api/pico/rumahsakit/1
 
 
-## # Data Posko
+## Data Posko
 
 * Objek Posko
 
@@ -95,7 +102,7 @@ Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Ten
     }
     ```
 
-## #Data Kabupaten
+## Data Kabupaten
 
 * Objek Kabupaten
 
@@ -238,7 +245,7 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
       }
       ```
 
-## #Data Provinsi
+## Data Provinsi
 
 Properti Map Id digunakan pada [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android) .
 
@@ -379,7 +386,7 @@ Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbar
       ```
 
 
-## #Data Rumah Sakit
+## Data Rumah Sakit
 
 * Objek Rumah Sakit
 
