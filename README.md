@@ -1,45 +1,55 @@
 ﻿# PICO SulTeng API
 
 API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah. 
-Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)
+Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)  
+
 ## Sumber Data
 - **Data COVID-19 Sulawesi Tengah** :
    - [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
    - [Dinas Kesehatan Provinsi Sulawesi Tengah](https://dinkes.sultengprov.go.id)
 - **Data COVID-19 Nasional** :
-  - [Kawal Corona](https://kawalcorona.com/api)
-  - [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/)
-
+  - [Kawal Corona](https://kawalcorona.com/api) : Data kasus COVID-19 per Provinsi.
+  - [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Data statistik situasi COVID-19 Nasional.
 ## Penggunaan
-   Akses API nya melalui https://banuacoders.com/api/pico lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
-   - Posko
+- **API**
+Akses API nya melalui https://banuacoders.com/api/pico lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
+   - **Posko**
 
       https://banuacoders.com/api/pico/posko
 
-   - Kabupaten
+   - **Kabupaten**
      
      https://banuacoders.com/api/pico/kabupaten
      
-   - Kabupaten berdasarkan no
+   - **Kabupaten berdasarkan no**
      
      https://banuacoders.com/api/pico/kabupaten/6
      
-   - Provinsi
+   - **Provinsi**
      
      https://banuacoders.com/api/pico/provinsi
      
-   - Provinsi berdasarkan kode provinsi
+   - **Provinsi berdasarkan kode provinsi**
    
      https://banuacoders.com/api/pico/provinsi/72
      
-   - Rumah Sakit 
+   - **Rumah Sakit** 
    
      https://banuacoders.com/api/pico/rumahsakit
      
-   - Rumah Sakit berdasarkan no
+   - **Rumah Sakit berdasarkan no**
    
      https://banuacoders.com/api/pico/rumahsakit/1
-
+  &nbsp; 
+- **Repository**
+    - Clone repository ini ke local.
+    - Buka terminal/CMD lalu masuk ke **root directory** hasil clone.
+    - Jalankan perintah `cp .env.example .env`
+    - Edit isi file **.env**  dan isikan sesuai dengan konfigurasi local  anda.
+    - Jalankan perintah `composer update`/` composer install` untuk meng-install  *dependency* yang dibutuhkan.
+    - Setelah proses installasi dependency selesai, jalankan perintah `php artisan key:generate` untuk men-*generate* **APP_KEY**.
+    - Setelah itu, jalankan perintah `php artisan serve` untuk menjalankan aplikasi.
+    - Jika berhasil dan tidak terdapat kesalahan dalam konfigurasi, maka aplikasi akan berjalan dan dapat diakses melalui ***127.0.0.1:8000*** atau ***localhost:8000***.
 
 ## Data Posko
 
@@ -101,7 +111,6 @@ Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Ten
        ]
     }
     ```
-
 ## Data Kabupaten
 
 * Objek Kabupaten
@@ -244,7 +253,6 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
         "data": [],
       }
       ```
-
 ## Data Provinsi
 
 Properti Map Id digunakan pada [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android) .
@@ -384,8 +392,6 @@ Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbar
         "data": []
       }
       ```
-
-
 ## Data Rumah Sakit
 
 * Objek Rumah Sakit
