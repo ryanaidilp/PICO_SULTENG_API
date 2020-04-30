@@ -188,7 +188,7 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
 
   ```json
   {
-     {"objek_kabupaten"},
+     "objek_kabupaten"
   }
   ```
 
@@ -315,7 +315,7 @@ Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbar
   
   ```json
   {
-      {"objek_provinsi"}
+      "objek_provinsi"
   }
   ```
 
