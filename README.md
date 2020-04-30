@@ -1,72 +1,55 @@
 ﻿# PICO SulTeng API
 
-API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah. 
+API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
 Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)  
 
 ## Sumber Data
+
 - **Data COVID-19 Sulawesi Tengah** :
-   - [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
-   - [Dinas Kesehatan Provinsi Sulawesi Tengah](https://dinkes.sultengprov.go.id)
+  - [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
+  - [Dinas Kesehatan Provinsi Sulawesi Tengah](https://dinkes.sultengprov.go.id)
 - **Data COVID-19 Nasional** :
   - [Kawal Corona](https://kawalcorona.com/api) : Data kasus COVID-19 per Provinsi.
   - [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Data statistik situasi COVID-19 Nasional.
+
 ## Penggunaan
-- **API**
-Akses API nya melalui https://banuacoders.com/api/pico lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
-   - **Posko**
 
-      https://banuacoders.com/api/pico/posko
-
-   - **Kabupaten**
-     
-     https://banuacoders.com/api/pico/kabupaten
-     
-   - **Kabupaten berdasarkan no**
-     
-     https://banuacoders.com/api/pico/kabupaten/6
-     
-   - **Provinsi**
-     
-     https://banuacoders.com/api/pico/provinsi
-     
-   - **Provinsi berdasarkan kode provinsi**
-   
-     https://banuacoders.com/api/pico/provinsi/72
-     
-   - **Rumah Sakit** 
-   
-     https://banuacoders.com/api/pico/rumahsakit
-     
-   - **Rumah Sakit berdasarkan no**
-   
-     https://banuacoders.com/api/pico/rumahsakit/1
-  &nbsp; 
+- **API** &nbsp;
+Akses API nya melalui <https://banuacoders.com/api/pico> lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
+  - **Posko** : <https://banuacoders.com/api/pico/posko>
+  - **Kabupaten** : <https://banuacoders.com/api/pico/kabupaten>
+  - **Kabupaten berdasarkan no** : <https://banuacoders.com/api/pico/kabupaten/6>
+  - **Provinsi** :  <https://banuacoders.com/api/pico/provinsi>
+  - **Provinsi berdasarkan kode provinsi** : <https://banuacoders.com/api/pico/provinsi/72>
+  - **Rumah Sakit**  : <https://banuacoders.com/api/pico/rumahsakit>
+  - **Rumah Sakit berdasarkan no** : <https://banuacoders.com/api/pico/rumahsakit/1>
+  &nbsp;
 - **Repository**
-    - Clone repository ini ke local.
-    - Buka terminal/CMD lalu masuk ke **root directory** hasil clone.
-    - Jalankan perintah `cp .env.example .env`
-    - Edit isi file **.env**  dan isikan sesuai dengan konfigurasi local  anda.
-    - Jalankan perintah `composer update`/` composer install` untuk meng-install  *dependency* yang dibutuhkan.
-    - Setelah proses installasi dependency selesai, jalankan perintah `php artisan key:generate` untuk men-*generate* **APP_KEY**.
-    - Setelah itu, jalankan perintah `php artisan serve` untuk menjalankan aplikasi.
-    - Jika berhasil dan tidak terdapat kesalahan dalam konfigurasi, maka aplikasi akan berjalan dan dapat diakses melalui ***127.0.0.1:8000*** atau ***localhost:8000***.
+  - Clone repository ini ke local.
+  - Buka terminal/CMD lalu masuk ke **root directory** hasil clone.
+  - Jalankan perintah `cp .env.example .env`
+  - Edit isi file **.env**  dan isikan sesuai dengan konfigurasi local  anda.
+  - Jalankan perintah `composer update`/`composer install` untuk meng-install  *dependency* yang dibutuhkan.
+  - Setelah proses installasi dependency selesai, jalankan perintah `php artisan key:generate` untuk men-*generate* **APP_KEY**.
+  - Setelah itu, jalankan perintah `php artisan serve` untuk menjalankan aplikasi.
+  - Jika berhasil dan tidak terdapat kesalahan dalam konfigurasi, maka aplikasi akan berjalan dan dapat diakses melalui ***127.0.0.1:8000*** atau ***localhost:8000***.
 
 ## Data Posko
 
-* Objek Posko
+- Objek Posko
 
 ```JSON
 {
     "no" : 1,
     "nama": "Banggai",
-    "posko" : 
+    "posko" :
     [
         {
              "no": 1,
              "nama": "dr. Anang (Kepala Dinkes Banggai)",
-             "no_hp": 
+             "no_hp":
              [
-                    "081xxxxxxxx"
+                    "081xxxxxxx"
              ]
         },
         {
@@ -74,27 +57,23 @@ Akses API nya melalui https://banuacoders.com/api/pico lalu tambahkan endpoint y
             "nama" : "Ibu Nur Datu Adam (Jubir)",
             "no_hp":
             [
-                "085xxxxxxxx"
+                "085xxxxxxx"
             ]
         }
     ]
 }
 ```
 
- **GET /posko**
-----
+## GET /posko
+
 Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Tengah.
+
 - **URL Params**
-  
-  None
+  - None
 - **Data Params**
-  
-   None
-
+  - None
 - **Headers**
-
-  Content-Type: application/json
-
+  - Content-Type: application/json
 - **Success Response :**
   - **Code :**   200
   - **Content:**
@@ -103,17 +82,18 @@ Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Ten
     {
        "success": true,
        "errors": [],
-       "data": 
+       "data":
        [
-         <objek_posko>,
-         <objek_posko>,
-         <objek_posko>,
+        {"objek_posko"},
+        {"objek_posko"},
+        {"objek_posko"},
        ]
     }
     ```
+
 ## Data Kabupaten
 
-* Objek Kabupaten
+- Objek Kabupaten
 
 ```json
 {
@@ -132,106 +112,95 @@ Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Ten
 }
 ```
 
-**GET /kabupaten**
-----
+## GET /kabupaten
+
 Mengembalikan data kasus COVID-19 di semua Kabupaten di Sulawesi Tengah.
 
 - **URL Params**
-  
-  None
+  - None
 - **Data Params**
-  
-   None
-
+  - None
 - **Headers**
-
-  Content-Type: application/json
-
+  - Content-Type: application/json
 - **Success Response :**
-    - **Code :**   200
-    - **Content:**
+  - **Code :**   200
+  - **Content:**
 
-        ```json
+    ```json
         {
            "success": true,
            "errors": [],
-           "data": 
+           "data":
            [
-             <objek_kabupaten>,
-             <objek_kabupaten>,
-             <objek_kabupaten>,
+            {"objek_kabupaten"},
+            {"objek_kabupaten"},
+            {"objek_kabupaten"},
            ]
         }
-        ```
+      ```
 
-**GET /kabupaten/:no**
-----
+## GET /kabupaten/:no
 
 Mengembalikan data Kabupaten yang dipilih.
 
 - **URL Params**
-  
-  *Required:* `no=[integer]`
+  - *Required:* `no=[integer]`
 
 - **Data Params**
-  
-  None
-
+  - None
 - **Headers**
-
-  Content-Type: application/json
-
+  - Content-Type: application/json
 - **Success Response:**
-    - **Code :**  200
-    - **Content**: 
-        ```json
-        { 
+  - **Code :**  200
+  - **Content**:
+
+      ```json
+        {
             "success": true,
             "errors": [],
-            "data": <objek_kabupaten> 
+            "data": {"objek_kabupaten"}
         }
-        ```
+      ```
 
 - **Error Response:**
-    - **Code :** 404
-    - **Content:**  
-        ```json
-        { 
+  - **Code :** 404
+  - **Content:**  
+
+      ```json
+        {
            "success": false,
-            "errors" : 
+            "errors" :
              {
                 "code": 404,
                 "message": "Ditrict not found!"
              },
              "data": []
         }
-        ```
+      ```
 
+## PUT /kabupaten/:no
 
-**PUT /kabupaten/:no**
-----
 Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah diperbarui.
 
 - **URL Params**
-  
-  *Required:* `no=[integer]`
+  - *Required:* `no=[integer]`
 - **Data Params**
-  
+
   ```json
   {
-     <objek_kabupaten>, 
+     {"objek_kabupaten"},
   }
   ```
 
 - **Headers**
-
-  Content-Type: application/json
+  - Content-Type: application/json
 
 - **Success Response:**
   - **Code :**  200
-  - **Content**: 
+  - **Content**:
+
     ```json
-    { 
+    {
         "success": true,
         "errors": [],
         "data": "Data updated successfully!"
@@ -240,10 +209,10 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
 
 - **Error Response:**
   - **Code:** 404
+  - **Content:**  
 
-   - **Content:**  
       ```json
-      { 
+      {
         "success": false,
         "errors":
           {
@@ -253,11 +222,12 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
         "data": [],
       }
       ```
+
 ## Data Provinsi
 
 Properti Map Id digunakan pada [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android) .
 
-* Objek Provinsi
+- Objek Provinsi
 
 ```json
 {
@@ -266,25 +236,20 @@ Properti Map Id digunakan pada [AnyChart-Android](https://github.com/AnyChart/An
   "positif":515,
   "sembuh":46,
   "meninggal":25,
-  "map_id":"ID.JR" 
+  "map_id":"ID.JR"
 }
 ```
 
-**GET /provinsi**
-----
+## GET /provinsi
+
 Mengembalikan data kasus COVID-19 di semua Provinsi di Seluruh Indonesia.
 
 - **URL Params**
-  
-  None
+  - None
 - **Data Params**
-  
-   None
-
+  - None
 - **Headers**
-
-  Content-Type: application/json
-
+  - Content-Type: application/json
 - **Success Response :**
   - **Code :** 200
   - **Content:**
@@ -293,84 +258,75 @@ Mengembalikan data kasus COVID-19 di semua Provinsi di Seluruh Indonesia.
     {
        "success": true,
        "errors": [],
-       "data": 
+       "data":
        [
-         <objek_provinsi>,
-         <objek_provinsi>,
-         <objek_provinsi>,
+         {"objek_provinsi"},
+         {"objek_provinsi"},
+         {"objek_provinsi"},
        ],
     }
     ```
 
-**GET /provinsi/:no**
-----
+## GET /provinsi/:no
 
 Mengembalikan data Provinsi yang dipilih.
 
 - **URL Params**
-  
-  *Required:* `no=[integer]`
-
+  - *Required:* `no=[integer]`
 - **Data Params**
-  
-  None
-
+  - None
 - **Headers**
-
-  Content-Type: application/json
-
+  - Content-Type: application/json
 - **Success Response:**
-    - **Code :**  200
-  - **Content**: 
+  - **Code :**  200
+  - **Content**:
+
     ```json
-    { 
+    {
         "success": true,
         "errors": [],
-        "data": <objek_provinsi> ,
+        "data": {"objek_provinsi"},
     }
     ```
 
 - **Error Response:**
   - **Code :** 404
+  - **Content:**  
 
-   - **Content:**  
       ```json
-      { 
-          "success": false,
-          "errors" : 
+      {
+        "success": false,
+        "errors":
            {
                "code": 404,
                "message": "Province not found!"
            },
-          "data": [],
+        "data": [],
       }
       ```
 
+## PUT /provinsi/:no
 
-**PUT /provinsi/:no**
-----
 Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbarui.
 
 - **URL Params**
-  
-  *Required:* `no=[integer]`
+  - *Required:* `no=[integer]`
 - **Data Params**
   
   ```json
   {
-      <objek_province>
+      {"objek_provinsi"}
   }
   ```
 
 - **Headers**
-
-  Content-Type: application/json
-
+  - Content-Type: application/json
 - **Success Response:**
   - **Code :**   200
-  - **Content**: 
+  - **Content**:
+
       ```json
-      { 
+      {
         "success": true,
         "errors": [],
         "data": "Data updated successfully!"
@@ -379,10 +335,10 @@ Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbar
 
 - **Error Response:**
   - **Code:** 404
+  - **Content:**  
 
-  -  **Content:**  
       ```json
-      { 
+      {
         "success": false,
         "errors":
         {
@@ -392,9 +348,10 @@ Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbar
         "data": []
       }
       ```
+
 ## Data Rumah Sakit
 
-* Objek Rumah Sakit
+- Objek Rumah Sakit
 
 ```json
 {
@@ -408,22 +365,17 @@ Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbar
 }
 ```
 
-**GET /rumahsakit**
-----
+## GET /rumahsakit
+
 Mengembalikan data rumah sakit rujukan COVID-19 di semua Kabupaten di Sulawesi Tengah.
 
 - **URL Params**
-  
-  None
+  - None
   
 - **Data Params**
-  
-   None
-
+  - None
 - **Headers**
-
-  Content-Type: application/json
-
+  - Content-Type: application/json
 - **Success Response :**
   - **Code :**  200
   - **Content:**
@@ -434,47 +386,41 @@ Mengembalikan data rumah sakit rujukan COVID-19 di semua Kabupaten di Sulawesi T
          "errors": [],
          "data":
          [
-           {<objek_rumah_sakit>},
-           {<objek_rumah_sakit>},
-           {<objek_rumah_sakit>},
+           {"objek_rumah_sakit"},
+           {"objek_rumah_sakit"},
+           {"objek_rumah_sakit"},
          ],
       }
       ```
 
-**GET /rumahsakit/:no**
-----
+## GET /rumahsakit/:no
 
 Mengembalikan data Rumah Sakit yang dipilih.
 
 - **URL Params**
-  
-  *Required:* `no=[integer]`
-
+  - *Required:* `no=[integer]`
 - **Data Params**
-  
-  None
-
+  - None
 - **Headers**
-
-  Content-Type: application/json
-
+  - Content-Type: application/json
 - **Success Response:**
   - **Code :**   200
-  - **Content**: 
+  - **Content**:
+
     ```json
     {
       "success": true,
       "errors": [],
-      "data": {<objek_rumah_sakit>},
+      "data": {"objek_rumah_sakit"},
     }
     ```
 
 - **Error Response:**
   - **Code :** 404
+  - **Content:**  
 
-  -    **Content:**  
-        ```json
-          { 
+     ```json
+          {
               "success": false,
               "errors":
               {
@@ -483,8 +429,10 @@ Mengembalikan data Rumah Sakit yang dipilih.
               },
               "data" :  [],
           }
-        ```
- ## License
+     ```
+
+## License
+
 [MIT](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) License
 
 Copyright (c) 2020 [Fajrian Aidil Pratama](https://www.linkedin.com/in/ryanaidilp/)
