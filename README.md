@@ -16,13 +16,15 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
 
 - **API**
   - Akses API nya melalui <https://banuacoders.com/api/pico> lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
-    - **Posko** : <https://banuacoders.com/api/pico/posko>
-    - **Kabupaten** : <https://banuacoders.com/api/pico/kabupaten>
-    - **Kabupaten berdasarkan no** : <https://banuacoders.com/api/pico/kabupaten/6>
-    - **Provinsi** :  <https://banuacoders.com/api/pico/provinsi>
-    - **Provinsi berdasarkan kode provinsi** : <https://banuacoders.com/api/pico/provinsi/72>
-    - **Rumah Sakit**  : <https://banuacoders.com/api/pico/rumahsakit>
-    - **Rumah Sakit berdasarkan no** : <https://banuacoders.com/api/pico/rumahsakit/1>
+    | Data | Endpoint | URL |
+    |------|----------|-----|
+    | Posko | **/posko** | <https://banuacoders.com/api/pico/posko> |
+    | Kabupaten | **/kabupaten** | <https://banuacoders.com/api/pico/kabupaten> |
+    | Kabupaten berdasarkan no | **/kabupaten/:no** | <https://banuacoders.com/api/pico/kabupaten/6> |
+    | Provinsi | **/provinsi** |  <https://banuacoders.com/api/pico/provinsi> |
+    | Provinsi berdasarkan kode provinsi | **/provinsi/:kode** | <https://banuacoders.com/api/pico/provinsi/72> |
+    | Rumah Sakit | **/rumahsakit** | <https://banuacoders.com/api/pico/rumahsakit> |
+    | Rumah Sakit berdasarkan no | **/rumahsakit/:no** | <https://banuacoders.com/api/pico/rumahsakit/1> |
   &nbsp;
 - **Repository**
   - Clone repository ini ke local.
@@ -36,7 +38,7 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
 
 ## Data Posko
 
-- Objek Posko
+- **Objek Posko** : Contoh JSON
 
 ```JSON
 {
@@ -93,7 +95,7 @@ Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Ten
 
 ## Data Kabupaten
 
-- Objek Kabupaten
+- **Objek Kabupaten** : Contoh JSON
 
 ```json
 {
@@ -108,7 +110,8 @@ Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Ten
   "selesai_pengawasan": 0,
   "dalam_pengawasan": 6,
   "selesai_pemantauan": 0,
-  "dalam_pemantauan": 0
+  "dalam_pemantauan": 0,
+  "updated_at": "2020-04-29T17:00:00.000000Z"
 }
 ```
 
@@ -227,7 +230,7 @@ Memperbarui kolom pada data Kabupaten/Kota dan mengembalikan objek yang sudah di
 
 Properti Map Id digunakan pada [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android) .
 
-- Objek Provinsi
+- **Objek Provinsi** : Contoh JSON
 
 ```json
 {
@@ -236,7 +239,8 @@ Properti Map Id digunakan pada [AnyChart-Android](https://github.com/AnyChart/An
   "positif":515,
   "sembuh":46,
   "meninggal":25,
-  "map_id":"ID.JR"
+  "map_id":"ID.JR",
+  "updated_at": "2020-04-29T17:00:00.000000Z"
 }
 ```
 
@@ -351,7 +355,7 @@ Memperbarui kolom pada data Provinsi dan mengembalikan objek yang sudah diperbar
 
 ## Data Rumah Sakit
 
-- Objek Rumah Sakit
+- **Objek Rumah Sakit** : Contoh JSON
 
 ```json
 {
