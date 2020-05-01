@@ -16,14 +16,14 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get("/kabupaten", "KabupatenController@index");
-$router->get("/kabupaten/{no}", "KabupatenController@show");
-$router->put("/kabupaten/{no}", "KabupatenController@update");
-$router->get("/provinsi", "ProvinsiController@index");
-$router->get("/provinsi/{code}", "ProvinsiController@show");
-$router->put("/provinsi/{code}", "ProvinsiController@update");
-$router->put("/provinsi", "ProvinsiController@updateAll");
+$router->get("/kabupaten", "DistrictController@index");
+$router->get("/kabupaten/{no}", "DistrictController@show");
+$router->put("/kabupaten/{no}", "DistrictController@update");
+$router->get("/provinsi", "ProvinceController@index");
+$router->get("/provinsi/{code}", "ProvinceController@show");
+$router->put("/provinsi/{code}", "ProvinceController@update");
+$router->put("/provinsi", "ProvinceController@updateAll");
 
-$router->get("/rumahsakit", "RumahSakitController@index");
-$router->get("/rumahsakit/{no}", "RumahSakitController@show");
-$router->get("/posko", "PoskoController@index");
+$router->get("/rumahsakit", "HospitalController@index");
+$router->get("/rumahsakit/{no}", "HospitalController@show");
+$router->get("/posko", "PostsController@index");

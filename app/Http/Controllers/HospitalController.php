@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\RumahSakit;
+use App\Hospital;
 
-class RumahSakitController extends Controller
+class HospitalController extends Controller
 {
 
     public function __construct()
@@ -15,7 +15,7 @@ class RumahSakitController extends Controller
     public function index()
     {
         return response(
-            $this->setJson(RumahSakit::all(), true, []),
+            $this->setJson(Hospital::all(), true, []),
             200
         )
             ->header("Content-Type", "Application/json");
@@ -23,7 +23,7 @@ class RumahSakitController extends Controller
 
     public function show($no)
     {
-        $hospital = RumahSakit::where('no', $no)->first();
+        $hospital = Hospital::where('no', $no)->first();
         if ($hospital === null) {
             return response(
                 $this->setJson($hospital, true, ['code' => 404, 'message' => 'Hospital not found!']),
@@ -31,7 +31,7 @@ class RumahSakitController extends Controller
             );
         } else {
             return response(
-                $this->setJson(RumahSakit::where('no', $no)->first(), true, []),
+                $this->setJson(Hospital::where('no', $no)->first(), true, []),
                 200
             )
                 ->header("Content-Type", "Application/json");

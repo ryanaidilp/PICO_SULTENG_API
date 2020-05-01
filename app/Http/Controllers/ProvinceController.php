@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Provinsi;
+use App\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class ProvinsiController extends Controller
+class ProvinceController extends Controller
 {
 
     public function __construct()
@@ -16,13 +16,13 @@ class ProvinsiController extends Controller
 
     public function index()
     {
-        return response($this->setJson(Provinsi::all(), true, []), 200)
+        return response($this->setJson(Province::all(), true, []), 200)
             ->header("Content-Type", "application/json");
     }
 
     public function show($code)
     {
-        $province = Provinsi::where("kode_provinsi", $code)->first();
+        $province = Province::where("kode_provinsi", $code)->first();
         if ($province != null) {
             return response($this->setJson($province, true, []), 200)
                 ->header("Content-Type", "application/json");
@@ -37,11 +37,11 @@ class ProvinsiController extends Controller
         if ($request->has('API_KEY')) {
             $API_KEY = $request->get('API_KEY');
             if ($API_KEY == 'API_KEY') {
-                $province = Provinsi::where("kode_provinsi", $code)->first();
+                $province = Province::where("kode_provinsi", $code)->first();
                 if ($province === null) {
                     return response($this->setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404);
                 } else {
-                    $update = Provinsi::where("kode_provinsi", $code)->update(
+                    $update = Province::where("kode_provinsi", $code)->update(
                         [
                             'meninggal' => $request->get("meninggal"),
                             'sembuh' => $request->get("sembuh"),
@@ -78,14 +78,14 @@ class ProvinsiController extends Controller
         if ($request->has('API_KEY')) {
             $API_KEY = $request->get('API_KEY');
             if ($API_KEY == 'API_KEY') {
-                $response = Http::get("https://api.kawalcorona.com/indonesia/provinsi");
+                $response = Http::get("https://api.kawalcorona.com/indonesia/Province");
                 if ($response->successful()) {
                     $arrayProvince = $response->json();
                     foreach ($arrayProvince as $prov) {
                         $positif = $prov['attributes']['Kasus_Posi'];
                         $sembuh = $prov['attributes']['Kasus_Semb'];
                         $meninggal = $prov['attributes']['Kasus_Meni'];
-                        Provinsi::where('kode_provinsi', $prov['attributes']['Kode_Provi'])
+                        Province::where('kode_provinsi', $prov['attributes']['Kode_Provi'])
                             ->update([
                                 'positif' => $positif,
                                 'sembuh' => $sembuh,

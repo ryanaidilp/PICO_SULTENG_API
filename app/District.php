@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kabupaten extends Model
+class District extends Model
 {
     protected $table = 'kabupaten';
     protected $guarded = [];
 
-    public function posko()
+    public function posts()
     {
-        return $this->hasMany(Posko::class, 'kode_kabupaten', 'no');
+        return $this->hasMany(Posts::class, 'kode_kabupaten', 'no');
     }
 }

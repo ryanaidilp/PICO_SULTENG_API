@@ -1,101 +1,78 @@
-﻿# PICO SulTeng API
+# PICO SulTeng API
 
 [![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API)
 
-> API for [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (*Pusat Informasi COVID-19*/COVID-19 Information Center) of Central Sulawesi. This API build using microframework [Lumen](https://lumen.laravel.com).
+>API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
+Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)  
 
-## Table of contents
+## Daftar Isi
 
-[![Language : Id](https://img.shields.io/badge/lang-id-blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/README.id.md)
+[![Lang : English](https://img.shields.io/badge/lang-en-yellow)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/README.md)
 
-> You are reading the English version of this README. Click on the language badge to switch to another language.
+ > Kamu membaca versi Bahasa Indonesia dari README ini. Tekan badge untuk membaca README dalam bahasa yang berbeda.
 
-* [General info](#general-info)
-* [Additional info](#additional-info)
-* [Data Source](#data-source)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Response Examples](#response-examples)
-* [Features](#features)
+* [Informasi umum](#informasi-umum)
+* [Sumber Data](#sumber-data)
+* [Teknologi](#teknologi)
+* [Instalasi](#instalasi)
+* [Contoh Respon](#contoh-respon)
+* [Fitur](#fitur)
 * [Status](#status)
-* [License](#license)
-* [Contact](#contact)
+* [Lisensi](#lisensi)
+* [Kontak](#kontak)
 
-## General info
+## Informasi umum
 
-This API was created to provide realtime data on the COVID-19 situation in Central Sulawesi. This API was created because the data provided by the local government is still in the form of static data so that the data cannot be used in my application (PICO).
+API ini dibuat untuk menyediakan data terkini tentang situasi COVID-19 di Sulawesi Tengah. API ini dibuat karena data yang disediakan oleh pemerintah daerah masih berupa data statis sehingga datanya tidak dapat digunakan pada aplikasi saya (PICO).
 
-By making this API, we expected that developers who need realtime data on the COVID-19 situation in Central Sulawesi can be helped by this API.
+Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data situasi COVID-19 di Sulawesi Tengah dapat terbantu dan memanfaatkan API ini.
 
-## Additional Info
+## Sumber Data
 
-* **JSON Attributes**
-  | Attribute (in Bahasa) | Description |
-  |-----------------------|-------------|
-  | id | id of the object |
-  | nama | name of the object |
-  | no_hp/telepon | phone number |
-  | alamat | address |
-  | posko | posts |
-  | kabupaten | district/district name |
-  | provinsi | province/province name |
-  | ODP | person under observation |
-  | PDP | person under supervision |
-  | positif | positive COVID-19 |
-  | negatif | negative COVID-19 |
-  | sembuh | recovered from COVID-19 |
-  | meninggal | death caused by COVID-19 |
-  | dalam_pengawasan | under supervision |
-  | selesai_pengawasan | completed supervision |
-  | dalam_pemantauan | under observation |
-  | selesai_pemantauan | completed observation |
-
-## Data Source
-
-* **Data for COVID-19 situation in Central Sulawesi** :
+* **Data COVID-19 Sulawesi Tengah** :
   * [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
-  * [Health Department of Central Sulawesi](https://dinkes.sultengprov.go.id)
-* **Data for COVID-19 situation in Indonesia** :
-  * [Kawal Corona](https://kawalcorona.com/api) : Data for COVID-19 cases by Province.
-  * [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Statistical data on the COVID-19 situation in Indonesia.
+  * [Dinas Kesehatan Provinsi Sulawesi Tengah](https://dinkes.sultengprov.go.id)
+* **Data COVID-19 Nasional** :
+  * [Kawal Corona](https://kawalcorona.com/api) : Data kasus COVID-19 per Provinsi.
+  * [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Data statistik situasi COVID-19 Nasional.
 
-## Technologies
+## Teknologi
 
-* [Lumen](https://lumen.laravel.com/) - version 7.0.2
-* [PHP](https://www.php.net) - version 7.3.13
+* [Lumen](https://lumen.laravel.com/) - versi 7.0.2
+* [PHP](https://www.php.net) - versi 7.3.13
 
-## Setup
+## Instalasi
 
 * **API**
-  * Access the API via <https://banuacoders.com/api/pico> then add the endpoint you want to hit. Here's an example of using endpoints in url:
+  * Akses API nya melalui <https://banuacoders.com/api/pico> lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
 
     | Data | Endpoint | URL |
     |------|----------|-----|
-    | Posts | **/posko** | <https://banuacoders.com/api/pico/posko> |
-    | District | **/kabupaten** | <https://banuacoders.com/api/pico/kabupaten> |
-    | District by Id | **/kabupaten/:id** | <https://banuacoders.com/api/pico/kabupaten/6> |
-    | Province | **/provinsi** |  <https://banuacoders.com/api/pico/provinsi> |
-    | Provinsi by province code | **/provinsi/:code** | <https://banuacoders.com/api/pico/provinsi/72> |
-    | Hospital | **/rumahsakit** | <https://banuacoders.com/api/pico/rumahsakit> |
-    | Hospital by Id | **/rumahsakit/:id** | <https://banuacoders.com/api/pico/rumahsakit/1> |
+    | Posko | **/posko** | <https://banuacoders.com/api/pico/posko> |
+    | Kabupaten | **/kabupaten** | <https://banuacoders.com/api/pico/kabupaten> |
+    | Kabupaten berdasarkan no | **/kabupaten/:no** | <https://banuacoders.com/api/pico/kabupaten/6> |
+    | Provinsi | **/provinsi** |  <https://banuacoders.com/api/pico/provinsi> |
+    | Provinsi berdasarkan kode provinsi | **/provinsi/:kode** | <https://banuacoders.com/api/pico/provinsi/72> |
+    | Rumah Sakit | **/rumahsakit** | <https://banuacoders.com/api/pico/rumahsakit> |
+    | Rumah Sakit berdasarkan no | **/rumahsakit/:no** | <https://banuacoders.com/api/pico/rumahsakit/1> |
 
   &nbsp;
 
 * **Repository**
-  * Clone this repository to your local machine.
-  * Open the terminal / CMD then enter the **root folder** of the clone results.
-  * Run this command `cp .env.example .env`
-  * Edit the contents of the file **.env** and fill it in according to your local configuration.
-  * Run the `composer update` /`composer install` command to install the required *dependencies*.
-  * After the dependency installation process is complete, run the `php artisan key:generate` command to generate **APP_KEY**.
-  * After that, run the `php artisan serve` command to run the application.
-  * If it is successful and there are no errors in the configuration, the application will run and can be accessed via **127.0.0.1:8000** or **localhost:8000**.
+  * Clone repository ini ke local.
+  * Buka terminal/CMD lalu masuk ke **root directory** hasil clone.
+  * Jalankan perintah `cp .env.example .env`
+  * Edit isi file **.env**  dan isikan sesuai dengan konfigurasi local  anda.
+  * Jalankan perintah `composer update` / `composer install` untuk meng-install  *dependency* yang dibutuhkan.
+  * Setelah proses installasi dependency selesai, jalankan perintah `php artisan key:generate` untuk men-*generate* **APP_KEY**.
+  * Setelah itu, jalankan perintah `php artisan serve` untuk menjalankan aplikasi.
+  * Jika berhasil dan tidak terdapat kesalahan dalam konfigurasi, maka aplikasi akan berjalan dan dapat diakses melalui ***127.0.0.1:8000*** atau ***localhost:8000***.
 
-## Response Examples
+## Contoh Respon
 
-* **POSTS DATA**
+* **DATA POSKO**
 
-  * JSON Example/{"posts_object"} :
+  * Contoh json/{"objek_posko"} :
 
     ```json
     {
@@ -125,7 +102,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
   * **GET /posko**
 
-    >Returning data of the COVID-19 Task Force Command Post in all districts in Central Sulawesi.
+    >Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Tengah.
 
     * **URL Params**
       * None
@@ -143,16 +120,16 @@ By making this API, we expected that developers who need realtime data on the CO
             "errors": [],
             "data":
             [
-                {"posts_object"},
-                {"posts_object"},
-                {"posts_object"},
+                {"objek_posko"},
+                {"objek_posko"},
+                {"objek_posko"},
             ]
         }
         ```
 
-* **DISTRICT DATA**
+* **DATA KABUPATEN**
 
-  * JSON Example/{"district_object"} :
+  * Contoh json/{"objek_kabupaten"} :
 
     ```json
     {
@@ -174,7 +151,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
   * **GET /kabupaten**
 
-    > Returns data on COVID-19 cases in all districts / cities in Central Sulawesi.
+    > Mengembalikan data kasus COVID-19 di semua Kabupaten/Kota di Sulawesi Tengah.
 
     * **URL Params**
       * None
@@ -192,19 +169,19 @@ By making this API, we expected that developers who need realtime data on the CO
             "errors": [],
             "data":
             [
-                {"district_object"},
-                {"district_object"},
-                {"district_object"},
+                {"objek_kabupaten"},
+                {"objek_kabupaten"},
+                {"objek_kabupaten"},
             ]
         }
         ```
 
-  * **GET /kabupaten/:id**
+  * **GET /kabupaten/:no**
 
-    > Returns data on COVID-19 cases in selected district.
+    >Mengembalikan data kasu COVID-19 di Kabupaten/Kota yang dipilih.
 
     * **URL Params**
-      * *Required:* `id=[integer]`
+      * *Required:* `no=[integer]`
     * **Data Params**
       * None
     * **Headers**
@@ -217,7 +194,7 @@ By making this API, we expected that developers who need realtime data on the CO
         {
             "success": true,
             "errors": [],
-            "data": {"district_object"}
+            "data": {"objek_kabupaten"}
         }
         ```
 
@@ -237,9 +214,9 @@ By making this API, we expected that developers who need realtime data on the CO
         }
         ```
 
-  * **PUT /kabupaten/:id**
+  * **PUT /kabupaten/:no**
 
-    > Update District data based on district number/id.
+    >Memperbarui data Kabupaten/Kota berdasarkan nomor/id kabupaten.
 
     * **URL Params**
       * *Required:* `no=[integer]`
@@ -247,7 +224,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
       ```json
       {
-          "district_object"
+          "objek_kabupaten"
       }
       ```
 
@@ -282,11 +259,11 @@ By making this API, we expected that developers who need realtime data on the CO
         }
         ```
 
-* **PROVINCE DATA**
+* **DATA PROVINSI**
 
-    > The **"map_id"** property is used on [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android).
+    >Properti Map Id digunakan pada [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android) .
 
-  * JSON Example/{"province_object"} :
+  * Contoh json/{"objek_provinsi"} :
 
     ```json
     {
@@ -302,7 +279,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
   * **GET /provinsi**
 
-    > Returns data on COVID-19 cases in all provinces throughout Indonesia.
+    >Mengembalikan data kasus COVID-19 di semua Provinsi di Seluruh Indonesia.
 
     * **URL Params**
       * None
@@ -320,19 +297,19 @@ By making this API, we expected that developers who need realtime data on the CO
             "errors": [],
             "data":
             [
-                {"province_object"},
-                {"province_object"},
-                {"province_object"},
+                {"objek_provinsi"},
+                {"objek_provinsi"},
+                {"objek_provinsi"},
             ],
         }
         ```
 
-  * **GET /provinsi/:code**
+  * **GET /provinsi/:kode**
 
-    > Returns data on COVID-19 cases in selected province.
+    >Mengembalikan data kasus COVID-19 di Provinsi yang dipilih.
 
     * **URL Params**
-      * *Required:* `code=[integer]`
+      * *Required:* `kode=[integer]`
     * **Data Params**
       * None
     * **Headers**
@@ -345,7 +322,7 @@ By making this API, we expected that developers who need realtime data on the CO
         {
             "success": true,
             "errors": [],
-            "data": {"province_object"},
+            "data": {"objek_provinsi"},
         }
         ```
 
@@ -365,17 +342,17 @@ By making this API, we expected that developers who need realtime data on the CO
         }
         ```
 
-  * **PUT /provinsi/:code**
+  * **PUT /provinsi/:kode**
 
-    > Update Province data based on province code.
+    >Memperbarui data Provinsi berdasarkan kode provinsi.
 
     * **URL Params**
-      * *Required:* `code=[integer]`
+      * *Required:* `kode=[integer]`
     * **Data Params**
   
         ```json
         {
-          "province_object"
+          "objek_provinsi"
         }
         ```
 
@@ -409,9 +386,9 @@ By making this API, we expected that developers who need realtime data on the CO
         }
         ```
 
-* **COVID-19 REFERRAL HOSPITAL DATA**
+* **DATA RUMAH SAKIT**
 
-  * JSON Example/{"hospital_object"} :
+  * Contoh json/{"objek_rumah_sakit"} :
 
     ```json
     {
@@ -427,7 +404,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
   * **GET /rumahsakit**
 
-    > Returns data from the COVID-19 referral hospital in Central Sulawesi.
+    >Mengembalikan data rumah sakit rujukan COVID-19 di semua Kabupaten di Sulawesi Tengah.
 
     * **URL Params**
       * None
@@ -445,18 +422,19 @@ By making this API, we expected that developers who need realtime data on the CO
           "errors": [],
           "data":
           [
-            {"hospital_object"},
-            {"hospital_object"},
-            {"hospital_object"},
+            {"objek_rumah_sakit"},
+            {"objek_rumah_sakit"},
+            {"objek_rumah_sakit"},
           ],
         }
         ```
 
-  * **GET /rumahsakit/:id**
-     > Returns Hospital data based on selected number/id.
+  * **GET /rumahsakit/:no**
+
+    > Mengembalikan data Rumah Sakit berdasarkan nomor/id yang dipilih.
 
     * **URL Params**
-      * *Required:* `id=[integer]`
+      * *Required:* `no=[integer]`
     * **Data Params**
       * None
     * **Heders**
@@ -469,7 +447,7 @@ By making this API, we expected that developers who need realtime data on the CO
         {
             "success": true,
             "errors": [],
-            "data": {"hospital_object"},
+            "data": {"objek_rumah_sakit"},
         }
         ```
 
@@ -489,33 +467,33 @@ By making this API, we expected that developers who need realtime data on the CO
         }
         ```
 
-## Features
+## Fitur
 
-Some features have been made so far :
+Beberapa fitur yang sudah dibuat :
 
-* Data for COVID-19 situation by districts/cities in Central Sulawesi
-* Data for COVID-19 situation by Province in Indonesia
-* Data of Central Sulawesi COVID-19 Task Force Team post
-* Data of COVID-19 referral hospital in Central Sulawesi
+* Data situasi COVID-19 Kabupaten/Kota di Sulawesi Tengah
+* Data situasi COVID-19 Provinsi
+* Data posko Tim Gugus Tugas COVID-19 Sulawesi Tengah
+* Data rumah sakit rujukan COVID-19 di Sulawesi Tengah
 
 To-do list:
 
-* [X] Data for COVID-19 situation by districts/cities in Central Sulawesi
-* [X] Data for COVID-19 situation by Province in Indonesia
-* [X] Data of Central Sulawesi COVID-19 Task Force Team post
-* [X] Data of COVID-19 referral hospital in Central Sulawesi
-* [ ] Daily report of COVID-19 situation in Central Sulawesi
+* [X] Data situasi COVID-19 Kabupaten/Kota di Sulawesi Tengah
+* [X] Data situasi COVID-19 Provinsi
+* [X] Data posko Tim Gugus Tugas COVID-19 Sulawesi Tengah
+* [X] Data rumah sakit rujukan COVID-19 di Sulawesi Tengah
+* [ ] Data perkembangan kasus COVID-19 harian Sulawesi Tengah
 
 ## Status
 
-Project is : _released_
+Status proyek : _released_
 
-## License
+## Lisensi
 
-[MIT](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) License
+Lisensi [MIT](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE)
 
 Copyright (c) 2020 [Fajrian Aidil Pratama](https://www.linkedin.com/in/ryanaidilp/)
 
-## Contact
+## Kontak
 
-Created by [@ryanidilp_](https://instagram.com/ryanaidilp_) - feel free to contact me!
+Dibuat oleh [@ryanaidilp_](https://instagram.com/ryanaidilp_) - feel free to contact me!
