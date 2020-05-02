@@ -10,16 +10,25 @@
 
 > You are reading the English version of this README. Click on the language badge to switch to another language.
 
+* [Data Source](#data-source)
 * [General info](#general-info)
 * [Additional info](#additional-info)
-* [Data Source](#data-source)
-* [Technologies](#technologies)
+* [Build With](#build-with)
 * [Setup](#setup)
 * [Response Examples](#response-examples)
 * [Features](#features)
 * [Status](#status)
 * [License](#license)
 * [Contact](#contact)
+
+## Data Source
+
+* **Data for COVID-19 situation in Central Sulawesi** :
+  * [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
+  * [Health Department of Central Sulawesi](https://dinkes.sultengprov.go.id)
+* **Data for COVID-19 situation in Indonesia** :
+  * [Kawal Corona](https://kawalcorona.com/api) : Data for COVID-19 cases by Province.
+  * [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Statistical data on the COVID-19 situation in Indonesia.
 
 ## General info
 
@@ -50,16 +59,7 @@ By making this API, we expected that developers who need realtime data on the CO
   | dalam_pemantauan | under observation |
   | selesai_pemantauan | completed observation |
 
-## Data Source
-
-* **Data for COVID-19 situation in Central Sulawesi** :
-  * [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
-  * [Health Department of Central Sulawesi](https://dinkes.sultengprov.go.id)
-* **Data for COVID-19 situation in Indonesia** :
-  * [Kawal Corona](https://kawalcorona.com/api) : Data for COVID-19 cases by Province.
-  * [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Statistical data on the COVID-19 situation in Indonesia.
-
-## Technologies
+## Build With
 
 * [Lumen](https://lumen.laravel.com/) - version 7.0.2
 * [PHP](https://www.php.net) - version 7.3.13

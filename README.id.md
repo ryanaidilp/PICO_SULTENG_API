@@ -11,21 +11,15 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
 
  > Kamu membaca versi Bahasa Indonesia dari README ini. Tekan badge untuk membaca README dalam bahasa yang berbeda.
 
-* [Informasi umum](#informasi-umum)
 * [Sumber Data](#sumber-data)
-* [Teknologi](#teknologi)
+* [Informasi umum](#informasi-umum)
+* [Dibangun Dengan](#dibangun-dengan)
 * [Instalasi](#instalasi)
 * [Contoh Respon](#contoh-respon)
 * [Fitur](#fitur)
 * [Status](#status)
 * [Lisensi](#lisensi)
 * [Kontak](#kontak)
-
-## Informasi umum
-
-API ini dibuat untuk menyediakan data terkini tentang situasi COVID-19 di Sulawesi Tengah. API ini dibuat karena data yang disediakan oleh pemerintah daerah masih berupa data statis sehingga datanya tidak dapat digunakan pada aplikasi saya (PICO).
-
-Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data situasi COVID-19 di Sulawesi Tengah dapat terbantu dan memanfaatkan API ini.
 
 ## Sumber Data
 
@@ -36,7 +30,13 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
   * [Kawal Corona](https://kawalcorona.com/api) : Data kasus COVID-19 per Provinsi.
   * [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Data statistik situasi COVID-19 Nasional.
 
-## Teknologi
+## Informasi umum
+
+API ini dibuat untuk menyediakan data terkini tentang situasi COVID-19 di Sulawesi Tengah. API ini dibuat karena data yang disediakan oleh pemerintah daerah masih berupa data statis sehingga datanya tidak dapat digunakan pada aplikasi saya (PICO).
+
+Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data situasi COVID-19 di Sulawesi Tengah dapat terbantu dan memanfaatkan API ini.
+
+## Dibangun Dengan
 
 * [Lumen](https://lumen.laravel.com/) - versi 7.0.2
 * [PHP](https://www.php.net) - versi 7.3.13
@@ -497,3 +497,5 @@ Copyright (c) 2020 [Fajrian Aidil Pratama](https://www.linkedin.com/in/ryanaidil
 ## Kontak
 
 Dibuat oleh [@ryanaidilp_](https://instagram.com/ryanaidilp_) - feel free to contact me!
+
+
