@@ -125,7 +125,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
   * **GET /posko**
 
-    >Returning data of the COVID-19 Task Force Command Post in all districts in Central Sulawesi.
+    >Returning data of the COVID-19 Task Force Command Post in Central Sulawesi.
 
     * **URL Params**
       * None
@@ -242,7 +242,7 @@ By making this API, we expected that developers who need realtime data on the CO
     > Update District data based on district number/id.
 
     * **URL Params**
-      * *Required:* `no=[integer]`
+      * *Required:* `id=[integer]`
     * **Data Params**
 
       ```json

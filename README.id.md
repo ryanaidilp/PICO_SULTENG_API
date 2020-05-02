@@ -261,7 +261,7 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
 
 * **DATA PROVINSI**
 
-    >Properti Map Id digunakan pada [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android) .
+    >Properti **"map_id"** digunakan pada [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android) .
 
   * Contoh json/{"objek_provinsi"} :
 
