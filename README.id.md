@@ -497,5 +497,3 @@ Copyright (c) 2020 [Fajrian Aidil Pratama](https://www.linkedin.com/in/ryanaidil
 ## Kontak
 
 Dibuat oleh [@ryanaidilp_](https://instagram.com/ryanaidilp_) - feel free to contact me!
-
-
