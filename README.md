@@ -83,7 +83,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
 * **Repository**
   * Clone this repository to your local machine.
-  * Open the terminal / CMD then enter the **root folder** of the clone results.
+  * Open the terminal / CMD then go to the **root directory** of the clone results.
   * Run this command `cp .env.example .env`
   * Edit the contents of the file **.env** and fill it in according to your local configuration.
   * Run the `composer update` /`composer install` command to install the required *dependencies*.
