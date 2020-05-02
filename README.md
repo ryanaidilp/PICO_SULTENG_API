@@ -2,13 +2,15 @@
 
 [![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API)
 
-> API for [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (*Pusat Informasi COVID-19*/COVID-19 Information Center) of Central Sulawesi. This API build using microframework [Lumen](https://lumen.laravel.com).
+</center>
+
+API for [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (*Pusat Informasi COVID-19*/COVID-19 Information Center) of Central Sulawesi. This API build using microframework [Lumen](https://lumen.laravel.com).
 
 ## Table of contents
 
 [![Language : Id](https://img.shields.io/badge/lang-id-blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/README.id.md)
 
-> You are reading the English version of this README. Click on the language badge to switch to another language.
+You are reading the English version of this README. Click on the language badge to switch to another language.
 
 * [Data Source](#data-source)
 * [General info](#general-info)
@@ -17,16 +19,18 @@
 * [Setup](#setup)
 * [Response Examples](#response-examples)
 * [Features](#features)
-* [Status](#status)
 * [License](#license)
 * [Contact](#contact)
 
 ## Data Source
 
-* **Data for COVID-19 situation in Central Sulawesi** :
+* ### Data for COVID-19 situation in Central Sulawesi
+
   * [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
   * [Health Department of Central Sulawesi](https://dinkes.sultengprov.go.id)
-* **Data for COVID-19 situation in Indonesia** :
+
+* ### Data for COVID-19 situation in Indonesia
+
   * [Kawal Corona](https://kawalcorona.com/api) : Data for COVID-19 cases by Province.
   * [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Statistical data on the COVID-19 situation in Indonesia.
 
@@ -38,26 +42,27 @@ By making this API, we expected that developers who need realtime data on the CO
 
 ## Additional Info
 
-* **JSON Attributes**
+* ### JSON Attributes
+
   | Attribute (in Bahasa) | Description |
   |-----------------------|-------------|
-  | id | id of the object |
-  | nama | name of the object |
-  | no_hp/telepon | phone number |
-  | alamat | address |
-  | posko | posts |
-  | kabupaten | district/district name |
-  | provinsi | province/province name |
-  | ODP | person under observation |
-  | PDP | person under supervision |
-  | positif | positive COVID-19 |
-  | negatif | negative COVID-19 |
-  | sembuh | recovered from COVID-19 |
-  | meninggal | death caused by COVID-19 |
-  | dalam_pengawasan | under supervision |
-  | selesai_pengawasan | completed supervision |
-  | dalam_pemantauan | under observation |
-  | selesai_pemantauan | completed observation |
+  | **id** | id of the object |
+  | **nama** | name of the object |
+  | **no_hp/telepon** | phone number |
+  | **alamat** | address |
+  | **posko** | posts |
+  | **kabupaten** | district/district name |
+  | **provinsi** | province/province name |
+  | **ODP** | person under observation |
+  | **PDP** | person under supervision |
+  | **positif** | positive COVID-19 |
+  | **negatif** | negative COVID-19 |
+  | **sembuh** | recovered from COVID-19 |
+  | **meninggal** | death caused by COVID-19 |
+  | **dalam_pengawasan** | under supervision |
+  | **selesai_pengawasan** | completed supervision |
+  | **dalam_pemantauan** | under observation |
+  | **selesai_pemantauan** | completed observation |
 
 ## Build With
 
@@ -66,7 +71,8 @@ By making this API, we expected that developers who need realtime data on the CO
 
 ## Setup
 
-* **API**
+* ### API
+
   * Access the API via <https://banuacoders.com/api/pico> then add the endpoint you want to hit. Here's an example of using endpoints in url:
 
     | Data | Endpoint | URL |
@@ -75,13 +81,14 @@ By making this API, we expected that developers who need realtime data on the CO
     | District | **/kabupaten** | <https://banuacoders.com/api/pico/kabupaten> |
     | District by Id | **/kabupaten/:id** | <https://banuacoders.com/api/pico/kabupaten/6> |
     | Province | **/provinsi** |  <https://banuacoders.com/api/pico/provinsi> |
-    | Provinsi by province code | **/provinsi/:code** | <https://banuacoders.com/api/pico/provinsi/72> |
+    | Province by province code | **/provinsi/:code** | <https://banuacoders.com/api/pico/provinsi/72> |
     | Hospital | **/rumahsakit** | <https://banuacoders.com/api/pico/rumahsakit> |
     | Hospital by Id | **/rumahsakit/:id** | <https://banuacoders.com/api/pico/rumahsakit/1> |
 
   &nbsp;
 
-* **Repository**
+* ### Repository
+
   * Clone this repository to your local machine.
   * Open the terminal / CMD then go to the **root directory** of the clone results.
   * Run this command `cp .env.example .env`
@@ -93,7 +100,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
 ## Response Examples
 
-* **POSTS DATA**
+* ### **POSTS DATA**
 
   * JSON Example/{"posts_object"} :
 
@@ -150,7 +157,7 @@ By making this API, we expected that developers who need realtime data on the CO
         }
         ```
 
-* **DISTRICT DATA**
+* ### **DISTRICT DATA**
 
   * JSON Example/{"district_object"} :
 
@@ -282,7 +289,7 @@ By making this API, we expected that developers who need realtime data on the CO
         }
         ```
 
-* **PROVINCE DATA**
+* ### **PROVINCE DATA**
 
     > The **"map_id"** property is used on [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android).
 
@@ -409,7 +416,7 @@ By making this API, we expected that developers who need realtime data on the CO
         }
         ```
 
-* **COVID-19 REFERRAL HOSPITAL DATA**
+* ### **COVID-19 REFERRAL HOSPITAL DATA**
 
   * JSON Example/{"hospital_object"} :
 
@@ -505,10 +512,6 @@ To-do list:
 * [X] Data of Central Sulawesi COVID-19 Task Force Team post
 * [X] Data of COVID-19 referral hospital in Central Sulawesi
 * [ ] Daily report of COVID-19 situation in Central Sulawesi
-
-## Status
-
-Project is : _released_
 
 ## License
 

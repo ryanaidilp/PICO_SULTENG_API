@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API)
 
->API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
+API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
 Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)  
 
 ## Daftar Isi
@@ -17,7 +17,6 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
 * [Instalasi](#instalasi)
 * [Contoh Respon](#contoh-respon)
 * [Fitur](#fitur)
-* [Status](#status)
 * [Lisensi](#lisensi)
 * [Kontak](#kontak)
 
@@ -30,7 +29,7 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
   * [Kawal Corona](https://kawalcorona.com/api) : Data kasus COVID-19 per Provinsi.
   * [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Data statistik situasi COVID-19 Nasional.
 
-## Informasi umum
+## Informasi Umum
 
 API ini dibuat untuk menyediakan data terkini tentang situasi COVID-19 di Sulawesi Tengah. API ini dibuat karena data yang disediakan oleh pemerintah daerah masih berupa data statis sehingga datanya tidak dapat digunakan pada aplikasi saya (PICO).
 
@@ -43,7 +42,8 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
 
 ## Instalasi
 
-* **API**
+* ### **API**
+
   * Akses API nya melalui <https://banuacoders.com/api/pico> lalu tambahkan endpoint yang ingin di-hit. Contoh penggunaan endpoint pada url :
 
     | Data | Endpoint | URL |
@@ -58,7 +58,8 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
 
   &nbsp;
 
-* **Repository**
+* ### **Repository**
+
   * Clone repository ini ke local.
   * Buka terminal/CMD lalu masuk ke **root directory** hasil clone.
   * Jalankan perintah `cp .env.example .env`
@@ -70,7 +71,7 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
 
 ## Contoh Respon
 
-* **DATA POSKO**
+* ### **DATA POSKO**
 
   * Contoh json/{"objek_posko"} :
 
@@ -127,7 +128,7 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
         }
         ```
 
-* **DATA KABUPATEN**
+* ### **DATA KABUPATEN**
 
   * Contoh json/{"objek_kabupaten"} :
 
@@ -259,7 +260,7 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
         }
         ```
 
-* **DATA PROVINSI**
+* ### **DATA PROVINSI**
 
     >Properti **"map_id"** digunakan pada [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android) .
 
@@ -386,7 +387,7 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
         }
         ```
 
-* **DATA RUMAH SAKIT**
+* ### **DATA RUMAH SAKIT**
 
   * Contoh json/{"objek_rumah_sakit"} :
 
@@ -483,10 +484,6 @@ To-do list:
 * [X] Data posko Tim Gugus Tugas COVID-19 Sulawesi Tengah
 * [X] Data rumah sakit rujukan COVID-19 di Sulawesi Tengah
 * [ ] Data perkembangan kasus COVID-19 harian Sulawesi Tengah
-
-## Status
-
-Status proyek : _released_
 
 ## Lisensi
 
