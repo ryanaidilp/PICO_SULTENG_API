@@ -20,16 +20,6 @@ class StatController extends Controller
      */
     public function index()
     {
-        $column = [
-            'day',
-            'date',
-            'positive',
-            'cummulative_positive',
-            'recovered',
-            'cummulative_recovered',
-            'death',
-            'cummulative_death'
-        ];
         return (Stats::all()->count() > 0) ?
             $this->setJson(Stats::all(), true, [])
             :
