@@ -18,11 +18,11 @@ class CreateStatsTable extends Migration
             $table->string('day');
             $table->string('date');
             $table->integer('positive');
-            $table->integer('cummulative_positive');
+            $table->integer('cumulative_positive');
             $table->integer('recovered');
-            $table->integer('cummulative_recovered');
+            $table->integer('cumulative_recovered');
             $table->integer('death');
-            $table->integer('cummulative_death');
+            $table->integer('cumulative_death');
             $table->timestamps();
         });
     }

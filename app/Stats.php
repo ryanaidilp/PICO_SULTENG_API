@@ -19,7 +19,7 @@ class Stats extends Model
 
     public function getDeathPercentageAttribute()
     {
-        return $this->calculatePercentage($this->cummulative_death, $this->cummulative_positive);
+        return $this->calculatePercentage($this->cumulative_death, $this->cumulative_positive);
     }
 
     public function getDayAttribute($value)
@@ -36,28 +36,28 @@ class Stats extends Model
 
     public function getRecoveredPercentageAttribute()
     {
-        return $this->calculatePercentage($this->cummulative_recovered, $this->cummulative_positive);
+        return $this->calculatePercentage($this->cumulative_recovered, $this->cumulative_positive);
     }
 
     public function getUnderTreatmentPercentageAttribute()
     {
-        $underTreatment = ($this->cummulative_positive - ($this->cummulative_death + $this->cummulative_recovered));
-        return $this->calculatePercentage($underTreatment, $this->cummulative_positive);
+        $underTreatment = ($this->cumulative_positive - ($this->cumulative_death + $this->cumulative_recovered));
+        return $this->calculatePercentage($underTreatment, $this->cumulative_positive);
     }
 
     public function getDailyPositiveCaseAttribute()
     {
-        return $this->averageCount($this->cummulative_positive, $this->day);
+        return $this->averageCount($this->cumulative_positive, $this->day);
     }
 
     public function getDailyRecoveredCaseAttribute()
     {
-        return $this->averageCount($this->cummulative_recovered, $this->day);
+        return $this->averageCount($this->cumulative_recovered, $this->day);
     }
 
     public function getDailyDeathCaseAttribute()
     {
-        return $this->averageCount($this->cummulative_death, $this->day);
+        return $this->averageCount($this->cumulative_death, $this->day);
     }
 
     private function calculatePercentage($n, $sum)
