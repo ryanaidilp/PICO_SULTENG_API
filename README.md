@@ -499,7 +499,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
 * ### **STATISTICS**
 
-  Returns the daily situation data of COVID-19 in Central Sulawesi since March 22, 2020.
+  Returns daily data of COVID-19 outbreak in Central Sulawesi since March 22, 2020.
 
   * JSON Example/{"stats_object"} :
 
@@ -524,7 +524,7 @@ By making this API, we expected that developers who need realtime data on the CO
 
   * **GET /statistik**
 
-    > Returns statistics on daily situation of COVID-19  in Central Sulawesi.
+    > Returns statistics of COVID-19 outbreak in Central Sulawesi.
 
     * **URL Params**
       * None
@@ -550,7 +550,7 @@ By making this API, we expected that developers who need realtime data on the CO
         ```
 
   * **GET /statistik/:day**
-     > Returns statistics of COVID-19 in Central Sulawesi on selected day.
+     > Returns statistics of COVID-19 outbreak in Central Sulawesi on selected day.
 
     * **URL Params**
       * *Required:* `day=[integer]`
