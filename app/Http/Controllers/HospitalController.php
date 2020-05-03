@@ -14,11 +14,15 @@ class HospitalController extends Controller
 
     public function index()
     {
-        return response(
-            $this->setJson(Hospital::all(), true, []),
-            200
-        )
-            ->header("Content-Type", "Application/json");
+        if (Hospital::all()->count() > 0) {
+            return response(
+                $this->setJson(Hospital::all(), true, []),
+                200
+            )
+                ->header("Content-Type", "Application/json");
+        } else {
+            return response($this->setJson(['Hospital data is still empty!'], true, []), 200);
+        }
     }
 
     public function show($no)

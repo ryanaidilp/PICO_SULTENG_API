@@ -27,3 +27,7 @@ $router->put("/provinsi", "ProvinceController@updateAll");
 $router->get("/rumahsakit", "HospitalController@index");
 $router->get("/rumahsakit/{no}", "HospitalController@show");
 $router->get("/posko", "PostsController@index");
+$router->get("/statistik", "StatController@index");
+$router->post('/statistik', "StatController@store");
+$router->get('/statistik/{day}', "StatController@show");
+$router->put('/statistik/{day}', "StatController@update");

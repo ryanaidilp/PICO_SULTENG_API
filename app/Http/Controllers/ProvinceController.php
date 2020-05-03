@@ -16,8 +16,12 @@ class ProvinceController extends Controller
 
     public function index()
     {
-        return response($this->setJson(Province::all(), true, []), 200)
-            ->header("Content-Type", "application/json");
+        if (Province::all()->count() > 0) {
+            return response($this->setJson(Province::all(), true, []), 200)
+                ->header("Content-Type", "application/json");
+        } else {
+            return response($this->setJson(['Province data is still empty!'], true, []), 200);
+        }
     }
 
     public function show($code)
@@ -78,7 +82,7 @@ class ProvinceController extends Controller
         if ($request->has('API_KEY')) {
             $API_KEY = $request->get('API_KEY');
             if ($API_KEY == 'API_KEY') {
-                $response = Http::get("https://api.kawalcorona.com/indonesia/Province");
+                $response = Http::get("https://api.kawalcorona.com/indonesia/provinsi");
                 if ($response->successful()) {
                     $arrayProvince = $response->json();
                     foreach ($arrayProvince as $prov) {

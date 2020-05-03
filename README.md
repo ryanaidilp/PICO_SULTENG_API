@@ -2,8 +2,6 @@
 
 [![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API)
 
-</center>
-
 API for [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (*Pusat Informasi COVID-19*/COVID-19 Information Center) of Central Sulawesi. This API build using microframework [Lumen](https://lumen.laravel.com).
 
 ## Table of contents
@@ -79,11 +77,13 @@ By making this API, we expected that developers who need realtime data on the CO
     |------|----------|-----|
     | Posts | **/posko** | <https://banuacoders.com/api/pico/posko> |
     | District | **/kabupaten** | <https://banuacoders.com/api/pico/kabupaten> |
-    | District by Id | **/kabupaten/:id** | <https://banuacoders.com/api/pico/kabupaten/6> |
+    | District by id | **/kabupaten/:id** | <https://banuacoders.com/api/pico/kabupaten/6> |
     | Province | **/provinsi** |  <https://banuacoders.com/api/pico/provinsi> |
     | Province by province code | **/provinsi/:code** | <https://banuacoders.com/api/pico/provinsi/72> |
     | Hospital | **/rumahsakit** | <https://banuacoders.com/api/pico/rumahsakit> |
-    | Hospital by Id | **/rumahsakit/:id** | <https://banuacoders.com/api/pico/rumahsakit/1> |
+    | Hospital by id | **/rumahsakit/:id** | <https://banuacoders.com/api/pico/rumahsakit/1> |
+    | Statistics | **/statistik** | <https://banuacoders.com/api/pico/statistik> |
+    | Statistics by day | **statistik/:day** | <https://banuacoders.com/api/pico/statistik/12> |
 
   &nbsp;
 
@@ -95,6 +95,7 @@ By making this API, we expected that developers who need realtime data on the CO
   * Edit the contents of the file **.env** and fill it in according to your local configuration.
   * Run the `composer update` /`composer install` command to install the required *dependencies*.
   * After the dependency installation process is complete, run the `php artisan key:generate` command to generate **APP_KEY**.
+  * Run `php artisan migrate` command to migrate your database.
   * After that, run the `php artisan serve` command to run the application.
   * If it is successful and there are no errors in the configuration, the application will run and can be accessed via **127.0.0.1:8000** or **localhost:8000**.
 
@@ -496,6 +497,89 @@ By making this API, we expected that developers who need realtime data on the CO
         }
         ```
 
+* ### **STATISTICS**
+
+  Returns the daily situation data of COVID-19 in Central Sulawesi since March 22, 2020.
+
+  * JSON Example/{"stats_object"} :
+
+    ```json
+    {
+        "day": "42",
+        "date": "2 Mei 2020",
+        "positive": 12,
+        "cummulative_positive": 59,
+        "recovered": 0,
+        "cummulative_recovered": 11,
+        "death": 0,
+        "cummulative_death": 3
+    }
+    ```
+
+  * **GET /statistik**
+
+    > Returns statistics on daily situation of COVID-19  in Central Sulawesi.
+
+    * **URL Params**
+      * None
+    * **Data Params**
+      * None
+    * **Headers**
+      * Content-Type: application/json
+    * **Success Response :**
+      * **Code :**  200
+      * **Content :**
+
+        ```json
+        {
+          "success": true,
+          "errors": [],
+          "data":
+          [
+            {"stats_object"},
+            {"stats_object"},
+            {"stats_object"},
+          ],
+        }
+        ```
+
+  * **GET /statistik/:day**
+     > Returns statistics of COVID-19 in Central Sulawesi on selected day.
+
+    * **URL Params**
+      * *Required:* `day=[integer]`
+    * **Data Params**
+      * None
+    * **Heders**
+      * Content-Type: application/json
+    * **Success Response:**
+      * **Code :**   200
+      * **Content :**
+
+        ```json
+        {
+            "success": true,
+            "errors": [],
+            "data": {"stats_object"},
+        }
+        ```
+
+    * **Error Response:**
+      * **Code :** 404
+      * **Content :**  
+
+        ```json
+        {
+            "success": false,
+            "errors":
+            {
+                "code": 404,
+                "message": "Stats not found!"
+            },
+            "data" :  [],
+        }
+        ```
+
 ## Features
 
 Some features have been made so far :
@@ -504,6 +588,7 @@ Some features have been made so far :
 * Data for COVID-19 situation by Province in Indonesia
 * Data of Central Sulawesi COVID-19 Task Force Team post
 * Data of COVID-19 referral hospital in Central Sulawesi
+* Daily report of COVID-19 situation in Central Sulawesi
 
 To-do list:
 
@@ -511,7 +596,7 @@ To-do list:
 * [X] Data for COVID-19 situation by Province in Indonesia
 * [X] Data of Central Sulawesi COVID-19 Task Force Team post
 * [X] Data of COVID-19 referral hospital in Central Sulawesi
-* [ ] Daily report of COVID-19 situation in Central Sulawesi
+* [X] Daily report of COVID-19 situation in Central Sulawesi
 
 ## License
 
@@ -521,4 +606,4 @@ Copyright (c) 2020 [Fajrian Aidil Pratama](https://www.linkedin.com/in/ryanaidil
 
 ## Contact
 
-Created by [@ryanidilp_](https://instagram.com/ryanaidilp_) - feel free to contact me!
+Created by [@ryanidilp_](https://twitter.com/ryanaidilp_) - feel free to contact me!

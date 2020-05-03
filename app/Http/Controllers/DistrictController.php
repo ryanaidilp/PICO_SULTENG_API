@@ -30,8 +30,12 @@ class DistrictController extends Controller
 
     public function index()
     {
-        return response($this->setJson(District::all(), true, []), 200)
-            ->header('Content-Type', 'application/json');
+        if (District::all()->count() > 0) {
+            return response($this->setJson(District::all(), true, []), 200)
+                ->header('Content-Type', 'application/json');
+        } else {
+            return response($this->setJson(['District data is still empty!'], true, []), 200);
+        }
     }
 
     public function update($no, Request $request)

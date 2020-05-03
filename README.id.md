@@ -55,6 +55,8 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
     | Provinsi berdasarkan kode provinsi | **/provinsi/:kode** | <https://banuacoders.com/api/pico/provinsi/72> |
     | Rumah Sakit | **/rumahsakit** | <https://banuacoders.com/api/pico/rumahsakit> |
     | Rumah Sakit berdasarkan no | **/rumahsakit/:no** | <https://banuacoders.com/api/pico/rumahsakit/1> |
+    | Statistik | **/statistik** | <https://banuacoders.com/api/pico/statistik> |
+    | Statistik berdasarkan hari (*day*) | **/statistik/:day** | <https://banuacoders.com/api/pico/statistik/12> |
 
   &nbsp;
 
@@ -66,6 +68,7 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
   * Edit isi file **.env**  dan isikan sesuai dengan konfigurasi local  anda.
   * Jalankan perintah `composer update` / `composer install` untuk meng-install  *dependency* yang dibutuhkan.
   * Setelah proses installasi dependency selesai, jalankan perintah `php artisan key:generate` untuk men-*generate* **APP_KEY**.
+  * Jalankan perintah `php artisan migrate` untuk melakukan migrasi database.
   * Setelah itu, jalankan perintah `php artisan serve` untuk menjalankan aplikasi.
   * Jika berhasil dan tidak terdapat kesalahan dalam konfigurasi, maka aplikasi akan berjalan dan dapat diakses melalui ***127.0.0.1:8000*** atau ***localhost:8000***.
 
@@ -468,14 +471,98 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
         }
         ```
 
+* ### **STATISTIK**
+
+  Mengembalikan data situasi harian COVID-19 di Sulawesi Tengah sejak tanggal 22 Maret 2020.
+
+  * Contoh json/{"objek_statistik"} :
+
+    ```json
+    {
+        "day": "42",
+        "date": "2 Mei 2020",
+        "positive": 12,
+        "cummulative_positive": 59,
+        "recovered": 0,
+        "cummulative_recovered": 11,
+        "death": 0,
+        "cummulative_death": 3
+    }
+    ```
+
+  * **GET /statistik**
+
+    > Mengembalikan data situasi harian COVID-19 di Sulawesi Tengah.
+
+    * **URL Params**
+      * None
+    * **Data Params**
+      * None
+    * **Headers**
+      * Content-Type: application/json
+    * **Success Response :**
+      * **Code :**  200
+      * **Content :**
+
+        ```json
+        {
+          "success": true,
+          "errors": [],
+          "data":
+          [
+            {"stats_object"},
+            {"stats_object"},
+            {"stats_object"},
+          ],
+        }
+        ```
+
+  * **GET /statistik/:day**
+     > Mengembalikan data situasi harian COVID-19 di Sulawesi Tengah pada hari yang dipilih.
+
+    * **URL Params**
+      * *Required:* `day=[integer]`
+    * **Data Params**
+      * None
+    * **Heders**
+      * Content-Type: application/json
+    * **Success Response:**
+      * **Code :**   200
+      * **Content :**
+
+        ```json
+        {
+            "success": true,
+            "errors": [],
+            "data": {"stats_object"},
+        }
+        ```
+
+    * **Error Response:**
+      * **Code :** 404
+      * **Content :**  
+
+        ```json
+        {
+            "success": false,
+            "errors":
+            {
+                "code": 404,
+                "message": "Stats not found!"
+            },
+            "data" :  [],
+        }
+        ```
+
 ## Fitur
 
 Beberapa fitur yang sudah dibuat :
 
 * Data situasi COVID-19 Kabupaten/Kota di Sulawesi Tengah
-* Data situasi COVID-19 Provinsi
-* Data posko Tim Gugus Tugas COVID-19 Sulawesi Tengah
+* Data situasi COVID-19 Provinsi di Indonesia
+* Data posko Tim Gugus Tugas COVID-19 di Sulawesi Tengah
 * Data rumah sakit rujukan COVID-19 di Sulawesi Tengah
+* Data situasi harian COVID-19 di Sulawesi Tengah
 
 To-do list:
 
@@ -483,7 +570,7 @@ To-do list:
 * [X] Data situasi COVID-19 Provinsi
 * [X] Data posko Tim Gugus Tugas COVID-19 Sulawesi Tengah
 * [X] Data rumah sakit rujukan COVID-19 di Sulawesi Tengah
-* [ ] Data perkembangan kasus COVID-19 harian Sulawesi Tengah
+* [X] Data situasi harian COVID-19 di Sulawesi Tengah
 
 ## Lisensi
 
@@ -493,4 +580,4 @@ Copyright (c) 2020 [Fajrian Aidil Pratama](https://www.linkedin.com/in/ryanaidil
 
 ## Kontak
 
-Dibuat oleh [@ryanaidilp_](https://instagram.com/ryanaidilp_) - feel free to contact me!
+Dibuat oleh [@ryanaidilp_](https://twitter.com/ryanaidilp_) - feel free to contact me!
