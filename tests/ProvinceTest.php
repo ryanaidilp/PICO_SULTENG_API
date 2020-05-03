@@ -1,6 +1,6 @@
 <?php
 
-class ProvinsiTest extends TestCase
+class ProvinceTest extends TestCase
 {
     /**
      * @test

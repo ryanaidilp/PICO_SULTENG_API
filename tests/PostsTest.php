@@ -1,6 +1,6 @@
 <?php
 
-class PoskoTest extends TestCase
+class PostsTest extends TestCase
 {
     public function testGetAllPosts()
     {

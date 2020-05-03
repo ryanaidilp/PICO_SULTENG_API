@@ -3,7 +3,7 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
-class KabupatenTest extends TestCase
+class DistrictTest extends TestCase
 {
     /**
      * @test

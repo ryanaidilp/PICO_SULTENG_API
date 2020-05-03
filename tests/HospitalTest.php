@@ -1,6 +1,6 @@
 <?php
 
-class RumahSakitTest extends TestCase
+class HospitalTest extends TestCase
 {
 
     public function testGetAllHospitals()
