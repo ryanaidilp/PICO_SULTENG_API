@@ -23,9 +23,8 @@ class CreateKabupatenTable extends Migration
             $table->integer('sembuh');
             $table->integer('meninggal');
             $table->integer('selesai_pengawasan');
-            $table->integer('dalam_pengawasan');
             $table->integer('selesai_pemantauan');
-            $table->integer('dalam_pemantauan');
+
             $table->timestamps();
         });
     }

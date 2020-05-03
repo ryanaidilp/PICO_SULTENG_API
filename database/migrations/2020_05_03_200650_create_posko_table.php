@@ -16,8 +16,7 @@ class CreatePoskoTable extends Migration
         Schema::create('posko', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 60);
-            $table->integer('kode_kabupaten');
-            $table->unsignedBigInteger('kode_kabupaten');
+            $table->foreignId('kode_kabupaten');
             $table->foreign('kode_kabupaten')->references('no')->on('kabupaten');
             $table->timestamps();
         });
