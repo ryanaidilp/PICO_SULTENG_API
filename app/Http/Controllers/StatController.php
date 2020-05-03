@@ -41,11 +41,11 @@ class StatController extends Controller
                     'day' => 'required|unique:stats',
                     'date' => 'required|unique:stats',
                     'positive' => 'required',
-                    'cummulative_positive' => '',
+                    'cumulative_positive' => '',
                     'recovered' => 'required',
-                    'cummulative_recovered' => '',
+                    'cumulative_recovered' => '',
                     'death' => 'required',
-                    'cummulative_death' => ''
+                    'cumulative_death' => ''
                 ]);
                 Stats::create($data);
                 return (Stats::first()->count() > 0) ?
@@ -94,11 +94,11 @@ class StatController extends Controller
                     $update = Stats::where("id", $day)->update(
                         [
                             'positive' => $request->get("positive"),
-                            'cummulative_positive' => $request->get("cummulative_positive"),
+                            'cumulative_positive' => $request->get("cumulative_positive"),
                             'recovered' => $request->get("recovered"),
-                            'cummulative_recovered' => $request->get("cummulative_recovered"),
+                            'cumulative_recovered' => $request->get("cumulative_recovered"),
                             'death' => $request->get('death'),
-                            'cummulative_death' => $request->get('cummulative_death')
+                            'cumulative_death' => $request->get('cumulative_death')
                         ]
                     );
                     if ($update) {
