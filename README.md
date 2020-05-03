@@ -505,14 +505,20 @@ By making this API, we expected that developers who need realtime data on the CO
 
     ```json
     {
-        "day": "42",
-        "date": "2 Mei 2020",
-        "positive": 12,
-        "cummulative_positive": 59,
-        "recovered": 0,
-        "cummulative_recovered": 11,
-        "death": 0,
-        "cummulative_death": 3
+        "day" : 42,
+        "date" : "2 May 2020",
+        "positive" : 12,
+        "cummulative_positive" : 59,
+        "recovered" : 0,
+        "cummulative_recovered" : 11,
+        "death" : 0,
+        "cummulative_death" : 3,
+        "positive_percentage" : 5.08,
+        "recovered_percentage" : 18.64,
+        "under_treatment_percentage" : 76.27,
+        "daily_positive_case" : 1.4,
+        "daily_recovered_case" : 0.26,
+        "daily_death_case" : 0.07
     }
     ```
 
