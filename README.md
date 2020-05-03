@@ -513,7 +513,7 @@ By making this API, we expected that developers who need realtime data on the CO
         "cumulative_recovered" : 11,
         "death" : 0,
         "cumulative_death" : 3,
-        "positive_percentage" : 5.08,
+        "death_percentage" : 5.08,
         "recovered_percentage" : 18.64,
         "under_treatment_percentage" : 76.27,
         "daily_positive_case" : 1.4,
