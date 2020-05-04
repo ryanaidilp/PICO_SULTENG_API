@@ -85,6 +85,15 @@ By making this API, we expected that developers who need realtime data on the CO
     | Statistics | **/statistik** | <https://banuacoders.com/api/pico/statistik> |
     | Statistics by day | **statistik/:day** | <https://banuacoders.com/api/pico/statistik/12> |
 
+    >*) Notes :
+    * Every endpoint has it own rate limit (maximum request/minute), you can see the detail in response header :
+      * **X-RateLimit-Limit : 20** (Maximum amount request)
+      * **X-RateLimit-Remaining: 0** (Request count left before limit)
+      * **Retry-After: 80** (Amount of time you need to wait before doing another request)
+    * Rate limit for each endpoint :
+      * province/*provinsi* : 40 request/minute
+      * other : 20 request/minute
+
   &nbsp;
 
 * ### Repository
@@ -93,6 +102,7 @@ By making this API, we expected that developers who need realtime data on the CO
   * Open terminal / CMD then go to the **root directory** of the clone results.
   * Run this command `cp .env.example .env`
   * Edit the contents of the file **.env** and fill it in according to your local configuration.
+  * To make sure **Throttle Request/Rate Limiter** is working properly, change your `CACHE_DRIVER` in `.env` file to `CACHE_DRIVER=file`.
   * Run the `composer update` /`composer install` command to install the required *dependencies*.
   * After the dependency installation process is complete, run the `php artisan key:generate` command to generate **APP_KEY**.
   * Run `php artisan migrate --seed` command to migrate and seed your database.

@@ -58,6 +58,15 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
     | Statistik | **/statistik** | <https://banuacoders.com/api/pico/statistik> |
     | Statistik berdasarkan hari (*day*) | **/statistik/:day** | <https://banuacoders.com/api/pico/statistik/12> |
 
+     >*) Catatan :
+    * Setiap *endpoint* memiliki *rate limit* (maksimum *request*/menit) masing-masing, informasinya dapat dilihat pada ***header response*** :
+      * **X-RateLimit-Limit : 20** (Jumlah *request* maksimum)
+      * **X-RateLimit-Remaining: 0** (Sisa *request* yang bisa dilakukan)
+      * **Retry-After: 80** (Waktu sampai anda bisa melakukan *request* selanjutnya)
+    * *Rate limit* untuk setiap *endpoint* :
+      * **provinsi** : 40 *request*/menit
+      * **lainnya** : 20 *request*/menit
+
   &nbsp;
 
 * ### **Repository**
@@ -66,6 +75,7 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
   * Buka terminal/CMD lalu masuk ke **root directory** hasil clone.
   * Jalankan perintah `cp .env.example .env`
   * Edit isi file **.env**  dan isikan sesuai dengan konfigurasi local  anda.
+  * Agar ***Throttle Request/Rate Limiter*** berjalan dengan normal, ubah `CACHE_DRIVER` pada file `.env` menjadi `CACHE_DRIVER=file`.
   * Jalankan perintah `composer update` / `composer install` untuk meng-install  *dependency* yang dibutuhkan.
   * Setelah proses installasi dependency selesai, jalankan perintah `php artisan key:generate` untuk men-*generate* **APP_KEY**.
   * Jalankan perintah `php artisan migrate --seed` untuk melakukan migrasi database.

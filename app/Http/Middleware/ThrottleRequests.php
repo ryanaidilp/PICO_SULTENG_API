@@ -43,14 +43,14 @@ class ThrottleRequests
             return $this->buildResponse($key, $maxAttempts);
         }
 
-        $this->limiter->hit($key, $decayMinutes);
+        $this->limiter->hit($key, $decayMinutes * 60);
 
         $response = $next($request);
 
         return $this->addHeaders(
             $response,
             $maxAttempts,
-            $this->calculateRemainingAttempts($key, $maxAttempts)
+            $this->limiter->retriesLeft($key, $maxAttempts)
         );
     }
 
@@ -86,7 +86,7 @@ class ThrottleRequests
         return $this->addHeaders(
             $response,
             $maxAttempts,
-            $this->calculateRemainingAttempts($key, $maxAttempts, $retryAfter),
+            $this->limiter->retriesLeft($key, $maxAttempts, $retryAfter),
             $retryAfter
         );
     }

@@ -10,7 +10,7 @@ class DistrictController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('throttle:1,2');
+        $this->middleware('throttle:20,2');
     }
 
     public function show($no)
