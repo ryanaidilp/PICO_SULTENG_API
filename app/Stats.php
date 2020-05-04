@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Stats extends Model
@@ -15,6 +16,14 @@ class Stats extends Model
         'daily_positive_case',
         'daily_recovered_case',
         'daily_death_case'
+    ];
+    protected $casts = [
+        'positive' => 'integer',
+        'cumulative_positive' => 'integer',
+        'death' => 'integer',
+        'cumulative_death' => 'integer',
+        'recovered' => 'integer',
+        'cumulative_recovered' => 'integer',
     ];
 
     public function getDeathPercentageAttribute()
@@ -30,8 +39,9 @@ class Stats extends Model
     public function getDateAttribute($value)
     {
         $date = strtotime($value);
-        $newDate = date('d F Y', $date);
-        return $newDate;
+        $newDate = Carbon::parse($date);
+        $newDate->setTimezone('Asia/Makassar');
+        return $newDate->format('d M Y');
     }
 
     public function getRecoveredPercentageAttribute()

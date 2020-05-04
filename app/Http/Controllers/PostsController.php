@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\District;
+use JsonFormat;
 
 class PostsController extends Controller
 {
@@ -28,18 +29,10 @@ class PostsController extends Controller
                     }
                 }
             }
-            return response($this->setJson($data, true, []), 200)
+            return response(JsonFormat::setJson($data, true, []), 200)
                 ->header('Content-Type', 'application/json');
         } else {
-            return response($this->setJson(['Posts data is still empty!'], true, []), 200);
+            return response(JsonFormat::setJson(['Posts data is still empty!'], true, []), 200);
         }
-    }
-    private function setJson($data, $succes, $errors)
-    {
-        return [
-            'success' => $succes,
-            'errors' => $errors,
-            'data' => $data
-        ];
     }
 }

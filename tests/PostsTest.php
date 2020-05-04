@@ -2,6 +2,18 @@
 
 class PostsTest extends TestCase
 {
+    const posts_endpoint = '/posko';
+    public const posts_json_structure =  [
+        'no',
+        'nama',
+        'posko' => [
+            '*' => [
+                'no',
+                'nama'
+            ]
+        ]
+    ];
+
     /**
      * test
      * /posko [GET]
@@ -10,7 +22,7 @@ class PostsTest extends TestCase
      */
     public function testGetAllPosts()
     {
-        $this->get('/posko', []);
+        $this->get(self::posts_endpoint, []);
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
             [
@@ -18,11 +30,7 @@ class PostsTest extends TestCase
                 'errors',
                 'data' =>
                 [
-                    '*' =>
-                    [
-                        'no',
-                        'nama',
-                    ]
+                    '*' => self::posts_json_structure
                 ]
             ]
         );

@@ -3,6 +3,40 @@
 
 class DistrictTest extends TestCase
 {
+    const district_endpoint = '/kabupaten';
+    const district_json_structure =  [
+        'no',
+        'kabupaten',
+        'ODP',
+        'PDP',
+        'positif',
+        'meninggal',
+        'negatif',
+        'selesai_pengawasan',
+        'dalam_pengawasan',
+        'selesai_pemantauan',
+        'dalam_pemantauan',
+        'updated_at'
+    ];
+    const unauthorized_structure = [
+        'success' => false,
+        'errors' =>
+        [
+            'code' => 401,
+            'message' => 'Unauthorized Access!'
+        ],
+        'data' => []
+    ];
+    const not_found_structure = [
+        'success' => false,
+        'errors' =>
+        [
+            'code' => 404,
+            'message' => "District not found!"
+        ],
+        'data' => []
+    ];
+
     /**
      * @test
      * /kabupaten [GET]
@@ -11,28 +45,13 @@ class DistrictTest extends TestCase
      */
     public function testGetAllDistricts()
     {
-        $response = $this->call('GET', '/kabupaten');
+        $response = $this->call('GET', self::district_endpoint);
         $this->assertEquals(200, $response->status());
         $this->seeJsonStructure([
             'success',
             'errors',
             'data' => [
-                '*' =>
-                [
-                    'no',
-                    'kabupaten',
-                    'ODP',
-                    'PDP',
-                    'positif',
-                    'meninggal',
-                    'negatif',
-                    'selesai_pengawasan',
-                    'dalam_pengawasan',
-                    'selesai_pemantauan',
-                    'dalam_pemantauan',
-                    'updated_at'
-                ]
-
+                '*' => self::district_json_structure
             ]
         ]);
     }
@@ -45,26 +64,12 @@ class DistrictTest extends TestCase
      */
     public function testGetDistrictByNo()
     {
-        $this->get('kabupaten/13', []);
+        $this->get(self::district_endpoint . '/13', []);
         $this->seeStatusCode(200);
         $this->seeJsonStructure([
             'success',
             'errors',
-            'data' =>
-            [
-                'no',
-                'kabupaten',
-                'ODP',
-                'PDP',
-                'positif',
-                'meninggal',
-                'negatif',
-                'selesai_pengawasan',
-                'dalam_pengawasan',
-                'selesai_pemantauan',
-                'dalam_pemantauan',
-                'updated_at'
-            ]
+            'data' => self::district_json_structure
         ]);
     }
 
@@ -76,18 +81,8 @@ class DistrictTest extends TestCase
      */
     public function testGetDistrictByNoNotFound()
     {
-        $this->get('/kabupaten/16', []);
-        $this->seeJson(
-            [
-                'success' => false,
-                'errors' =>
-                [
-                    'code' => 404,
-                    'message' => 'District not found!'
-                ],
-                'data' => []
-            ]
-        );
+        $this->get(self::district_endpoint . '/16', []);
+        $this->seeJsonEquals(self::not_found_structure);
         $this->seeStatusCode(404);
     }
 
@@ -108,16 +103,8 @@ class DistrictTest extends TestCase
                 'meninggal' => 0,
 
             ];
-        $this->put('kabupaten/5', $params, []);
-        $this->seeJson([
-            'success' => false,
-            'errors' =>
-            [
-                'code' => 401,
-                'message' => 'Unauthorized Access!'
-            ],
-            'data' => []
-        ]);
+        $this->put(self::district_endpoint . '/5', $params, []);
+        $this->seeJsonEquals(self::unauthorized_structure);
         $this->seeStatusCode(401);
     }
 }

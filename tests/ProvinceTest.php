@@ -2,6 +2,36 @@
 
 class ProvinceTest extends TestCase
 {
+    const province_endpoint = '/provinsi';
+    const province_json_structure = [
+        'kode_provinsi',
+        'provinsi',
+        'positif',
+        'meninggal',
+        'sembuh',
+        'map_id',
+        'updated_at'
+    ];
+    const unauthorized_structure = [
+        'success' => false,
+        'errors' =>
+        [
+            'code' => 401,
+            'message' => 'Unauthorized Access!'
+        ],
+        'data' => []
+    ];
+    const not_found_structure = [
+        'success' => false,
+        'errors' =>
+        [
+            'code' => 404,
+            'message' => "Province Not Found!"
+        ],
+        'data' => []
+    ];
+
+
     /**
      * @test
      * /provinsi [GET]
@@ -10,23 +40,13 @@ class ProvinceTest extends TestCase
      */
     public function testGetAllProvinces()
     {
-        $response = $this->call('GET', '/provinsi');
+        $response = $this->call('GET', self::province_endpoint);
         $this->assertEquals(200, $response->status());
         $this->seeJsonStructure([
             'success',
             'errors',
             'data' => [
-                '*' =>
-                [
-                    'kode_provinsi',
-                    'provinsi',
-                    'positif',
-                    'meninggal',
-                    'sembuh',
-                    'map_id',
-                    'updated_at'
-                ]
-
+                '*' => self::province_json_structure
             ]
         ]);
     }
@@ -44,16 +64,7 @@ class ProvinceTest extends TestCase
         $this->seeJsonStructure([
             'success',
             'errors',
-            'data' =>
-            [
-                'kode_provinsi',
-                'provinsi',
-                'positif',
-                'meninggal',
-                'sembuh',
-                'map_id',
-                'updated_at'
-            ]
+            'data' => self::province_json_structure
         ]);
     }
 
@@ -65,18 +76,8 @@ class ProvinceTest extends TestCase
      */
     public function testGetProvinceByCodeNotFound()
     {
-        $this->get('/provinsi/1', []);
-        $this->seeJson(
-            [
-                'success' => false,
-                'errors' =>
-                [
-                    'code' => 404,
-                    'message' => 'Province Not Found!'
-                ],
-                'data' => []
-            ]
-        );
+        $this->get(self::province_endpoint . '/1', []);
+        $this->seeJsonEquals(self::not_found_structure);
         $this->seeStatusCode(404);
     }
 
@@ -95,16 +96,8 @@ class ProvinceTest extends TestCase
                 'meninggal' => 3,
             ];
 
-        $this->put('/provinsi/72', $params, []);
-        $this->seeJson([
-            'success' => false,
-            'errors' =>
-            [
-                'code' => 401,
-                'message' => 'Unauthorized Access!'
-            ],
-            'data' => []
-        ]);
+        $this->put(self::province_endpoint . '/72', $params, []);
+        $this->seeJsonEquals(self::unauthorized_structure);
         $this->seeStatusCode(401);
     }
 }

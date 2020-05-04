@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\District;
 use Illuminate\Http\Request;
+use JsonFormat;
 
 class DistrictController extends Controller
 {
@@ -16,12 +17,12 @@ class DistrictController extends Controller
     {
         $district = District::where('no', $no)->first();
         if ($district === null) {
-            return response($this->setJson([], false, [
+            return response(JsonFormat::setJson([], false, [
                 'code' => 404,
                 'message' => 'District not found!',
             ]), 404);
         } else {
-            $response = response($this->setJson($district, true, []), 200)
+            $response = response(JsonFormat::setJson($district, true, []), 200)
                 ->header('Content-Type', 'Application/json');
         }
 
@@ -31,10 +32,10 @@ class DistrictController extends Controller
     public function index()
     {
         if (District::all()->count() > 0) {
-            return response($this->setJson(District::all(), true, []), 200)
+            return response(JsonFormat::setJson(District::all(), true, []), 200)
                 ->header('Content-Type', 'application/json');
         } else {
-            return response($this->setJson(['District data is still empty!'], true, []), 200);
+            return response(JsonFormat::setJson(['District data is still empty!'], true, []), 200);
         }
     }
 
@@ -51,19 +52,17 @@ class DistrictController extends Controller
                         'sembuh' => $request->get('sembuh'),
                         'negatif' => $request->get('negatif'),
                         'selesai_pengawasan' => $request->get('selesai_pengawasan'),
-                        'dalam_pengawasan' => $request->get('dalam_pengawasan'),
                         'selesai_pemantauan' => $request->get('selesai_pemantauan'),
-                        'dalam_pemantauan' => $request->get('dalam_pemantauan'),
                         'meninggal' => $request->get('meninggal'),
                     ]
                 );
                 if ($update) {
                     return
-                        response($this->setJson('Data Updated Successfully!', true, []), 200)
+                        response(JsonFormat::setJson('Data Updated Successfully!', true, []), 200)
                         ->header('Content-Type', 'application/json');
                 } else {
                     return
-                        response($this->setJson(
+                        response(JsonFormat::setJson(
                             [],
                             false,
                             [
@@ -74,7 +73,7 @@ class DistrictController extends Controller
                 }
             } else {
                 return
-                    response($this->setJson(
+                    response(JsonFormat::setJson(
                         [],
                         false,
                         [
@@ -85,19 +84,10 @@ class DistrictController extends Controller
             }
         } else {
             return
-                response($this->setJson([], false, [
+                response(JsonFormat::setJson([], false, [
                     'code' => 401,
                     'message' => 'Unauthorized Access!',
                 ]), 401);
         }
-    }
-
-    private function setJson($data, $succes, $errors)
-    {
-        return [
-            'success' => $succes,
-            'errors' => $errors,
-            'data' => $data,
-        ];
     }
 }

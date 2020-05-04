@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use JsonFormat;
 
 class ProvinceController extends Controller
 {
@@ -17,10 +18,10 @@ class ProvinceController extends Controller
     public function index()
     {
         if (Province::all()->count() > 0) {
-            return response($this->setJson(Province::all(), true, []), 200)
+            return response(JsonFormat::setJson(Province::all(), true, []), 200)
                 ->header("Content-Type", "application/json");
         } else {
-            return response($this->setJson(['Province data is still empty!'], true, []), 200);
+            return response(JsonFormat::setJson(['Province data is still empty!'], true, []), 200);
         }
     }
 
@@ -28,10 +29,10 @@ class ProvinceController extends Controller
     {
         $province = Province::where("kode_provinsi", $code)->first();
         if ($province != null) {
-            return response($this->setJson($province, true, []), 200)
+            return response(JsonFormat::setJson($province, true, []), 200)
                 ->header("Content-Type", "application/json");
         } else {
-            return response($this->setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404)
+            return response(JsonFormat::setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404)
                 ->header("Content-Type", "application/json");
         }
     }
@@ -43,7 +44,7 @@ class ProvinceController extends Controller
             if ($API_KEY == 'API_KEY') {
                 $province = Province::where("kode_provinsi", $code)->first();
                 if ($province === null) {
-                    return response($this->setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404);
+                    return response(JsonFormat::setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404);
                 } else {
                     $update = Province::where("kode_provinsi", $code)->update(
                         [
@@ -53,10 +54,10 @@ class ProvinceController extends Controller
                         ]
                     );
                     if ($update) {
-                        return response($this->setJson("Data Updated Successfully!", true, []), 200)
+                        return response(JsonFormat::setJson("Data Updated Successfully!", true, []), 200)
                             ->header("Content-Type", "application/json");
                     } else {
-                        return response($this->setJson([], false, [
+                        return response(JsonFormat::setJson([], false, [
                             'code' => 400,
                             'message' => 'Failed to update!'
                         ]), 400)
@@ -64,13 +65,13 @@ class ProvinceController extends Controller
                     }
                 }
             } else {
-                return response($this->setJson([], false, [
+                return response(JsonFormat::setJson([], false, [
                     'code' => 401,
                     'message' => 'Invalid API Key, Unauthorized Access!'
                 ]), 401);
             }
         } else {
-            return response($this->setJson([], false, [
+            return response(JsonFormat::setJson([], false, [
                 'code' => 401,
                 'message' => 'Unauthorized Access!'
             ]), 401);
@@ -97,33 +98,24 @@ class ProvinceController extends Controller
 
                             ]);
                     }
-                    return response($this->setJson(["Successfully updated all province data!"], true, []), 200);
+                    return response(JsonFormat::setJson(["Successfully updated all province data!"], true, []), 200);
                 } else {
-                    return response($this->setJson([], false, [
+                    return response(JsonFormat::setJson([], false, [
                         'code' => 400,
                         'message' => 'Failed to update province!'
                     ]), 400);
                 }
             } else {
-                return response($this->setJson([], false, [
+                return response(JsonFormat::setJson([], false, [
                     'code' => 401,
                     'message' => 'Invalid API Key, Unauthorized Access!'
                 ]), 401);
             }
         } else {
-            return response($this->setJson([], false, [
+            return response(JsonFormat::setJson([], false, [
                 'code' => 401,
                 'message' => 'Unauthorized Access!'
             ]), 401);
         }
-    }
-
-    private function setJson($data, $succes, $errors)
-    {
-        return [
-            'success' => $succes,
-            'errors' => $errors,
-            'data' => $data
-        ];
     }
 }

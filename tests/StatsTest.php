@@ -3,6 +3,42 @@
 class StatsTest extends TestCase
 {
 
+    const stats_endpoint = '/statistik';
+    public const stats_json_structure = [
+        'day',
+        'date',
+        'positive',
+        'cumulative_positive',
+        'recovered',
+        'cumulative_recovered',
+        'death',
+        'death_percentage',
+        'recovered_percentage',
+        'under_treatment_percentage',
+        'daily_positive_case',
+        'daily_recovered_case',
+        "daily_death_case"
+    ];
+    const unauthorized_structure = [
+        'success' => false,
+        'errors' =>
+        [
+            'code' => 401,
+            'message' => 'Unauthorized Access!'
+        ],
+        'data' => []
+    ];
+    const not_found_structure = [
+        'success' => false,
+        'errors' =>
+        [
+            'code' => 404,
+            'message' => "Stats not found!"
+        ],
+        'data' => []
+    ];
+
+
     /**
      * test
      * /statistik [GET]
@@ -11,29 +47,13 @@ class StatsTest extends TestCase
      */
     public function testGetAllStats()
     {
-        $response = $this->call('GET', '/statistik');
+        $response = $this->call('GET', self::stats_endpoint);
         $this->assertEquals(200, $response->status());
         $this->seeJsonStructure([
             'success',
             'errors',
             'data' => [
-                '*' =>
-                [
-                    'day',
-                    'date',
-                    'positive',
-                    'cumulative_positive',
-                    'recovered',
-                    'cumulative_recovered',
-                    'death',
-                    'death_percentage',
-                    'recovered_percentage',
-                    'under_treatment_percentage',
-                    'daily_positive_case',
-                    'daily_recovered_case',
-                    "daily_death_case"
-                ]
-
+                '*' => self::stats_json_structure
             ]
         ]);
     }
@@ -45,27 +65,12 @@ class StatsTest extends TestCase
      */
     public function testGetStatsByDay()
     {
-        $this->get('statistik/13', []);
+        $this->get(self::stats_endpoint . '/13', []);
         $this->seeStatusCode(200);
         $this->seeJsonStructure([
             'success',
             'errors',
-            'data' =>
-            [
-                'day',
-                'date',
-                'positive',
-                'cumulative_positive',
-                'recovered',
-                'cumulative_recovered',
-                'death',
-                'death_percentage',
-                'recovered_percentage',
-                'under_treatment_percentage',
-                'daily_positive_case',
-                'daily_recovered_case',
-                "daily_death_case"
-            ]
+            'data' => self::stats_json_structure
         ]);
     }
 
@@ -77,18 +82,8 @@ class StatsTest extends TestCase
      */
     public function testGetStatsByDayNotFound()
     {
-        $this->get('/statistik/0', []);
-        $this->seeJson(
-            [
-                'success' => false,
-                'errors' =>
-                [
-                    'code' => 404,
-                    'message' => 'Stats not found!'
-                ],
-                'data' => []
-            ]
-        );
+        $this->get(self::stats_endpoint . '/0', []);
+        $this->seeJsonEquals(self::not_found_structure);
         $this->seeStatusCode(404);
     }
 
@@ -109,25 +104,8 @@ class StatsTest extends TestCase
             'cumulative_death' => 3
         ];
 
-        $this->put("/statistik/21", $params, []);
-        $this->seeJson([
-            'success' => false,
-            'errors' =>
-            [
-                'code' => 401,
-                'message' => 'Unauthorized Access!'
-            ],
-            'data' => []
-        ]);
-        $this->seeJsonEquals([
-            'success' => false,
-            'errors' =>
-            [
-                'code' => 401,
-                'message' => 'Unauthorized Access!'
-            ],
-            'data' => []
-        ]);
+        $this->put(self::stats_endpoint . "/21", $params, []);
+        $this->seeJsonEquals(self::unauthorized_structure);
         $this->assertResponseStatus(401);
     }
 
@@ -150,25 +128,8 @@ class StatsTest extends TestCase
             'cumulative_death' => 3
         ];
 
-        $this->post("/statistik", $params, []);
-        $this->seeJson([
-            'success' => false,
-            'errors' =>
-            [
-                'code' => 401,
-                'message' => 'Unauthorized Access!'
-            ],
-            'data' => []
-        ]);
-        $this->seeJsonEquals([
-            'success' => false,
-            'errors' =>
-            [
-                'code' => 401,
-                'message' => 'Unauthorized Access!'
-            ],
-            'data' => []
-        ]);
+        $this->post(self::stats_endpoint, $params, []);
+        $this->seeJsonEquals(self::unauthorized_structure);
         $this->assertResponseStatus(401);
     }
 }

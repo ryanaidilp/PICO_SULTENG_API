@@ -2,6 +2,17 @@
 
 class HospitalTest extends TestCase
 {
+    const hospital_endpoint = '/rumahsakit';
+    public const hospital_json_structure = [
+        'no',
+        'nama',
+        'alamat',
+        'telepon',
+        'email',
+        'longitude',
+        'latitude'
+    ];
+
     /**
      * test
      * /rumahsakit [GET]
@@ -10,13 +21,13 @@ class HospitalTest extends TestCase
      */
     public function testGetAllHospitals()
     {
-        $this->get('/rumahsakit', []);
+        $this->get(self::hospital_endpoint, []);
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
             [
                 'success',
                 'errors',
-                'data'
+                'data' => ['*' => self::hospital_json_structure]
             ]
         );
     }

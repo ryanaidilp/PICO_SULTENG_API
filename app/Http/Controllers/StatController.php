@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Stats;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use JsonFormat;
 
 class StatController extends Controller
 {
@@ -22,9 +23,9 @@ class StatController extends Controller
     public function index()
     {
         return (Stats::all()->count() > 0) ?
-            $this->setJson(Stats::all(), true, [])
+            JsonFormat::setJson(Stats::all(), true, [])
             :
-            $this->setJson(['message' => "Data is empty!"], true, []);
+            JsonFormat::setJson(['message' => "Data is empty!"], true, []);
     }
 
     /**
@@ -52,17 +53,17 @@ class StatController extends Controller
                 ]);
                 Stats::create($data);
                 return (Stats::first()->count() > 0) ?
-                    response($this->setJson(['status' => 201, 'message' => 'Data created successfully!'], true, []), 201)
+                    response(JsonFormat::setJson(['status' => 201, 'message' => 'Data created successfully!'], true, []), 201)
                     :
-                    response($this->setJson([], false, ['code' => 400, 'message' => 'Failed to create data!']));
+                    response(JsonFormat::setJson([], false, ['code' => 400, 'message' => 'Failed to create data!']));
             } else {
-                return response($this->setJson([], false, [
+                return response(JsonFormat::setJson([], false, [
                     'code' => 401,
                     'message' => 'Invalid API Key, Unauthorized Access!'
                 ]), 401);
             }
         } else {
-            return response($this->setJson([], false, [
+            return response(JsonFormat::setJson([], false, [
                 'code' => 401,
                 'message' => 'Unauthorized Access!'
             ]), 401);
@@ -79,9 +80,9 @@ class StatController extends Controller
     {
         $stat = Stats::where('day', $day)->first();
         if ($stat === null) {
-            return response($this->setJson([], false, ['code' => 404, 'message' => 'Stats not found!']), 404);
+            return response(JsonFormat::setJson([], false, ['code' => 404, 'message' => 'Stats not found!']), 404);
         } else {
-            return response($this->setJson($stat, true, []), 200);
+            return response(JsonFormat::setJson($stat, true, []), 200);
         }
     }
 
@@ -92,7 +93,7 @@ class StatController extends Controller
             if ($API_KEY == 'API_KEY') {
                 $Stats = Stats::where("day", $day)->first();
                 if ($Stats === null) {
-                    return response($this->setJson([], false, ['code' => 404, 'message' => 'Stats Not Found!']), 404);
+                    return response(JsonFormat::setJson([], false, ['code' => 404, 'message' => 'Stats Not Found!']), 404);
                 } else {
                     $update = Stats::where("id", $day)->update(
                         [
@@ -105,10 +106,10 @@ class StatController extends Controller
                         ]
                     );
                     if ($update) {
-                        return response($this->setJson("Data Updated Successfully!", true, []), 200)
+                        return response(JsonFormat::setJson("Data Updated Successfully!", true, []), 200)
                             ->header("Content-Type", "application/json");
                     } else {
-                        return response($this->setJson([], false, [
+                        return response(JsonFormat::setJson([], false, [
                             'code' => 400,
                             'message' => 'Failed to update!'
                         ]), 400)
@@ -116,25 +117,16 @@ class StatController extends Controller
                     }
                 }
             } else {
-                return response($this->setJson([], false, [
+                return response(JsonFormat::setJson([], false, [
                     'code' => 401,
                     'message' => 'Invalid API Key, Unauthorized Access!'
                 ]), 401);
             }
         } else {
-            return response($this->setJson([], false, [
+            return response(JsonFormat::setJson([], false, [
                 'code' => 401,
                 'message' => 'Unauthorized Access!'
             ]), 401);
         }
-    }
-
-    private function setJson($data, $succes, $errors)
-    {
-        return [
-            'success' => $succes,
-            'errors' => $errors,
-            'data' => $data
-        ];
     }
 }
