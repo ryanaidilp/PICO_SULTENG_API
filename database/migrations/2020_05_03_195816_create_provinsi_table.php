@@ -19,7 +19,7 @@ class CreateProvinsiTable extends Migration
             $table->integer('positif');
             $table->integer('meninggal');
             $table->integer('sembuh');
-            $table->string('map_id', 6);
+            $table->string('map_id', 6)->nullable();
             $table->timestamps();
         });
     }

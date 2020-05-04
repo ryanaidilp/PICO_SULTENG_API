@@ -8,6 +8,7 @@ class District extends Model
 {
     protected $table = 'kabupaten';
     protected $guarded = [];
+    protected $hidden = ['created_at'];
     protected $appends = ['dalam_pengawasan', 'dalam_pemantauan'];
 
     public function posts()

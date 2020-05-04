@@ -1,6 +1,6 @@
 ﻿# PICO SulTeng API
 
-[![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API)
+[![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API) [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/tree/master/tests)
 
 API for [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (*Pusat Informasi COVID-19*/COVID-19 Information Center) of Central Sulawesi. This API build using microframework [Lumen](https://lumen.laravel.com).
 
@@ -90,12 +90,13 @@ By making this API, we expected that developers who need realtime data on the CO
 * ### Repository
 
   * Clone this repository to your local machine.
-  * Open the terminal / CMD then go to the **root directory** of the clone results.
+  * Open terminal / CMD then go to the **root directory** of the clone results.
   * Run this command `cp .env.example .env`
   * Edit the contents of the file **.env** and fill it in according to your local configuration.
   * Run the `composer update` /`composer install` command to install the required *dependencies*.
   * After the dependency installation process is complete, run the `php artisan key:generate` command to generate **APP_KEY**.
-  * Run `php artisan migrate` command to migrate your database.
+  * Run `php artisan migrate --seed` command to migrate and seed your database.
+  * Make sure your device are connected to the internet, because the seeder using data from internet to seed your local database.
   * After that, run the `php artisan serve` command to run the application.
   * If it is successful and there are no errors in the configuration, the application will run and can be accessed via **127.0.0.1:8000** or **localhost:8000**.
 

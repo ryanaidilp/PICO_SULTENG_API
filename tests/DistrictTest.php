@@ -1,7 +1,5 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class DistrictTest extends TestCase
 {
@@ -45,9 +43,9 @@ class DistrictTest extends TestCase
      *
      * @return void
      */
-    public function testGetDistrictByNoFound()
+    public function testGetDistrictByNo()
     {
-        $this->get('kabupaten/5', []);
+        $this->get('kabupaten/13', []);
         $this->seeStatusCode(200);
         $this->seeJsonStructure([
             'success',

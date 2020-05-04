@@ -1,6 +1,6 @@
 # PICO SulTeng API
 
-[![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API)
+[![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API) [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/tree/master/tests)
 
 API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
 Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)  
@@ -68,7 +68,8 @@ Dengan membuat API ini, diharapkan pengembang/*developer* yang membutuhkan data 
   * Edit isi file **.env**  dan isikan sesuai dengan konfigurasi local  anda.
   * Jalankan perintah `composer update` / `composer install` untuk meng-install  *dependency* yang dibutuhkan.
   * Setelah proses installasi dependency selesai, jalankan perintah `php artisan key:generate` untuk men-*generate* **APP_KEY**.
-  * Jalankan perintah `php artisan migrate` untuk melakukan migrasi database.
+  * Jalankan perintah `php artisan migrate --seed` untuk melakukan migrasi database.
+  * Pastikan komputer/laptop anda terhubung ke internet saat melakukan ***migration***, karena ***seeder*** menggunakan data dari internet untuk mengisi database lokal anda.
   * Setelah itu, jalankan perintah `php artisan serve` untuk menjalankan aplikasi.
   * Jika berhasil dan tidak terdapat kesalahan dalam konfigurasi, maka aplikasi akan berjalan dan dapat diakses melalui ***127.0.0.1:8000*** atau ***localhost:8000***.
 
