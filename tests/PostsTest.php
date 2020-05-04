@@ -2,6 +2,12 @@
 
 class PostsTest extends TestCase
 {
+    /**
+     * test
+     * /posko [GET]
+     *
+     * @return void
+     */
     public function testGetAllPosts()
     {
         $this->get('/posko', []);

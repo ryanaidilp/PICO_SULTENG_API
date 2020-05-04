@@ -2,6 +2,13 @@
 
 class StatsTest extends TestCase
 {
+
+    /**
+     * test
+     * /statistik [GET]
+     *
+     * @return void
+     */
     public function testGetAllStats()
     {
         $response = $this->call('GET', '/statistik');
@@ -31,6 +38,11 @@ class StatsTest extends TestCase
         ]);
     }
 
+    /**
+     * test
+     * /statistik/{day} [GET]
+     * @return void
+     */
     public function testGetStatsByDay()
     {
         $this->get('statistik/13', []);
@@ -57,6 +69,12 @@ class StatsTest extends TestCase
         ]);
     }
 
+    /**
+     * test
+     * /statistik/{day} [GET]
+     *
+     * @return void
+     */
     public function testGetStatsByDayNotFound()
     {
         $this->get('/statistik/0', []);
@@ -72,5 +90,85 @@ class StatsTest extends TestCase
             ]
         );
         $this->seeStatusCode(404);
+    }
+
+    /**
+     * test
+     * /statistik/{day} [PUT]
+     *
+     * @return void
+     */
+    public function testUpdateStatsByDayUnauthorized()
+    {
+        $params = [
+            'positive' => 0,
+            'cumulative_positive' => 59,
+            'recovered' => 0,
+            'cumulative_recovered' => 11,
+            'death' => 0,
+            'cumulative_death' => 3
+        ];
+
+        $this->put("/statistik/21", $params, []);
+        $this->seeJson([
+            'success' => false,
+            'errors' =>
+            [
+                'code' => 401,
+                'message' => 'Unauthorized Access!'
+            ],
+            'data' => []
+        ]);
+        $this->seeJsonEquals([
+            'success' => false,
+            'errors' =>
+            [
+                'code' => 401,
+                'message' => 'Unauthorized Access!'
+            ],
+            'data' => []
+        ]);
+        $this->assertResponseStatus(401);
+    }
+
+    /**
+     * test
+     * /statistik [POST]
+     *
+     * @return void
+     */
+    public function testCreateStatsUnauthorized()
+    {
+        $params = [
+            'day' => 45,
+            'date' => "5-05-2020",
+            'positive' => 0,
+            'cumulative_positive' => 59,
+            'recovered' => 0,
+            'cumulative_recovered' => 11,
+            'death' => 0,
+            'cumulative_death' => 3
+        ];
+
+        $this->post("/statistik", $params, []);
+        $this->seeJson([
+            'success' => false,
+            'errors' =>
+            [
+                'code' => 401,
+                'message' => 'Unauthorized Access!'
+            ],
+            'data' => []
+        ]);
+        $this->seeJsonEquals([
+            'success' => false,
+            'errors' =>
+            [
+                'code' => 401,
+                'message' => 'Unauthorized Access!'
+            ],
+            'data' => []
+        ]);
+        $this->assertResponseStatus(401);
     }
 }

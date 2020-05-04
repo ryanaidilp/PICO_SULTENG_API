@@ -37,7 +37,7 @@ class ProvinceTest extends TestCase
      *
      * @return void
      */
-    public function testGetProvinceByNoFound()
+    public function testGetProvinceByCode()
     {
         $this->get('provinsi/72', []);
         $this->seeStatusCode(200);
@@ -63,7 +63,7 @@ class ProvinceTest extends TestCase
      *
      * @return void
      */
-    public function testGetProvinceByNoNotFound()
+    public function testGetProvinceByCodeNotFound()
     {
         $this->get('/provinsi/1', []);
         $this->seeJson(
@@ -80,7 +80,13 @@ class ProvinceTest extends TestCase
         $this->seeStatusCode(404);
     }
 
-    public function testUpdateProvinceByNoFailed()
+    /**
+     * test
+     * /provinsi/{no} [PUT]
+     *
+     * @return void
+     */
+    public function testUpdateProvinceByCodeUnauthorized()
     {
         $params =
             [

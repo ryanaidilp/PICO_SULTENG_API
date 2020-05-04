@@ -2,7 +2,12 @@
 
 class HospitalTest extends TestCase
 {
-
+    /**
+     * test
+     * /rumahsakit [GET]
+     *
+     * @return void
+     */
     public function testGetAllHospitals()
     {
         $this->get('/rumahsakit', []);

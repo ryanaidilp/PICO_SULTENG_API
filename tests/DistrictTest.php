@@ -97,7 +97,7 @@ class DistrictTest extends TestCase
      *
      * @return void
      */
-    public function testUpdateDistrictFailed()
+    public function testUpdateDistrictUnauthorized()
     {
         $params =
             [
