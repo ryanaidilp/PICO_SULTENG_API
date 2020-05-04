@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Stats;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StatController extends Controller
@@ -45,7 +46,9 @@ class StatController extends Controller
                     'recovered' => 'required',
                     'cumulative_recovered' => '',
                     'death' => 'required',
-                    'cumulative_death' => ''
+                    'cumulative_death' => '',
+                    'updated_at' => Carbon::now(),
+                    'created_at' => Carbon::now()
                 ]);
                 Stats::create($data);
                 return (Stats::first()->count() > 0) ?
