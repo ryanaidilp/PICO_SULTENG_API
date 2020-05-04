@@ -24,14 +24,14 @@ class StatsSeeder extends Seeder
                 ->insert(
                     [
                         'day' => $stat['day'],
-                        'date' => $stat['date'],
+                        'date' => Carbon::parse($stat['date']),
                         'positive' => $stat['positive'],
                         'cumulative_positive' => $stat['cumulative_positive'],
                         'recovered' => $stat['recovered'],
                         'cumulative_recovered' => $stat['cumulative_recovered'],
                         'death' => $stat['death'],
                         'cumulative_death' => $stat['cumulative_death'],
-                        'created_at' => Carbon::now(),
+                        'created_at' => Carbon::parse($stat['date']),
                         'updated_at' => Carbon::now()
                     ]
                 );

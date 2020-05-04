@@ -70,6 +70,11 @@ class Stats extends Model
         return $this->averageCount($this->cumulative_death, $this->day);
     }
 
+    public function setDateAttribute($value)
+    {
+        $this->date = Carbon::parse($value);
+    }
+
     private function calculatePercentage($n, $sum)
     {
         if ($sum == 0) {
