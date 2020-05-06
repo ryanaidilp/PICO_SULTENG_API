@@ -1,5 +1,8 @@
 <script>
     anychart.onDocumentReady(function() {
+        preloader = anychart.ui.preloader()
+        preloader.render(document.getElementById("map_nasional_case"))
+        preloader.visible(true)
         var data = [
         @foreach($provinces as $prov)
         {"id":"{{ $prov->map_id }}", "value":{{ $prov->positif }}, "sembuh" : {{ $prov->sembuh }}, "meninggal": {{ $prov->meninggal }}},
@@ -22,11 +25,14 @@
         labels = series.labels()
         labels.fontSize("10px")
         labels.offsetY(-30)
-
+        var zoomController = anychart.ui.zoom()
+        zoomController.target(map)
+        zoomController.render()
         map.container("map_nasional_case")
-        var clicked = true;
-        map.draw()
-        // var geojson = JSON.parse(document.getElementById("geojson").value);
-        // map.geoData(geojson);
+        map.draw(true)
+        setTimeout(function() {
+            // hide preloader after 20 seconds
+            preloader.visible(false);
+        }, 20000)
     })
 </script>

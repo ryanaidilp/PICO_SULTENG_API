@@ -16,6 +16,10 @@
         <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
         <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js" type="text/javascript"></script>
         <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-map.min.js" type="text/javascript"></script>
+        <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-ui.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.7.1/css/anychart-ui.min.css" />
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.anychart.com/releases/8.7.1/fonts/css/anychart-font.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
         <script src="https://cdn.anychart.com/releases/8.7.1/geodata/countries/indonesia/indonesia.js"></script>
         <!--Responsive Extension Datatables CSS-->
@@ -40,7 +44,7 @@
             }
 
             .gradient {
-                background-image: linear-gradient(-225deg, #9db0b9 0%, #1695df 100%);
+                background-image: linear-gradient(1105deg, #9db0b9 0%, #1695df 100%);
             }
 
             button,

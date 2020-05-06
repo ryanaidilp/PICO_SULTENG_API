@@ -3,7 +3,9 @@
 [![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API) [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/tree/master/tests)
 
 API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
-Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/)  
+Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/).
+
+[![PICO API](https://i.ibb.co/sHzXVXw/image.png)](https://banuacoders.com/api/pico)
 
 ## Daftar Isi
 

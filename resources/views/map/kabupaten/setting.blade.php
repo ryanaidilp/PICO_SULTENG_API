@@ -1,5 +1,8 @@
 <script>
     anychart.onDocumentReady(function() {
+        districtPreloader = anychart.ui.preloader()
+        districtPreloader.render(document.getElementById("map_kabupaten_case"))
+        districtPreloader.visible(true)
         var districtData = [
         @foreach($districts as $district)
             {"id":"{{ $district->kabupaten }}", "value":{{ $district->positif }}, "sembuh" : {{ $district->sembuh }}, "meninggal": {{ $district->meninggal }},
@@ -36,7 +39,14 @@
         labels.offsetY(-30)
 
         districtMap.container("map_kabupaten_case")
-        districtMap.draw()
+        districtMap.draw(true)
+        var districtZoom = anychart.ui.zoom()
+        districtZoom.target(districtMap)
+        districtZoom.render()
+        setTimeout(function() {
+            // hide preloader after 20 seconds
+            districtPreloader.visible(false);
+        }, 20000)
 
     })
 </script>

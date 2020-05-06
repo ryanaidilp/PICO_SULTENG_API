@@ -4,6 +4,8 @@
 
 API for [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (*Pusat Informasi COVID-19*/COVID-19 Information Center) of Central Sulawesi. This API build using microframework [Lumen](https://lumen.laravel.com).
 
+[![PICO API](https://i.ibb.co/mvb0HVx/pico-api-wide.png)](https://banuacoders.com/api/pico)
+
 ## Table of contents
 
 [![Language : Id](https://img.shields.io/badge/lang-id-blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/README.id.md)

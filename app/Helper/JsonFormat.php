@@ -20,7 +20,7 @@ class JsonFormat
         return round($percentage, 2);
     }
 
-    private static function averageCount($sum, $total)
+    public static function averageCount($sum, $total)
     {
         $data = $sum / (int) $total;
         return (float) number_format($data, 2);

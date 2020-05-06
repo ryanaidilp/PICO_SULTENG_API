@@ -8,6 +8,7 @@ use App\Province;
 use App\Stats;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use JsonFormat;
 
@@ -28,8 +29,16 @@ class HomeController extends Controller
         setlocale(LC_TIME, 'id_ID.UTF-8');
         Carbon::setLocale('id_ID.UTF-8');
         $last_update = $province->updated_at->formatLocalized('%A, %d %B %Y');
-        $geojson = Http::get("https://raw.githubusercontent.com/RyanAidilPratama/PICO_SULTENG_Android/master/app/src/main/assets/map.json");
-        $geojson = json_encode($geojson->json());
+        $geojson = Cache::get('geojson');
+        if (!Cache::has('geojson')) {
+            do {
+                $geodata = Http::get("https://raw.githubusercontent.com/RyanAidilPratama/PICO_SULTENG_Android/master/app/src/main/assets/map.json");
+            } while (!$geodata->successful());
+            $geojson = json_encode($geodata->json());
+            Cache::forever('geojson', $geojson);
+        } else {
+            $geojson = Cache::get('geojson');
+        }
 
         $count_data = [
             'sum_odp' => $districts->sum('ODP'),
