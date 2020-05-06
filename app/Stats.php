@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use JsonFormat;
 
 class Stats extends Model
 {
@@ -28,7 +29,7 @@ class Stats extends Model
 
     public function getDeathPercentageAttribute()
     {
-        return $this->calculatePercentage($this->cumulative_death, $this->cumulative_positive);
+        return JsonFormat::percentageValue($this->cumulative_death, $this->cumulative_positive);
     }
 
     public function getDayAttribute($value)
@@ -46,47 +47,27 @@ class Stats extends Model
 
     public function getRecoveredPercentageAttribute()
     {
-        return $this->calculatePercentage($this->cumulative_recovered, $this->cumulative_positive);
+        return JsonFormat::percentageValue($this->cumulative_recovered, $this->cumulative_positive);
     }
 
     public function getUnderTreatmentPercentageAttribute()
     {
         $underTreatment = ($this->cumulative_positive - ($this->cumulative_death + $this->cumulative_recovered));
-        return $this->calculatePercentage($underTreatment, $this->cumulative_positive);
+        return JsonFormat::percentageValue($underTreatment, $this->cumulative_positive);
     }
 
     public function getDailyPositiveCaseAttribute()
     {
-        return $this->averageCount($this->cumulative_positive, $this->day);
+        return JsonFormat::averageCount($this->cumulative_positive, $this->day);
     }
 
     public function getDailyRecoveredCaseAttribute()
     {
-        return $this->averageCount($this->cumulative_recovered, $this->day);
+        return JsonFormat::averageCount($this->cumulative_recovered, $this->day);
     }
 
     public function getDailyDeathCaseAttribute()
     {
-        return $this->averageCount($this->cumulative_death, $this->day);
-    }
-
-    public function setDateAttribute($value)
-    {
-        $this->date = Carbon::parse($value);
-    }
-
-    private function calculatePercentage($n, $sum)
-    {
-        if ($sum == 0) {
-            return 0;
-        }
-        $percentage = ($n / $sum) * 100;
-        return (float) number_format($percentage, 2);
-    }
-
-    private function averageCount($sum, $total)
-    {
-        $data = $sum / (int) $total;
-        return (float) number_format($data, 2);
+        return JsonFormat::averageCount($this->cumulative_death, $this->day);
     }
 }

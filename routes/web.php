@@ -12,9 +12,7 @@ use \Illuminate\Support\Str as Str;
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->get('/', 'HomeController@index');
 
 $router->get("/kabupaten", "DistrictController@index");
 $router->get("/kabupaten/{no}", "DistrictController@show");

@@ -10,4 +10,19 @@ class JsonFormat
             'data' => $data,
         ];
     }
+
+    public static function percentageValue($total, $data)
+    {
+        if ($total == 0) {
+            return 0;
+        }
+        $percentage = ($data / $total) * 100;
+        return round($percentage, 2);
+    }
+
+    private static function averageCount($sum, $total)
+    {
+        $data = $sum / (int) $total;
+        return (float) number_format($data, 2);
+    }
 }
