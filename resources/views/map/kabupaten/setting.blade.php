@@ -1,8 +1,5 @@
 <script>
     anychart.onDocumentReady(function() {
-        districtPreloader = anychart.ui.preloader()
-        districtPreloader.render(document.getElementById("map_kabupaten_case"))
-        districtPreloader.visible(true)
         var districtData = [
         @foreach($districts as $district)
             {"id":"{{ $district->kabupaten }}", "value":{{ $district->positif }}, "sembuh" : {{ $district->sembuh }}, "meninggal": {{ $district->meninggal }},
@@ -10,6 +7,9 @@
         @endforeach
         ]
         var districtMap = anychart.map()
+        var districtTitle = districtMap.title()
+        districtTitle.enabled(true)
+        districtTitle.text("Heat Map kasus Positif COVID-19 di Sulawesi Tengah")
         var strMap = "{{ $geojson }}"
         //Cleaning my JSON
         strMap = strMap.split("&quot;").join("\"")
@@ -43,10 +43,5 @@
         var districtZoom = anychart.ui.zoom()
         districtZoom.target(districtMap)
         districtZoom.render()
-        setTimeout(function() {
-            // hide preloader after 20 seconds
-            districtPreloader.visible(false);
-        }, 20000)
-
     })
 </script>

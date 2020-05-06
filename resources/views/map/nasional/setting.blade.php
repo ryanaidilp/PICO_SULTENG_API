@@ -1,8 +1,5 @@
 <script>
     anychart.onDocumentReady(function() {
-        preloader = anychart.ui.preloader()
-        preloader.render(document.getElementById("map_nasional_case"))
-        preloader.visible(true)
         var data = [
         @foreach($provinces as $prov)
         {"id":"{{ $prov->map_id }}", "value":{{ $prov->positif }}, "sembuh" : {{ $prov->sembuh }}, "meninggal": {{ $prov->meninggal }}},
@@ -10,6 +7,9 @@
         ]
         var map = anychart.map()
         map.geoData(anychart.maps.indonesia)
+        var title = map.title()
+        title.enabled(true)
+        title.text("Heat Map kasus Positif COVID-19 di Indonesia")
         var series = map.choropleth(data)
         series.colorScale(anychart.scales.ordinalColor([{less:500,color:'rgba(255, 99, 132, 0.4)'},{from:500, to:1000, color:'rgb(250, 90, 132)'},{greater:1000, color:'rgb(160, 50, 123)'}]));
         map.colorRange(true)
@@ -30,9 +30,5 @@
         zoomController.render()
         map.container("map_nasional_case")
         map.draw(true)
-        setTimeout(function() {
-            // hide preloader after 20 seconds
-            preloader.visible(false);
-        }, 20000)
     })
 </script>

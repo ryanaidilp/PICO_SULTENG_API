@@ -6,7 +6,6 @@
             </h5>
         </div>
         <div id='map_kabupaten_case' class="rounded-b w-full" style='height: 500px;'></div>
-        <p class="text-gray-600 text-center text-sm w-full">Cluster Jumlah kasus Positif</p>
     </div>
     <!--/table Card-->
 </div>

@@ -24,7 +24,7 @@ class HomeController extends Controller
         $provinces = Province::all();
         $hospitals = Hospital::all();
         $stats = Stats::all();
-        $path = '/images/pico_app.png';
+        $path = '/images/carbon.svg';
         $districts = District::all();
         setlocale(LC_TIME, 'id_ID.UTF-8');
         Carbon::setLocale('id_ID.UTF-8');
@@ -51,9 +51,9 @@ class HomeController extends Controller
             'finished_pdp' => $districts->sum('selesai_pengawasan'),
             'active_pdp_percentage' => JsonFormat::percentageValue($districts->sum("PDP"), $districts->sum("dalam_pengawasan")),
             'finished_pdp_percentage' => JsonFormat::percentageValue($districts->sum("PDP"), $districts->sum("selesai_pengawasan")),
-            'ina_positive' => number_format($province->sum('positif')),
-            'ina_recovered' => number_format($province->sum('sembuh')),
-            'ina_death' => number_format($province->sum('meninggal')),
+            'ina_positive' => number_format($provinces->sum('positif')),
+            'ina_recovered' => number_format($provinces->sum('sembuh')),
+            'ina_death' => number_format($provinces->sum('meninggal')),
             'last_update' => $last_update
         ];
         return view('home', compact('path', 'province', 'stats', 'districts', 'hospitals', 'count_data', 'provinces', 'geojson'));

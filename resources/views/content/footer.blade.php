@@ -7,9 +7,9 @@
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink transition-kit">
-            <div class="flex-1 bg-white overflow-hidden">
-                <a href="https://bnpb-inacovid19.hub.arcgis.com/"
+        <div class="w-full md:w-1/2 p-2 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white overflow-hidden hover:shadow-2xl rounded-lg transition-kit ">
+                <a href="https://covid19.go.id/peta-sebaran"
                     class="flex flex-wrap no-underline hover:no-underline">
                     <p class="w-full text-gray-600 text-xs md:text-sm px-6 mt-6">
                         WEBSITE
@@ -25,8 +25,8 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink transition-kit">
-            <div class="flex-1 bg-white overflow-hidden">
+        <div class="w-full md:w-1/2 p-2 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white overflow-hidden hover:shadow-2xl rounded-lg transition-kit ">
                 <a href="https://kawalcorona.com/api/" class="flex flex-wrap no-underline hover:no-underline">
                     <p class="w-full text-gray-600 text-xs md:text-sm px-6 mt-6">
                         WEBSITE
@@ -41,8 +41,8 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink transition-kit">
-            <div class="flex-1 bg-white overflow-hidden">
+        <div class="w-full md:w-1/2 p-2 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white overflow-hidden hover:shadow-2xl rounded-lg transition-kit ">
                 <a href="https://dinkes.sultengprov.go.id/category/covid-19/"
                     class="flex flex-wrap no-underline hover:no-underline">
                     <p class="w-full text-gray-600 text-xs md:text-sm px-6 mt-6">
@@ -59,8 +59,8 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink transition-kit">
-            <div class="flex-1 bg-white overflow-hidden">
+        <div class="w-full md:w-1/2 p-2 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white overflow-hidden hover:shadow-2xl rounded-lg transition-kit ">
                 <a href="https://corona.detexi.id/" class="flex flex-wrap no-underline hover:no-underline">
                     <p class="w-full text-gray-600 text-xs md:text-sm px-6 mt-6">
                         WEBSITE
@@ -75,14 +75,24 @@
             </div>
         </div>
 
-        <div class="w-full pt-8 pb-2 text-sm text-center">
-            <a class="text-gray-500 no-underline hover:no-underline hover:text-indigo-800"
-                href="https://banuacoders.com/">&copy;
-                BanuaCoders 2020</a>
+        <div class="w-full pt-8 pb-2 text-sm text-center text-gray-500">
+            Powered by
+            <div class="w-full p-6 flex flex-col flex-grow flex-shrink h-50">
+                <div class="flex-1 bg-white overflow-hidden">
+                    <a href="https://banuacoders.com/" class="flex flex-wrap no-underline hover:no-underline">
+                        <div class="items-center text-gray-600 text-base px-6 mb-5 mx-auto">
+                            <img class="hover:shadow-lg hover:bg-gray-100 transition-kit rounded-lg  object-contain w-full"
+                                style="height: 100px"
+                                src="https://i.ibb.co/gSWFSDH/footer-logo.png" />
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="w-full text-sm text-center">
-            <a class="text-gray-500 no-underline hover:no-underline" href="https://instagram.com/ryanaidilp_">
-                Made with ♡ by <span class="hover:text-indigo-800">Fajrian Aidil Pratama</span>
+        <div class="w-full text-gray-500 text-sm text-center">
+            Made with ♡ by
+            <a class="no-underline hover:no-underline" href="https://instagram.com/ryanaidilp_">
+                <span class="hover:text-indigo-800">Fajrian Aidil Pratama</span>
             </a>
         </div>
     </div>

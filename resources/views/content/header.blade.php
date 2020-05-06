@@ -12,7 +12,6 @@
         <meta name="author" content="Fajrian Aidil Pratama" />
 
         <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
-        <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
         <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js" type="text/javascript"></script>
         <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-map.min.js" type="text/javascript"></script>
@@ -44,7 +43,7 @@
             }
 
             .gradient {
-                background-image: linear-gradient(1105deg, #9db0b9 0%, #1695df 100%);
+                background-image: linear-gradient(110deg, #9db0b9 0%, #1695df 100%);
             }
 
             button,

@@ -7,7 +7,7 @@
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-kit">
+        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/3 p-4 flex flex-col flex-grow flex-shrink transition-kit">
             <div class="flex-1 bg-white overflow-hidden">
                 <a href="https://banuacoders.com/api/pico/kabupaten"
                     class="flex flex-wrap no-underline hover:no-underline">
@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-kit">
+        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/3 p-4 flex flex-col flex-grow flex-shrink transition-kit">
             <div class="flex-1 bg-white overflow-hidden">
                 <a href="https://banuacoders.com/api/pico/provinsi"
                     class="flex flex-wrap no-underline hover:no-underline">
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-kit">
+        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/3 p-4 flex flex-col flex-grow flex-shrink transition-kit">
             <div class="flex-1 bg-white overflow-hidden">
                 <a href="https://banuacoders.com/api/pico/statistik"
                     class="flex flex-wrap no-underline hover:no-underline">
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-kit">
+        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-4 flex flex-col flex-grow flex-shrink transition-kit">
             <div class="flex-1 bg-white overflow-hidden">
                 <a href="https://banuacoders.com/api/pico/rumahsakit"
                     class="flex flex-wrap no-underline hover:no-underline">
@@ -109,7 +109,7 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink transition-kit">
+        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-4 flex flex-col flex-grow flex-shrink transition-kit">
             <div class="flex-1 bg-white overflow-hidden">
                 <a href="https://banuacoders.com/api/pico/posko" class="flex flex-wrap no-underline hover:no-underline">
                     <p class="w-full text-gray-600 text-xs md:text-sm px-6 mt-6">

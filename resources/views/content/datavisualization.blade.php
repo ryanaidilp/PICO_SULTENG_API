@@ -8,10 +8,10 @@
         </div>
         <div class="w-full text-xl text-gray-800 px-6 my-4">
             Terakhir diperbarui : <span
-                class="font-bold ">{{ $count_data['last_update'] . " " .$province->updated_at->format('H:m') }}</span>
+                class="font-bold ">{{ $count_data['last_update'] . " " .$province->updated_at->format('H:i:s') }} WITA</span>
         </div>
 
-        <div class="rounded-lg w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+        <div class="rounded-lg w-full md:w-1/3 p-3 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white overflow-hidden">
                 <div class="bg-red-100 border-b-4 border-red-600 rounded-lg shadow-lg p-5">
                     <div class="flex flex-row items-center">
@@ -19,7 +19,7 @@
                             <h5 class="font-bold uppercase text-gray-600">Positif</h5>
                             <div class="flex flex-column items-center">
                                 <p class="font-bold text-xs w-1/3">Sulawesi Tengah</p>
-                                <h3 class="font-bold text-3xl w-1/3">{{ $province->positif }}</h3>
+                                <h3 class="font-bold text-3xl w-1/3">{{ $stats[sizeof($stats) - 1]->cumulative_positive }}</h3>
                                 <p class="rounded font-bold text-white bg-red-400 text-small w-1/5">
                                     +{{ $stats[sizeof($stats) - 1]->positive }}</p>
                             </div>
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="rounded-lg w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+        <div class="rounded-lg w-full md:w-1/3 p-3 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white overflow-hidden">
                 <div class="bg-green-100 border-b-4 border-green-600 rounded-lg shadow-lg p-5">
                     <div class="flex flex-row items-center">
@@ -42,7 +42,7 @@
                             <h5 class="font-bold uppercase text-gray-600">Sembuh</h5>
                             <div class="flex flex-column items-center">
                                 <p class="font-bold text-xs w-1/3">Sulawesi Tengah</p>
-                                <h3 class="font-bold text-3xl w-1/3">{{ $province->sembuh }}</h3>
+                                <h3 class="font-bold text-3xl w-1/3">{{ $stats[sizeof($stats) - 1]->cumulative_recovered }}</h3>
                                 <p class="rounded font-bold text-white bg-green-400 text-small w-1/5">
                                     +{{ $stats[sizeof($stats) - 1]->recovered }}</p>
                             </div>
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="rounded-lg w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+        <div class="rounded-lg w-full md:w-1/3 p-3 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white overflow-hidden">
                 <div class="bg-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-lg p-5">
                     <div class="flex flex-row items-center">
@@ -65,7 +65,7 @@
                             <h5 class="font-bold uppercase text-gray-600">Meninggal</h5>
                             <div class="flex flex-column items-center">
                                 <p class="font-bold text-xs w-1/3">Sulawesi Tengah</p>
-                                <h3 class="font-bold text-3xl w-1/3">{{ $province->meninggal }}</h3>
+                                <h3 class="font-bold text-3xl w-1/3">{{ $stats[sizeof($stats) - 1]->cumulative_death }}</h3>
                                 <p class="rounded font-bold text-white bg-yellow-400 text-small w-1/5">
                                     +{{ $stats[sizeof($stats) - 1]->death }}</p>
                             </div>
@@ -81,7 +81,7 @@
             </div>
         </div>
 
-        <div class="rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrinks">
+        <div class="rounded-lg w-full md:w-1/2 p-3 flex flex-col flex-grow flex-shrinks">
             <div class="flex-1 bg-white overflow-hidden">
                 <div class="bg-white rounded-lg p-5">
                     <div class="flex flex-row items-center rounded-lg shadow-lg">
@@ -117,7 +117,7 @@
             </div>
         </div>
 
-        <div class="rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink">
+        <div class="rounded-lg w-full md:w-1/2 p-3 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white overflow-hidden">
                 <div class="bg-white rounded-lg p-5">
                     <div class="flex flex-row items-center rounded-lg shadow-lg">
@@ -385,7 +385,7 @@
                 <div class="p-5"><canvas id="pie_chart" class="chartjs" width="undefined" height="undefined"></canvas>
                     <script>
                         new Chart(document.getElementById("pie_chart"), {
-                                    "type": "doughnut",
+                                    "type": "pie",
                                     "data": {
                                         "labels": ["Sedang Dirawat (%)", "Meninggal (%)", "Sembuh (%)"],
                                         "datasets": [{
@@ -396,7 +396,7 @@
                                                     deathPercentage[deathPercentage.length - 1],
                                                     recoveredPercentage[recoveredPercentage.length - 1]
                                                 ],
-                                            "backgroundColor": ["rgb(54, 162, 235)", "rgb(255, 99, 132)", "rgb(75, 192, 192)"]
+                                            "backgroundColor": ["rgb(54, 162, 235)", "rgb(255, 159, 64)", "rgb(75, 192, 192)"]
                                         }]
                                     }
                                 });
@@ -406,6 +406,7 @@
         </div>
 
         @include('map.kabupaten.chart')
+        @include('map.nasional.chart')
 
         <div class="w-full p-3">
             <!--Table Card-->
@@ -426,10 +427,10 @@
                                 <th data-priority="5" class="w-1/11 text-left text-blue-900">Meninggal</th>
                                 <th data-priority="6" class="w-1/11 text-left text-blue-900">ODP</th>
                                 <th data-priority="7" class="w-1/11 text-left text-blue-900">Selesai ODP</th>
-                                <th data-priority="8" class="w-1/11 text-left text-blue-900">Aktif ODP</th>
+                                <th data-priority="8" class="w-1/11 text-left text-blue-900"> ODP Aktif</th>
                                 <th data-priority="9" class="w-1/11 text-left text-blue-900">PDP</th>
                                 <th data-priority="10" class="w-1/11 text-left text-blue-900">Selesai PDP</th>
-                                <th data-priority="11" class="w-1/11 text-left text-blue-900">Aktif PDP</th>
+                                <th data-priority="11" class="w-1/11 text-left text-blue-900">PDP Aktif</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -570,6 +571,5 @@
             </div>
             <!--/table Card-->
         </div>
-        @include('map.nasional.chart')
     </div>
 </section>

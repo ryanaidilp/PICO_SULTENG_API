@@ -7,8 +7,8 @@
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink img-bw">
-            <div class="flex-1 bg-white overflow-hidden">
+        <div class="w-full md:w-1/2 p-2 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white overflow-hidden hover:shadow-2xl rounded-lg img-bw">
                 <a href="https://lumen.laravel.com" class="flex flex-wrap no-underline hover:no-underline">
                     <p class="w-full text-gray-600 text-xs md:text-sm px-6 mt-6">
                         BACKEND
@@ -23,8 +23,8 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink img-bw">
-            <div class="flex-1 bg-white overflow-hidden">
+        <div class="w-full md:w-1/2 p-2 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white overflow-hidden hover:shadow-2xl rounded-lg img-bw">
                 <a href="https://tailwindcss.com" class="flex flex-wrap no-underline hover:no-underline">
                     <p class="w-full text-gray-600 text-xs md:text-sm px-6 mt-6">
                         FRONTEND
@@ -39,8 +39,8 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink img-bw">
-            <div class="flex-1 bg-white overflow-hidden">
+        <div class="w-full md:w-1/2 p-2 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white overflow-hidden hover:shadow-2xl rounded-lg img-bw">
                 <a href="https://chartjs.org" class="flex flex-wrap no-underline hover:no-underline">
                     <p class="w-full text-gray-600 text-xs md:text-sm px-6 mt-6">
                         DATA VISUALIZATION
@@ -55,8 +55,8 @@
             </div>
         </div>
 
-        <div class="hover:shadow-2xl rounded-lg w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink img-bw">
-            <div class="flex-1 bg-white overflow-hidden">
+        <div class="w-full md:w-1/2 p-2 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white overflow-hidden hover:shadow-2xl rounded-lg img-bw">
                 <a href="https://mysql.com" class="flex flex-wrap no-underline hover:no-underline">
                     <p class="w-full text-gray-600 text-xs md:text-sm px-6 mt-6">
                         DATABASE
