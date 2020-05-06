@@ -28,6 +28,7 @@ You are reading the English version of this README. Click on the language badge 
 
   * [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
   * [Health Department of Central Sulawesi](https://dinkes.sultengprov.go.id)
+  * [Detexi](https://corona.detexi.id)
 
 * ### Data for COVID-19 situation in Indonesia
 

@@ -27,6 +27,7 @@ Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.c
 * **Data COVID-19 Sulawesi Tengah** :
   * [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
   * [Dinas Kesehatan Provinsi Sulawesi Tengah](https://dinkes.sultengprov.go.id)
+  * [Detexi](https://corona.detexi.id)
 * **Data COVID-19 Nasional** :
   * [Kawal Corona](https://kawalcorona.com/api) : Data kasus COVID-19 per Provinsi.
   * [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Data statistik situasi COVID-19 Nasional.
