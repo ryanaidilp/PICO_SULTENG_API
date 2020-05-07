@@ -12,7 +12,7 @@
         <meta name="author" content="Fajrian Aidil Pratama" />
         <link rel="icon" href="favicon.png" type="image/x-icon" />
 
-        <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <!--Datatables -->
         <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">

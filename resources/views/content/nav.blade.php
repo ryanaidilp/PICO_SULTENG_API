@@ -2,9 +2,9 @@
 <nav id="header" class="w-full z-30 top-0 text-white py-1">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-6">
         <div class="pl-4 flex items-center">
-            <a class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+            <a class="flex items-center text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
                 href="https://banuacoders.com/api/pico">
-                PICO API
+                <img src="https://i.ibb.co/rZJBLDt/PICO-Api-White.png" class="h-8 fill-current text-blue-600 pr-2" /> PICO API
             </a>
         </div>
 

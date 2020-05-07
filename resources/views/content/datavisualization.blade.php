@@ -14,7 +14,7 @@
 
         <div class="rounded-lg w-full md:w-1/3 p-3 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white overflow-hidden">
-                <div class="bg-red-100 border-b-4 border-red-600 rounded-lg shadow-lg p-5">
+                <div class="bg-red-100 border-b-4 border-red-400 rounded-lg shadow-lg p-5">
                     <div class="flex flex-row items-center">
                         <div class="flex-1 text-center">
                             <h5 class="font-bold uppercase text-gray-600">Positif</h5>
@@ -38,7 +38,7 @@
         </div>
         <div class="rounded-lg w-full md:w-1/3 p-3 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white overflow-hidden">
-                <div class="bg-green-100 border-b-4 border-green-600 rounded-lg shadow-lg p-5">
+                <div class="bg-green-100 border-b-4 border-green-400 rounded-lg shadow-lg p-5">
                     <div class="flex flex-row items-center">
                         <div class="flex-1 text-center">
                             <h5 class="font-bold uppercase text-gray-600">Sembuh</h5>
@@ -62,7 +62,7 @@
         </div>
         <div class="rounded-lg w-full md:w-1/3 p-3 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white overflow-hidden">
-                <div class="bg-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-lg p-5">
+                <div class="bg-yellow-100 border-b-4 border-yellow-400 rounded-lg shadow-lg p-5">
                     <div class="flex flex-row items-center">
                         <div class="flex-1 text-center">
                             <h5 class="font-bold uppercase text-gray-600">Meninggal</h5>
@@ -167,9 +167,9 @@
                     <h5 class="font-bold uppercase text-gray-600">Positif</h5>
                 </div>
                 <div class="p-5">
-                    <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
+                    <canvas id="positive_cart_province" class="chartjs" width="undefined" height="200"></canvas>
                     <script>
-                                var positiveDay = [];
+                        var positiveDay = [];
                                 var positiveCase = [];
                                 var cumulativePositive = [];
                                 @foreach($stats as $stat)
@@ -177,12 +177,12 @@
                                   positiveCase.push({{ $stat->positive }});
                                   cumulativePositive.push({{ $stat->cumulative_positive }});
                                 @endforeach
-                                new Chart(document.getElementById("chartjs-7"), {
+                                new Chart(document.getElementById("positive_cart_province"), {
                                     "type": "bar",
                                     "data": {
                                         "labels": positiveDay,
                                         "datasets": [{
-                                            "label": "Kasus Positif",
+                                            "label": "Kasus Baru",
                                             "data": positiveCase,
                                             "borderColor": "rgba(255, 99, 132, 0.2)",
                                             "backgroundColor": "rgb(255, 99, 132)"
@@ -226,9 +226,9 @@
                     <h5 class="font-bold uppercase text-gray-600">Sembuh</h5>
                 </div>
                 <div class="p-5">
-                    <canvas id="recovered_chart" class="chartjs" width="undefined" height="undefined"></canvas>
+                    <canvas id="recovered_chart_province" class="chartjs" width="undefined" height="200"></canvas>
                     <script>
-                                var recoveredDay = [];
+                        var recoveredDay = [];
                                 var recoveredCase = [];
                                 var cumulativeRecovered = [];
                                 @foreach($stats as $stat)
@@ -236,12 +236,12 @@
                                   recoveredCase.push("{{ $stat->recovered }}");
                                   cumulativeRecovered.push("{{ $stat->cumulative_recovered }}")
                                 @endforeach
-                                new Chart(document.getElementById("recovered_chart"), {
+                                new Chart(document.getElementById("recovered_chart_province"), {
                                     "type": "bar",
                                     "data": {
                                         "labels": recoveredDay,
                                         "datasets": [{
-                                            "label": "Kasus Sembuh",
+                                            "label": "Kasus Baru",
                                             "data": recoveredCase,
                                             "borderColor": "rgba(75, 192, 192, 0.2)",
                                             "backgroundColor": "rgb(75, 192, 192)"
@@ -285,7 +285,7 @@
                     <h5 class="font-bold uppercase text-gray-600">Meninggal</h5>
                 </div>
                 <div class="p-5">
-                    <canvas id="death_chart" class="chartjs" width="undefined" height="undefined"></canvas>
+                    <canvas id="death_chart_province" class="chartjs" width="undefined" height="200"></canvas>
                     <script>
                         var deathDay = [];
                                 var deathCase = [];
@@ -295,12 +295,12 @@
                                   deathCase.push("{{ $stat->death }}");
                                   cumulativeDeath.push("{{ $stat->cumulative_death }}")
                                 @endforeach
-                                new Chart(document.getElementById("death_chart"), {
+                                new Chart(document.getElementById("death_chart_province"), {
                                     "type": "bar",
                                     "data": {
                                         "labels": deathDay,
                                         "datasets": [{
-                                            "label": "Kasus Meninggal",
+                                            "label": "Kasus Baru",
                                             "data": deathCase,
                                             "borderColor": "rgba(255, 159, 64, 0.2)",
                                             "backgroundColor": "rgb(255, 159, 64)"
@@ -341,11 +341,11 @@
             <div class="bg-white border-transparent rounded-lg shadow-lg">
                 <div
                     class="bg-gray-300 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
-                    <h5 class="font-bold uppercase text-sm md:text-base text-gray-600">Trend Kasus COVID-19 Sulawesi
+                    <h5 class="font-bold uppercase text-sm lg:text-base text-gray-600">Trend Kasus COVID-19 Sulawesi
                         Tengah</h5>
                 </div>
                 <div class="p-5">
-                    <canvas id="combine_chart" class="chartjs" width="undefined" height="undefined"></canvas>
+                    <canvas id="combine_chart" class="chartjs" width="undefined" height="200"></canvas>
                     <script>
                         new Chart(document.getElementById("combine_chart"), {
                                     "type": "bar",
@@ -405,7 +405,7 @@
                     class="bg-gray-300 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
                     <h5 class="font-bold uppercase text-gray-600">Perbandingan</h5>
                 </div>
-                <div class="p-5"><canvas id="pie_chart" class="chartjs" width="undefined" height="undefined"></canvas>
+                <div class="p-5"><canvas id="pie_chart" class="chartjs" width="undefined" height="200"></canvas>
                     <script>
                         var pos = {{ $stats[sizeof($stats) - 1]->cumulative_positive }}
                         var dead = {{ $stats[sizeof($stats) - 1]->cumulative_death }}
@@ -451,6 +451,75 @@
                     </script>
                 </div>
             </div>
+        </div>
+
+        <div class="w-full p-3">
+            <!--Graph Card-->
+            <div class="bg-white border-transparent rounded-lg shadow-lg">
+                <div
+                    class="bg-gray-300 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
+                    <h5 class="font-bold uppercase text-gray-600">Kasus COVID-19 berdasarkan Kabupaten</h5>
+                </div>
+                <div class="p-5">
+                    <canvas id="positive_chart_district" class="chartjs" width="undefined" height="undefined"></canvas>
+                    <script>
+                        new Chart(document.getElementById("positive_chart_district"), {
+                            "type": "horizontalBar",
+                            "data": {
+                                "labels":[@foreach($districts as $district) "{{ $district->kabupaten }}" , @endforeach],
+                                "datasets": [{
+                                    "data": [@foreach($districts as $district) "{{ $district->positif }}" ,  @endforeach],
+                                    "label": "Positif",
+                                    "borderColor": "rgba(255, 99, 132, 0.2)",
+                                    "backgroundColor": "rgb(255, 99, 132)"
+                                },{
+                                    "data": [@foreach($districts as $district) "{{ $district->sembuh }}" ,  @endforeach],
+                                    "label": "Sembuh",
+                                    "borderColor": "rgba(75, 192, 192, 0.2)",
+                                    "backgroundColor": "rgb(75, 192, 192)"
+                                },
+                                {
+                                    "data": [@foreach($districts as $district) "{{ $district->meninggal }}" ,  @endforeach],
+                                    "label": "Meninggal",
+                                    "borderColor": "rgba(255, 159, 64, 0.2)",
+                                    "backgroundColor": "rgb(255, 159, 64)"
+                                },
+                            ]},
+                            "options": {
+                                "plugins" :
+                                    {
+                                        "datalabels" : {
+                                            "display" : false
+                                        }
+                                    },
+                                "scales": {
+                                    "yAxes": [{
+                                        "stacked": true,
+                                        "gridLines": {
+                                            "display":false,
+                                            "color": "#fff",
+                                            "zeroLineColor": "#fff",
+                                            "zeroLineWidth": 0
+                                        }
+                                    }],
+                                    "xAxes": [{
+                                        "stacked" : true,
+                                        "ticks": {
+                                            "beginAtZero": true
+                                        },
+                                        "scaleLabel":{
+                                          "display":false
+                                        },
+                                        "gridLines": {
+                                        },
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <!--/Graph Card-->
         </div>
 
         @include('map.kabupaten.chart')

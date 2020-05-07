@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Province;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use JsonFormat;
@@ -105,6 +106,40 @@ class ProvinceController extends Controller
                         'message' => 'Failed to update province!'
                     ]), 400);
                 }
+            } else {
+                return response(JsonFormat::setJson([], false, [
+                    'code' => 401,
+                    'message' => 'Invalid API Key, Unauthorized Access!'
+                ]), 401);
+            }
+        } else {
+            return response(JsonFormat::setJson([], false, [
+                'code' => 401,
+                'message' => 'Unauthorized Access!'
+            ]), 401);
+        }
+    }
+
+    public function store(Request $request)
+    {
+        if ($request->has('API_KEY')) {
+            $API_KEY = $request->get('API_KEY');
+            if ($API_KEY == 'API_KEY') {
+                $data = $this->validate($request, [
+                    'kode_provinsi' => 'required|unique:provinsi',
+                    'provinsi' => 'required|unique:provinsi',
+                    'positif' => 'required',
+                    'meninggal' => 'required',
+                    'sembuh' => 'required',
+                    'map_id' => "",
+                    'updated_at' => Carbon::now(),
+                    'created_at' => Carbon::now()
+                ]);
+                Province::create($data);
+                return (Province::first()->count() > 0) ?
+                    response(JsonFormat::setJson(['status' => 201, 'message' => 'Province created successfully!'], true, []), 201)
+                    :
+                    response(JsonFormat::setJson([], false, ['code' => 400, 'message' => 'Failed to create data!']));
             } else {
                 return response(JsonFormat::setJson([], false, [
                     'code' => 401,

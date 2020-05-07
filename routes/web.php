@@ -21,6 +21,7 @@ $router->get("/provinsi", "ProvinceController@index");
 $router->get("/provinsi/{code}", "ProvinceController@show");
 $router->put("/provinsi/{code}", "ProvinceController@update");
 $router->put("/provinsi", "ProvinceController@updateAll");
+$router->post("/provinsi", "ProvinceController@store");
 
 $router->get("/rumahsakit", "HospitalController@index");
 $router->get("/rumahsakit/{no}", "HospitalController@show");
