@@ -6,6 +6,8 @@
         @endforeach
         ]
         var map = anychart.map()
+        var file = "Data COVID-19 Nasional : {{ $count_data['last_update'] }}"
+        map.exports().filename(file)
         map.geoData(anychart.maps.indonesia)
         var title = map.title()
         title.enabled(true)

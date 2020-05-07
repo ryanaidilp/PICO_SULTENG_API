@@ -7,30 +7,21 @@
         @endforeach
         ]
         var districtMap = anychart.map()
-        var districtTitle = districtMap.title()
-        districtTitle.enabled(true)
-        districtTitle.text("Heat Map kasus Positif COVID-19 di Sulawesi Tengah")
-        var strMap = "{{ $geojson }}"
-        //Cleaning my JSON
-        strMap = strMap.split("&quot;").join("\"")
-        strMap = strMap.split("name").join("id")
-        strMap = strMap.split("Palu").join("Kota Palu")
-        strMap = strMap.replace(/[\u0000-\u0019]+/g,"");
-        var geojson = JSON.parse(strMap)
-        districtMap.geoData(geojson);
+        var fileDistrict = "Data COVID-19 Sulawesi Tengah : {{ $count_data['last_update'] }}"
+        districtMap.exports().filename(fileDistrict)
         var districtSeries = districtMap.choropleth(districtData)
         districtSeries.colorScale(anychart.scales.ordinalColor([
-            {less:1, color:'#DEEDCF'},
-            {from:1, to:10, color:'#FFA4E1'},
+            {less:0, color:'#F5EFF8'},
+            {from:0, to:10, color:'#FFA4E1'},
             {from:10, to:20, color:'#FF72D2'},
             {from:20, to:30, color:'#E33594'},
             {from:30, to:40, color:'#C72D70'},
             {from:40, to:50, color:'#AB2550'},
             {greater:50, color:'#8F1E34'}]));
-        districtMap.colorRange(true)
-        districtMap.colorRange().length(1000)
-        districtSeries.tooltip().titleFormat("{%name}")
-        districtSeries.tooltip().separator(false)
+
+        districtSeries.tooltip().titleFormat(function(e) {
+            return e.getData('id')
+        })
         districtSeries.tooltip().format(function(e) {
             return 'Positif: ' + e.getData("value") + "\n"
             + 'Sembuh: ' + e.getData('sembuh') + '\n'
@@ -44,6 +35,19 @@
         labels = districtSeries.labels()
         labels.fontSize("10px")
         labels.offsetY(-30)
+        districtMap.colorRange(true)
+        districtMap.colorRange().length(1000)
+        var districtTitle = districtMap.title()
+        districtTitle.enabled(true)
+        districtTitle.text("Heat Map kasus Positif COVID-19 di Sulawesi Tengah")
+        var strMap = "{{ $geojson }}"
+        //Cleaning my JSON
+        strMap = strMap.split("&quot;").join("\"")
+        strMap = strMap.split("name").join("id")
+        strMap = strMap.split("Palu").join("Kota Palu")
+        strMap = strMap.replace(/[\u0000-\u0019]+/g,"");
+        var geojson = JSON.parse(strMap)
+        districtMap.geoData(geojson);
 
         var districtZoom = anychart.ui.zoom()
         districtZoom.target(districtMap)

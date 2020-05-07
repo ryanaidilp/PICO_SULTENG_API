@@ -1,5 +1,5 @@
 <section class="bg-white border-b py-8">
-    <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+    <div class="container mx-auto flex flex-wrap pt-4 pb-2">
         <h2 class="w-full my-2 md:text-3xl text-md font-black leading-tight text-center text-gray-800">
             Sumber Data
         </h2>
