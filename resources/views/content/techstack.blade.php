@@ -1,6 +1,6 @@
 <section class="bg-white border-b py-12">
     <div class="container mx-auto flex flex-wrap items-center justify-between pb-4">
-        <h2 class="w-full my-2 md:text-3xl text-md font-black leading-tight text-center text-gray-800  mt-6">
+        <h2 class="w-full my-2 md:text-3xl text-xl font-black leading-tight text-center text-gray-800  mt-6">
             <i>Technology Stack</i>
         </h2>
         <div class="w-full mb-4">

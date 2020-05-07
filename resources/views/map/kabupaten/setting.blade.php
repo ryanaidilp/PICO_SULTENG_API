@@ -19,7 +19,14 @@
         var geojson = JSON.parse(strMap)
         districtMap.geoData(geojson);
         var districtSeries = districtMap.choropleth(districtData)
-        districtSeries.colorScale(anychart.scales.ordinalColor([{less:10,color:'rgba(255, 99, 132, 0.4)'},{from:10, to:50, color:'rgb(250, 90, 132)'},{greater:50, color:'rgb(160, 50, 123)'}]));
+        districtSeries.colorScale(anychart.scales.ordinalColor([
+            {less:1, color:'#DEEDCF'},
+            {from:1, to:10, color:'#FFA4E1'},
+            {from:10, to:20, color:'#FF72D2'},
+            {from:20, to:30, color:'#E33594'},
+            {from:30, to:40, color:'#C72D70'},
+            {from:40, to:50, color:'#AB2550'},
+            {greater:50, color:'#8F1E34'}]));
         districtMap.colorRange(true)
         districtMap.colorRange().length(1000)
         districtSeries.tooltip().titleFormat("{%name}")
@@ -32,16 +39,16 @@
             + 'PDP Aktif: ' + e.getData('PDP')
         })
         districtSeries.labels(true)
-        districtSeries.hovered().fill("rgba(255, 99, 132, 0.2)")
-        districtSeries.selected().fill("rgba(255, 99, 132, 0.2)")
+        districtSeries.hovered().fill("rgb(160, 50, 123)")
+        districtSeries.selected().fill("rgb(160, 50, 123)")
         labels = districtSeries.labels()
         labels.fontSize("10px")
         labels.offsetY(-30)
 
-        districtMap.container("map_kabupaten_case")
-        districtMap.draw(true)
         var districtZoom = anychart.ui.zoom()
         districtZoom.target(districtMap)
         districtZoom.render()
+        districtMap.container("map_kabupaten_case")
+        districtMap.draw(true)
     })
 </script>

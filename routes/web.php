@@ -29,3 +29,4 @@ $router->get("/statistik", "StatController@index");
 $router->post('/statistik', "StatController@store");
 $router->get('/statistik/{day}', "StatController@show");
 $router->put('/statistik/{day}', "StatController@update");
+$router->get('/command/{cmd}', 'HomeController@artisan');

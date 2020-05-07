@@ -8,6 +8,7 @@ use App\Province;
 use App\Stats;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use JsonFormat;
@@ -57,5 +58,17 @@ class HomeController extends Controller
             'last_update' => $last_update
         ];
         return view('home', compact('path', 'province', 'stats', 'districts', 'hospitals', 'count_data', 'provinces', 'geojson'));
+    }
+
+    public function artisan($cmd)
+    {
+        $cmd = trim(str_replace("-", ":", $cmd));
+        $validCommands = ['cache:clear', 'optimize', 'route:cache', 'route:clear', 'view:clear', 'config:cache'];
+        if (in_array($cmd, $validCommands)) {
+            Artisan::call($cmd);
+            return "<h1>Ran Artisan command: {$cmd}</h1>";
+        } else {
+            return "<h1>Not valid Artisan command</h1>";
+        }
     }
 }

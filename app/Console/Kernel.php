@@ -2,9 +2,7 @@
 
 namespace App\Console;
 
-use App\Province;
 use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Support\Facades\Http;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -15,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \Laravelista\LumenVendorPublish\VendorPublishCommand::class,
+        \Illuminate\Cache\Console\ClearCommand::class
     ];
 
     /**
@@ -26,6 +24,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //
+        $schedule->command('cache:clear')->weekly();
     }
 }

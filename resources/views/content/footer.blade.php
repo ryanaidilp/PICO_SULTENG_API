@@ -35,7 +35,7 @@
                         <i>Kawal Corona</i>
                     </div>
                     <div class="items-center text-gray-600 text-base px-6 mb-5 mx-auto">
-                        <img class="object-contain w-full" src="https://kawalcorona.com/uploads/logo-ehi.png" />
+                        <img class="object-contain w-full" src="https://i.ibb.co/R76NqwH/ehi.png" />
                     </div>
                 </a>
             </div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="items-center text-gray-600 text-base px-6 mb-5 mx-auto">
                         <img class="object-contain w-full"
-                            src="https://dinkes.sultengprov.go.id/wp-content/uploads/2018/06/cropped-EDIT-LOGO-DINKES-e1548842070889.png" />
+                            src="https://i.ibb.co/ngd24Rg/dinkes.png" />
                     </div>
                 </a>
             </div>
@@ -69,21 +69,21 @@
                         <i>Detexi</i>
                     </div>
                     <div class="items-center text-gray-600 text-base px-6 mb-5 mx-auto">
-                        <img class="object-contain w-full" src="https://i.ibb.co/4pPMfdJ/brand.png" />
+                        <img class="object-contain w-full" src="https://i.ibb.co/cFmHfYS/detexi.png" />
                     </div>
                 </a>
             </div>
         </div>
 
-        <div class="w-full pt-8 pb-2 text-sm text-center text-gray-500">
+        <div class="w-full pt-8 text-sm text-center text-gray-500">
             Powered by
-            <div class="w-full p-6 flex flex-col flex-grow flex-shrink h-50">
+            <div class="w-full flex flex-col flex-grow flex-shrink h-50">
                 <div class="flex-1 bg-white overflow-hidden">
                     <a href="https://banuacoders.com/" class="flex flex-wrap no-underline hover:no-underline">
                         <div class="items-center text-gray-600 text-base px-6 mb-5 mx-auto">
-                            <img class="hover:shadow-lg hover:bg-gray-100 transition-kit rounded-lg  object-contain w-full"
+                            <img class="hover:shadow-lg hover:bg-gray-100 transition-kit rounded-lg  object-contain"
                                 style="height: 100px"
-                                src="https://i.ibb.co/gSWFSDH/footer-logo.png" />
+                                src="https://i.ibb.co/StM2n8h/footer-logo-2.png" />
                         </div>
                     </a>
                 </div>

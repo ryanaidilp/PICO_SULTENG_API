@@ -30,9 +30,8 @@
                 <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="">
             </span>
 
-            <p class="text-gray-600 text-base px-6 mb-5">
-                API ini dibuat untuk menyediakan data terkini tentang situasi COVID-19 di Sulawesi Tengah. API
-                ini dibuat karena data yang disediakan oleh pemerintah daerah masih berupa data statis sehingga
+            <p class="text-gray-600 text-justify text-base px-6 mb-5">
+                API ini dibuat untuk menyediakan data terkini tentang situasi COVID-19 di Sulawesi Tengah karena data yang disediakan oleh pemerintah daerah masih berupa data statis sehingga
                 datanya tidak dapat digunakan pada aplikasi saya (PICO).
                 <br>
                 Dengan membuat API ini, diharapkan pengembang/developer yang membutuhkan data situasi COVID-19

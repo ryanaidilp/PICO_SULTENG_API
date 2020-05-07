@@ -8,7 +8,8 @@
         </div>
         <div class="w-full text-xl text-gray-800 px-6 my-4">
             Terakhir diperbarui : <span
-                class="font-bold ">{{ $count_data['last_update'] . " " .$province->updated_at->format('H:i:s') }} WITA</span>
+                class="font-bold ">{{ $count_data['last_update'] . " " .$province->updated_at->format('H:i:s') }}
+                WITA</span>
         </div>
 
         <div class="rounded-lg w-full md:w-1/3 p-3 flex flex-col flex-grow flex-shrink">
@@ -19,7 +20,8 @@
                             <h5 class="font-bold uppercase text-gray-600">Positif</h5>
                             <div class="flex flex-column items-center">
                                 <p class="font-bold text-xs w-1/3">Sulawesi Tengah</p>
-                                <h3 class="font-bold text-3xl w-1/3">{{ $stats[sizeof($stats) - 1]->cumulative_positive }}</h3>
+                                <h3 class="font-bold text-3xl w-1/3">
+                                    {{ $stats[sizeof($stats) - 1]->cumulative_positive }}</h3>
                                 <p class="rounded font-bold text-white bg-red-400 text-small w-1/5">
                                     +{{ $stats[sizeof($stats) - 1]->positive }}</p>
                             </div>
@@ -42,7 +44,8 @@
                             <h5 class="font-bold uppercase text-gray-600">Sembuh</h5>
                             <div class="flex flex-column items-center">
                                 <p class="font-bold text-xs w-1/3">Sulawesi Tengah</p>
-                                <h3 class="font-bold text-3xl w-1/3">{{ $stats[sizeof($stats) - 1]->cumulative_recovered }}</h3>
+                                <h3 class="font-bold text-3xl w-1/3">
+                                    {{ $stats[sizeof($stats) - 1]->cumulative_recovered }}</h3>
                                 <p class="rounded font-bold text-white bg-green-400 text-small w-1/5">
                                     +{{ $stats[sizeof($stats) - 1]->recovered }}</p>
                             </div>
@@ -65,7 +68,8 @@
                             <h5 class="font-bold uppercase text-gray-600">Meninggal</h5>
                             <div class="flex flex-column items-center">
                                 <p class="font-bold text-xs w-1/3">Sulawesi Tengah</p>
-                                <h3 class="font-bold text-3xl w-1/3">{{ $stats[sizeof($stats) - 1]->cumulative_death }}</h3>
+                                <h3 class="font-bold text-3xl w-1/3">{{ $stats[sizeof($stats) - 1]->cumulative_death }}
+                                </h3>
                                 <p class="rounded font-bold text-white bg-yellow-400 text-small w-1/5">
                                     +{{ $stats[sizeof($stats) - 1]->death }}</p>
                             </div>
@@ -165,19 +169,13 @@
                 <div class="p-5">
                     <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                     <script>
-                        var positiveDay = [];
+                                var positiveDay = [];
                                 var positiveCase = [];
                                 var cumulativePositive = [];
-                                var underTreatmentPercentage = [];
-                                var deathPercentage = [];
-                                var recoveredPercentage = [];
                                 @foreach($stats as $stat)
                                   positiveDay.push("{{ $stat->date }}");
-                                  positiveCase.push("{{ $stat->positive }}");
-                                  cumulativePositive.push("{{ $stat->cumulative_positive }}");
-                                  underTreatmentPercentage.push("{{ $stat->under_treatment_percentage }}")
-                                  deathPercentage.push("{{ $stat->death_percentage }}");
-                                  recoveredPercentage.push("{{ $stat->recovered_percentage }}")
+                                  positiveCase.push({{ $stat->positive }});
+                                  cumulativePositive.push({{ $stat->cumulative_positive }});
                                 @endforeach
                                 new Chart(document.getElementById("chartjs-7"), {
                                     "type": "bar",
@@ -199,6 +197,12 @@
                                         }]
                                     },
                                     "options": {
+                                        "plugins" :
+                                            {
+                                                "datalabels" : {
+                                                    "display" : false
+                                                }
+                                            },
                                         "scales": {
                                             "yAxes": [{
                                                 "ticks": {
@@ -224,7 +228,7 @@
                 <div class="p-5">
                     <canvas id="recovered_chart" class="chartjs" width="undefined" height="undefined"></canvas>
                     <script>
-                        var recoveredDay = [];
+                                var recoveredDay = [];
                                 var recoveredCase = [];
                                 var cumulativeRecovered = [];
                                 @foreach($stats as $stat)
@@ -252,6 +256,12 @@
                                         }]
                                     },
                                     "options": {
+                                        "plugins" :
+                                            {
+                                                "datalabels" : {
+                                                    "display" : false
+                                                }
+                                            },
                                         "scales": {
                                             "yAxes": [{
                                                 "ticks": {
@@ -305,6 +315,12 @@
                                         }]
                                     },
                                     "options": {
+                                        "plugins" :
+                                            {
+                                                "datalabels" : {
+                                                    "display" : false
+                                                }
+                                            },
                                         "scales": {
                                             "yAxes": [{
                                                 "ticks": {
@@ -325,7 +341,8 @@
             <div class="bg-white border-transparent rounded-lg shadow-lg">
                 <div
                     class="bg-gray-300 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
-                    <h5 class="font-bold uppercase text-gray-600">Trend Kasus COVID-19 Sulawesi Tengah</h5>
+                    <h5 class="font-bold uppercase text-sm md:text-base text-gray-600">Trend Kasus COVID-19 Sulawesi
+                        Tengah</h5>
                 </div>
                 <div class="p-5">
                     <canvas id="combine_chart" class="chartjs" width="undefined" height="undefined"></canvas>
@@ -360,6 +377,12 @@
                                         }]
                                     },
                                     "options": {
+                                        "plugins" :
+                                            {
+                                                "datalabels" : {
+                                                    "display" : false
+                                                }
+                                            },
                                         "scales": {
                                             "yAxes": [{
                                                 "ticks": {
@@ -384,21 +407,46 @@
                 </div>
                 <div class="p-5"><canvas id="pie_chart" class="chartjs" width="undefined" height="undefined"></canvas>
                     <script>
+                        var pos = {{ $stats[sizeof($stats) - 1]->cumulative_positive }}
+                        var dead = {{ $stats[sizeof($stats) - 1]->cumulative_death }}
+                        var rec = {{ $stats[sizeof($stats) - 1]->cumulative_recovered }}
+                        pos = pos - (dead + rec)
+                        var data =
+                            [{
+                                data:
+                                    [
+                                        pos,
+                                        dead,
+                                        rec
+                                    ],
+                                backgroundColor: ["rgb(54, 162, 235)", "rgb(255, 159, 64)", "rgb(75, 192, 192)"]
+                            }]
+                        var options = {
+                            tooltips: {
+                                enabled: true,
+                            },
+                            plugins: {
+                                datalabels: {
+                                    formatter: (value, ctx) => {
+                                        let sum = 0;
+                                        let dataArr = ctx.chart.data.datasets[0].data;
+                                        dataArr.map(data => {
+                                            sum += data;
+                                        });
+                                        let percentage = (value*100 / sum).toFixed(2)+"%";
+                                        return percentage;
+                                    },
+                                    color: '#fff',
+                                }
+                            }
+                        };
                         new Chart(document.getElementById("pie_chart"), {
                                     "type": "pie",
                                     "data": {
-                                        "labels": ["Sedang Dirawat (%)", "Meninggal (%)", "Sembuh (%)"],
-                                        "datasets": [{
-                                            "label": "Cases",
-                                            "data":
-                                                [
-                                                    underTreatmentPercentage[underTreatmentPercentage.length - 1],
-                                                    deathPercentage[deathPercentage.length - 1],
-                                                    recoveredPercentage[recoveredPercentage.length - 1]
-                                                ],
-                                            "backgroundColor": ["rgb(54, 162, 235)", "rgb(255, 159, 64)", "rgb(75, 192, 192)"]
-                                        }]
-                                    }
+                                        "labels": ["Sedang Dirawat", "Meninggal", "Sembuh"],
+                                        "datasets" : data
+                                    },
+                                    "options" : options
                                 });
                     </script>
                 </div>

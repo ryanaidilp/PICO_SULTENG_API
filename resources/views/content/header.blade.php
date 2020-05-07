@@ -10,6 +10,7 @@
           microframework Lumen." />
         <meta name="keywords" content="api, pico, covid-19, sulawesi tengah, data covid, coronavirus" />
         <meta name="author" content="Fajrian Aidil Pratama" />
+	<link rel="icon" href="favicon.png" type="image/x-icon"/>
 
         <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -25,6 +26,7 @@
         <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"
             integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
         <style>
             @import url("https://rsms.me/inter/inter.css");
 
