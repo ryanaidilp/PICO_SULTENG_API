@@ -1,0 +1,19 @@
+@extends('layouts.card_image')
+@section('transition')
+transition-kit
+@overwrite
+@section('card_width')
+1/2
+@overwrite
+@section('card_title')
+WEBSITE
+@overwrite
+@section('card_caption')
+Kawal Corona
+@overwrite
+@section('card_url')
+https://kawalcorona.com/api/
+@overwrite
+@section('card_image')
+https://i.ibb.co/R76NqwH/ehi.png
+@overwrite

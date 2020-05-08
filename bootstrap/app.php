@@ -109,7 +109,8 @@ $app->register(\Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 | can respond to, as well as the controllers that may handle them.
 |
 */
-
+$app->alias('cache', 'Illuminate\Cache\CacheManager');
+$app->alias('auth', 'Illuminate\Auth\AuthManager');
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
