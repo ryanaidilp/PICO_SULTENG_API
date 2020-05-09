@@ -17,7 +17,12 @@
         var tableHospital = $('#table_hospital').DataTable(tableOptions)
         .columns.adjust()
         .responsive.recalc();
+
         var tablePosts = $('#table_posts').DataTable(tableOptions)
+        .columns.adjust()
+        .responsive.recalc();
+
+        var tableProvince = $('#table_province').DataTable(tableOptions)
         .columns.adjust()
         .responsive.recalc();
     } );

@@ -9,7 +9,7 @@ border-green-400
 bg-green-400
 @overwrite
 @section('card_case_bg_color')
-bg-green-100
+bg-green-200
 @overwrite
 @section('local_case')
 {{ $stats[sizeof($stats) - 1]->cumulative_recovered }}

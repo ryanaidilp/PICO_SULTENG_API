@@ -3,7 +3,7 @@
         <div class="@yield('card_case_bg_color') border-b-4 @yield('card_case_border_color') rounded-lg shadow-lg p-5">
             <div class="flex flex-row items-center">
                 <div class="flex-1 text-center">
-                    <h5 class="font-bold uppercase text-gray-600">@yield('card_case_title')</h5>
+                    <h5 class="font-bold uppercase">@yield('card_case_title')</h5>
                     <div class="flex flex-column items-center">
                         <p class="font-bold text-xs w-1/3">Sulawesi Tengah</p>
                         <h3 class="font-bold text-3xl w-1/3">@yield('local_case')
@@ -14,7 +14,7 @@
                     <div class="flex flex-column items-left">
                         <p class="font-bold text-xs w-1/3">Indonesia</p>
                         <p class="font-bold text-xs w-1/3">@yield('nasional_case')</p>
-                        <p class="rounded font-bold text-red-100 text-small w-1/3">
+                        <p class="rounded font-bold text-red-100 text-small w-1/3 opacity-0">
                             +{{ $stats[sizeof($stats) - 1]->death }}</p>
                     </div>
                 </div>

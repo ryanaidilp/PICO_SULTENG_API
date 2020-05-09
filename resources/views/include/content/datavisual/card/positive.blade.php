@@ -9,7 +9,7 @@ border-red-400
 bg-red-400
 @overwrite
 @section('card_case_bg_color')
-bg-red-100
+bg-red-200
 @overwrite
 @section('local_case')
 {{ $stats[sizeof($stats) - 1]->cumulative_positive }}

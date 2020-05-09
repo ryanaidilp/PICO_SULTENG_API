@@ -1,15 +1,15 @@
 @extends('layouts.card_case')
 @section('card_case_title')
-'Meninggal'
+Meninggal
 @overwrite
 @section('card_case_border_color')
-border-yellow-400
+border-orange-400
 @overwrite
 @section('card_case_new_bg_color')
-bg-yellow-400
+bg-orange-400
 @overwrite
 @section('card_case_bg_color')
-bg-yellow-100
+bg-orange-200
 @overwrite
 @section('local_case')
 {{ $stats[sizeof($stats) - 1]->cumulative_death }}

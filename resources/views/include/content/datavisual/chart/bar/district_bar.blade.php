@@ -9,7 +9,7 @@ Kasus COVID-19 berdasarkan Kabupaten
 <canvas id="positive_chart_district" class="chartjs" width="undefined" height="undefined"></canvas>
 <script>
     new Chart(document.getElementById("positive_chart_district"), {
-        "type": "horizontalBar",
+        "type": "bar",
         "data": {
             "labels":[@foreach($districts as $district) "{{ $district->kabupaten }}" , @endforeach],
             "datasets": [{
@@ -28,6 +28,18 @@ Kasus COVID-19 berdasarkan Kabupaten
                 "label": "Meninggal",
                 "borderColor": "rgba(255, 159, 64, 0.2)",
                 "backgroundColor": "rgb(255, 159, 64)"
+            },
+            {
+                "data": [@foreach($districts as $district) "{{ $district->dalam_pemantauan }}" ,  @endforeach],
+                "label": "ODP Aktif",
+                "borderColor": "rgba(54, 162, 235, 0.2)",
+                "backgroundColor": "rgb(54, 162, 235)"
+            },
+            {
+                "data": [@foreach($districts as $district) "{{ $district->dalam_pengawasan }}" ,  @endforeach],
+                "label": "PDP Aktif",
+                "borderColor": "rgba(185, 19, 114, 0.2)",
+                "backgroundColor": "rgb(185, 19, 114)"
             },
         ]},
         "options": {

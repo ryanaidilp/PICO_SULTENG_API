@@ -25,22 +25,11 @@ class HomeController extends Controller
         $provinces = Province::all();
         $hospitals = Hospital::all();
         $stats = Stats::all();
-        $path = '/images/carbon.svg';
+        $path = '/images/carbon.pvg';
         $districts = District::all();
         setlocale(LC_TIME, 'id_ID.UTF-8');
         Carbon::setLocale('id_ID.UTF-8');
         $last_update = $province->updated_at->formatLocalized('%A, %d %B %Y');
-        $geojson = Cache::get('geojson');
-        if (!Cache::has('geojson')) {
-            do {
-                $geodata = Http::get("https://raw.githubusercontent.com/RyanAidilPratama/PICO_SULTENG_Android/master/app/src/main/assets/map.json");
-            } while (!$geodata->successful());
-            $geojson = json_encode($geodata->json());
-            Cache::forever('geojson', $geojson);
-        } else {
-            $geojson = Cache::get('geojson');
-        }
-
         $count_data = [
             'sum_odp' => $districts->sum('ODP'),
             'sum_pdp' => $districts->sum('PDP'),
@@ -57,7 +46,7 @@ class HomeController extends Controller
             'ina_death' => number_format($provinces->sum('meninggal')),
             'last_update' => $last_update
         ];
-        return view('home', compact('path', 'province', 'stats', 'districts', 'hospitals', 'count_data', 'provinces', 'geojson'));
+        return view('home', compact('path', 'province', 'stats', 'districts', 'hospitals', 'count_data', 'provinces'));
     }
 
     public function artisan($cmd)
