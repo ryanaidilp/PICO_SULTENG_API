@@ -6,10 +6,10 @@ full
 Kasus COVID-19 berdasarkan Kabupaten
 @overwrite
 @section('chart_content')
-<canvas id="positive_chart_district" class="chartjs" width="undefined" height="undefined"></canvas>
+<canvas id="positive_chart_district" class="chartjs" width="undefined" height="200"></canvas>
 <script>
     new Chart(document.getElementById("positive_chart_district"), {
-        "type": "bar",
+        "type": "horizontalBar",
         "data": {
             "labels":[@foreach($districts as $district) "{{ $district->kabupaten }}" , @endforeach],
             "datasets": [{

@@ -21,14 +21,14 @@
         background-image: linear-gradient(110deg, #9db0b9 0%, #1695df 100%);
     }
 
-    button,
+    .main-btn,
     .gradient2 {
         background-color: #2c91a3;
         background-image: linear-gradient(315deg, #86e3f3 0%, #286dbb 74%);
     }
 
     .img-bw {
-        /* filter: url(filters.svg#grayscale); Firefox 3.5+ */
+        filter: url(filters.svg#grayscale); Firefox 3.5+
         filter: gray;
         /* IE5+ */
         -webkit-filter: grayscale(1);
@@ -163,6 +163,28 @@
 
     .browser-mockup>* {
         display: block;
+    }
+
+    input[type="radio"]+label span {
+        transition: background .2s,
+            transform .2s;
+    }
+
+    input[type="radio"]+label span:hover,
+    input[type="radio"]+label:hover span {
+        transform: scale(1.2);
+    }
+
+    input[type="radio"]:checked+label span {
+        background-color: #3490DC; //bg-blue
+        box-shadow: 0px 0px 0px 2px white inset;
+    }
+
+    input[type="radio"]:checked+label {
+        color: #3490DC; //text-blue
+    }
+    .darkmode-toggle {
+        z-index: 100;
     }
 </style>
 @endsection

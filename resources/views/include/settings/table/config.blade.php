@@ -1,5 +1,15 @@
 @section('body.script')
 @parent
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.5/lib/darkmode-js.min.js"></script>
+<script>
+    var options = {
+        mixColor: '#fff', // default: '#fff'
+        backgroundColor: 'linear-gradient(110deg, #9db0b9 0%, #1695df 100%)',  // default: '#fff'
+        label: '🌓'
+    }
+  const darkmode = new Darkmode(options)
+  darkmode.showWidget()
+</script>
 <script>
     $(document).ready(function() {
         let tableOptions = {

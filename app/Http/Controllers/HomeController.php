@@ -25,7 +25,7 @@ class HomeController extends Controller
         $provinces = Province::all();
         $hospitals = Hospital::all();
         $stats = Stats::all();
-        $path = '/images/carbon.pvg';
+        $path = '/images/carbon.png';
         $districts = District::all();
         setlocale(LC_TIME, 'id_ID.UTF-8');
         Carbon::setLocale('id_ID.UTF-8');
