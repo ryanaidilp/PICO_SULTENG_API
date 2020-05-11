@@ -31,7 +31,7 @@ Provinsi
             <td class="w-1/6"><b>{{ $provinces->sum('positif') - ($provinces->sum('sembuh') + $provinces->sum('meninggal')) }}</b></td>
             <td class="w-1/6"><b>{{ $provinces->sum('sembuh') }}</b></td>
             <td class="w-1/6"><b>{{ $provinces->sum('meninggal') }}</b></td>
-            <td class="w-1/6"><b>-</b></td>
+            <td class="w-1/6"><b>{{ round($provinces->sum('meninggal')/$provinces->sum('positif') * 100,2) }} %</b></td>
         </tr>
     </tbody>
 

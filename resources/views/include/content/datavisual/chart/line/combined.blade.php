@@ -49,8 +49,14 @@ Trend Kasus COVID-19 Sulawesi Tengah
                             "ticks": {
                                 "beginAtZero": true
                             }
-                        }]
-                    }
+                        }],
+                        xAxes: [{display: true, stacked:true, scaleLabel: {display: false, labelString: 'time'}}],
+                    },
+                    maintainAspectRatio:true,
+                    responsive: true,
+                    tooltips: {mode: 'index', intersect: false},
+                    hover: {mode: 'nearest', intersect: true},
+                    legend: {position:'bottom', usePointStyle:true},
                 }
             });
 </script>

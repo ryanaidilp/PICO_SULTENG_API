@@ -9,7 +9,7 @@ Meninggal
 Meninggal
 @overwrite
 @section('chart_content')
-<canvas id="death_chart_province" class="chartjs" width="undefined" height="200"></canvas>
+<canvas id="death_chart_province" class="chartjs" width="undefined" height="250"></canvas>
 <script>
     var deathDay = [];
     var deathCase = [];
@@ -26,6 +26,7 @@ Meninggal
             "datasets": [{
                 "label": "Kasus Baru",
                 "data": deathCase,
+                yAxisID: 'left-axis',
                 "borderColor": "rgba(255, 159, 64, 0.2)",
                 "backgroundColor": "rgb(255, 159, 64)"
             },
@@ -34,6 +35,8 @@ Meninggal
                 "data": cumulativeDeath,
                 "type": "line",
                 "fill": true,
+                pointRadius: 2,
+                yAxisID: 'right-axis',
                 "backgroundColor": "rgba(255, 159, 64, 0.2)",
                 "borderColor": "rgba(255, 159, 64, 0.6)"
             }]
@@ -47,11 +50,28 @@ Meninggal
                 },
             "scales": {
                 "yAxes": [{
-                    "ticks": {
-                        "beginAtZero": true
-                    }
-                }]
-            }
+                    type:'linear',
+                    id:'left-axis',
+                    display: true,
+                    position: 'left',
+                    scaleLabel: {display: true, labelString: "Kasus Baru"}
+                },
+                {
+                    type:'linear',
+                    id:'right-axis',
+                    display: true,
+                    position: 'right',
+                    stacked:false,
+                    scaleLabel: {display: true, labelString: "Kumulatif"},
+                    gridLines: {drawOnChartArea:false}
+                }],
+                xAxes: [{display: true, stacked:true, scaleLabel: {display: false, labelString: 'time'}}],
+            },
+            maintainAspectRatio:false,
+            responsive: true,
+            tooltips: {mode: 'index', intersect: false},
+            hover: {mode: 'nearest', intersect: true},
+            legend: {position:'bottom', usePointStyle:true},
         }
     });
 </script>

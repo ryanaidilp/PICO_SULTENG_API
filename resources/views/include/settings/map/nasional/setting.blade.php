@@ -14,20 +14,28 @@
             {from:700, to:800, color:color[7]},
             {from:800, to:900, color:color[8]},
             {from:900, to:1000, color:color[9]},
-            {greater:1000, color:color[10]}]));
-            // series.labels(true)
-            series.tooltip().format(function(e) {
-            var underTreatment = e.getData("positif") - (e.getData('sembuh') + e.getData('meninggal'))
-            return 'Positif: ' + e.getData("positif") + "\n"
-            + 'Dirawat: ' + underTreatment + "\n"
-            + 'Sembuh: ' + e.getData('sembuh') + '\n'
-            + 'Meninggal: ' + e.getData('meninggal')
+            {greater:1000, color:color[10]}
+        ]));
+        series.tooltip().format(function(e) {
+        var underTreatment = e.getData("positif") - (e.getData('sembuh') + e.getData('meninggal'))
+        return 'Positif: ' + e.getData("positif") + "\n"
+        + 'Dirawat: ' + underTreatment + "\n"
+        + 'Sembuh: ' + e.getData('sembuh') + '\n'
+        + 'Meninggal: ' + e.getData('meninggal')
         })
+        series.tooltip().hideDelay(5000)
+        var mapTitle = map.title()
+        mapTitle.enabled(true)
+        mapTitle.text("Choropleth Map kasus "+name+" COVID-19 di Indonesia")
         series.name(name + "(Choropleth)")
-        series.legendItem()
-            .enabled(true)
-            .iconFill(color[5])
-            .iconStroke('2 #E1E1E1');
+        series.labels(true)
+        series.labels().format('{%value}')
+        series.labels().fontWeight(600)
+        if(darkmode.isActivated()){
+            series.labels().fontColor("White")
+        } else {
+            series.labels().fontColor("Black")
+        }
         series.hovered().fill(color[11])
         map.colorRange()
         .enabled(true)
@@ -45,7 +53,11 @@
         series.labels(true)
         series.labels().format('{%value}')
         series.labels().fontWeight(600)
-        series.labels().fontColor("Black")
+        if(darkmode.isActivated()){
+            series.labels().fontColor("White")
+        } else {
+            series.labels().fontColor("Black")
+        }
         series.legendItem()
             .enabled(true)
             .iconType('circle')
@@ -56,7 +68,11 @@
         // chae the stroke and hoverStroke colors of series_1
         series.stroke(color[5]);
         series.tooltip().format(name + " : {%value}")
+        series.tooltip().hideDelay(5000)
         series.hovered().stroke(color[5]);
+        var mapTitle = map.title()
+        mapTitle.enabled(true)
+        mapTitle.text("Bubble Map kasus "+name+" COVID-19 di Indonesia")
     }
     var data = [
         @foreach($provinces as $prov)
@@ -74,9 +90,13 @@
     map.maxBubbleSize(35)
     map.minBubbleSize(9)
     anychart.onDocumentReady(function() {
+        if(darkmode.isActivated()){
+            anychart.theme('darkEarth')
+        } else {
+            anychart.theme(null)
+        }
             $.ajax({
                 type: "GET",
-
                 // Specify link to an SVG file.
                 url: "https://raw.githubusercontent.com/RyanAidilPratama/wilayah-indonesia/master/data/geojson/combined/indonesia.geojson",
                 success: function (response) {
@@ -91,7 +111,7 @@
                 }
             });
 
-            })
+    })
     function positiveChoropleth() {
         createChoropleth('Positif', positiveDataset,  positiveColor)
     }
