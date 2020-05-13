@@ -8,28 +8,20 @@ Sembuh
 @section('chart_content')
 <canvas id="recovered_chart_province" class="chartjs" width="undefined" height="250"></canvas>
 <script>
-    var recoveredDay = [];
-    var recoveredCase = [];
-    var cumulativeRecovered = [];
-    @foreach($stats as $stat)
-        recoveredDay.push("{{ $stat->date }}");
-        recoveredCase.push("{{ $stat->recovered }}");
-        cumulativeRecovered.push("{{ $stat->cumulative_recovered }}")
-    @endforeach
-    new Chart(document.getElementById("recovered_chart_province"), {
+    var recoveredChart = new Chart(document.getElementById("recovered_chart_province"), {
         "type": "bar",
         "data": {
-            "labels": recoveredDay,
+            "labels": [],
             "datasets": [{
                 "label": "Kasus Baru",
-                "data": recoveredCase,
+                "data": [],
                 yAxisID: 'left-axis',
                 "borderColor": "rgba(75, 192, 192, 0.2)",
                 "backgroundColor": "rgb(75, 192, 192)"
             },
             {
                 "label": "Kumulatif",
-                "data": cumulativeRecovered,
+                "data": [],
                 "type": "line",
                 pointRadius: 2,
                 "fill": true,

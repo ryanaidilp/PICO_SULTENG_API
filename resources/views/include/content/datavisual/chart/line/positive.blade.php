@@ -8,21 +8,13 @@ Positif
 @section('chart_content')
 <canvas id="positive_cart_province" class="chartjs" width="undefined" height="250"></canvas>
 <script>
-    var positiveDay = [];
-    var positiveCase = [];
-    var cumulativePositive = [];
-    @foreach($stats as $stat)
-        positiveDay.push("{{ $stat->date }}");
-        positiveCase.push({{ $stat->positive }});
-        cumulativePositive.push({{ $stat->cumulative_positive }});
-    @endforeach
-    new Chart(document.getElementById("positive_cart_province"), {
+    var positiveChart = new Chart(document.getElementById("positive_cart_province"), {
         "type": "bar",
         "data": {
-            "labels": positiveDay,
+            "labels": [],
             "datasets": [{
                 "label": "Kasus Baru",
-                "data": positiveCase,
+                "data": [],
                 yAxisID: 'left-axis',
                 "borderColor": "rgba(255, 99, 132, 0.2)",
                 "backgroundColor": "rgb(255, 99, 132)",
@@ -30,7 +22,7 @@ Positif
             },
             {
                 "label": "Kumulatif",
-                "data": cumulativePositive,
+                "data": [],
                 "type": "line",
                 pointRadius: 2,
                 "fill": true,

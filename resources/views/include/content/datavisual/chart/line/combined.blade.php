@@ -8,21 +8,21 @@ Trend Kasus COVID-19 Sulawesi Tengah
 @section('chart_content')
 <canvas id="combine_chart" class="chartjs" width="undefined" height="200"></canvas>
 <script>
-    new Chart(document.getElementById("combine_chart"), {
+    var chartCombined = new Chart(document.getElementById("combine_chart"), {
                 "type": "bar",
                 "data": {
-                    "labels": deathDay,
+                    "labels": [],
                     "datasets": [
                     {
                         "label": "Positif",
-                        "data": cumulativePositive,
+                        "data": [],
                         "type": "line",
                         "fill": false,
                         "backgroundColor" :"rgba(255, 99, 132, 0.2)",
                         "borderColor": "rgba(255, 99, 132, 0.6)"
                     },{
                         "label": "Sembuh",
-                        "data": cumulativeRecovered,
+                        "data": [],
                         "type": "line",
                         "fill": false,
                         "backgroundColor": "rgba(75, 192, 192, 0.2)",
@@ -30,7 +30,7 @@ Trend Kasus COVID-19 Sulawesi Tengah
                     },
                     {
                         "label": "Meninggal",
-                        "data": cumulativeDeath,
+                        "data": [],
                         "type": "line",
                         "fill": false,
                         "backgroundColor": "rgba(255, 159, 64, 0.2)",

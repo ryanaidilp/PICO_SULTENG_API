@@ -21,3 +21,4 @@
 @include('include.settings.map.config')
 @include('include.settings.table.config')
 @include('include.settings.analytics')
+@include('include.settings.updater')
