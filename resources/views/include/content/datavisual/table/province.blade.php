@@ -14,26 +14,17 @@ Provinsi
             <th data-priority="6" class="w-1/6 text-left text-blue-900">Rasio Kematian</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach ($provinces as $prov)
+    <tfoot>
         <tr>
-            <td class="w-1/6">{{ $prov->provinsi }}</td>
-            <td class="w-1/6">{{ $prov->positif }}</td>
-            <td class="w-1/6">{{ $prov->positif - ($prov->sembuh + $prov->meninggal) }}</td>
-            <td class="w-1/6">{{ $prov->sembuh }}</td>
-            <td class="w-1/6">{{ $prov->meninggal }}</td>
-            <td class="w-1/6">{{ round(($prov->meninggal/$prov->positif) * 100, 2) }} %</td>
+            <td><b>Total</b></td>
+            <td><b>{{ $provinces->sum('positif') }}</b></td>
+            <td><b>{{ $provinces->sum('positif') - ($provinces->sum('sembuh') + $provinces->sum('meninggal')) }}</b></td>
+            <td><b>{{ $provinces->sum('sembuh') }}</b></td>
+            <td><b>{{ $provinces->sum('meninggal') }}</b></td>
+            <td><b>{{ round($provinces->sum('meninggal')/$provinces->sum('positif') * 100,2) }} %</b></td>
         </tr>
-        @endforeach
-        <tr>
-            <td class="w-1/6"><b>Total</b></td>
-            <td class="w-1/6"><b>{{ $provinces->sum('positif') }}</b></td>
-            <td class="w-1/6"><b>{{ $provinces->sum('positif') - ($provinces->sum('sembuh') + $provinces->sum('meninggal')) }}</b></td>
-            <td class="w-1/6"><b>{{ $provinces->sum('sembuh') }}</b></td>
-            <td class="w-1/6"><b>{{ $provinces->sum('meninggal') }}</b></td>
-            <td class="w-1/6"><b>{{ round($provinces->sum('meninggal')/$provinces->sum('positif') * 100,2) }} %</b></td>
-        </tr>
-    </tbody>
+    </tfoot>
+    <caption class="text-xs text-grey-200"><i>*) Data yang belum diketahui Provinsinya akan ditambahkan pada "Indonesia"</i></caption>
 
 </table>
 @overwrite

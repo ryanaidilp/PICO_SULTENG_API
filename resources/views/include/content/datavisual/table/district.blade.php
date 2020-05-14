@@ -19,22 +19,8 @@ Kabupaten
             <th data-priority="11" class="w-1/11 text-left text-blue-900">PDP Aktif</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach ($districts as $district)
-        <tr>
-            <td class="w-1/11">{{ $district->kabupaten }}</td>
-            <td class="w-1/11">{{ $district->positif }}</td>
-            <td class="w-1/11">{{ $district->negatif }}</td>
-            <td class="w-1/11">{{ $district->sembuh }}</td>
-            <td class="w-1/11">{{ $district->meninggal }}</td>
-            <td class="w-1/11">{{ $district->ODP }}</td>
-            <td class="w-1/11">{{ $district->selesai_pemantauan }}</td>
-            <td class="w-1/11">{{ $district->dalam_pemantauan }}</td>
-            <td class="w-1/11">{{ $district->PDP }}</td>
-            <td class="w-1/11">{{ $district->selesai_pengawasan }}</td>
-            <td class="w-1/11">{{ $district->dalam_pengawasan }}</td>
-        </tr>
-        @endforeach
+
+    <tfoot>
         <tr>
             <td class="w-1/11"><b>Total</b></td>
             <td class="w-1/11"><b>{{ $districts->sum('positif') }}</b></td>
@@ -48,7 +34,6 @@ Kabupaten
             <td class="w-1/11"><b>{{ $districts->sum('selesai_pengawasan') }}</b></td>
             <td class="w-1/11"><b>{{ $districts->sum('dalam_pengawasan') }}</b></td>
         </tr>
-    </tbody>
-
+    </tfoot>
 </table>
 @overwrite

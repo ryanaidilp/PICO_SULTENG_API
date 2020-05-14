@@ -4,7 +4,7 @@
 var updateData = function () {
     $.ajax({
         type: "GET",
-        url: "https://banuacoders.com/api/pico/statistik",
+        url: "{{ route('stats.index') }}",
         dataType: "json",
         success: function (response) {
             var len = response.data.length
