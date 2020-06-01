@@ -1,14 +1,17 @@
 @extends('layouts.card_api_data')
 @section('card_api_title')
-Posko
+@lang('home.posts')
 @overwrite
 @section('card_api_width')
-1/2
+1/3
 @overwrite
 @section('card_api_caption')
-Mengembalikan data posko Gugus Tugas COVID-19 di semua Kabupaten di Sulawesi Tengah.
+@lang('home.posts_desc')
 @overwrite
 @section('card_api_url')
-https://banuacoders.com/api/pico/posko
+{{ route('posts.index') }}
+@overwrite
+@section('card_api_url_v2')
+{{ route('v2.posts.index') }}
 @overwrite
 {{-- Put Your API Card Data Here --}}

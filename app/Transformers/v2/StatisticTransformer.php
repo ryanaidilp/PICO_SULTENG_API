@@ -1,0 +1,113 @@
+<?php
+
+namespace App\Transformers\v2;
+
+use App\District;
+use App\Stats;
+use League\Fractal;
+
+class StatisticTransformer extends Fractal\TransformerAbstract
+{
+    public function transform(Stats $stats)
+    {
+
+        $data = array();
+        $histories = $stats->histories;
+        foreach ($histories as $key => $history) {
+            $district = District::where('no', $history->district_id)->first();
+            $total_odp = $history->whereBetween('day', [1, $stats->day])->where('district_id', $district->no)->sum('new_ODP');
+            $total_pdp = $history->whereBetween('day', [1, $stats->day])->where('district_id', $history->district_id)->sum("new_PDP");
+            $total_finished_odp = $history->whereBetween('day', [1, $stats->day])->where('district_id', $history->district_id)->sum("finished_ODP");
+            $total_finished_pdp = $history->whereBetween('day', [1, $stats->day])->where('district_id', $history->district_id)->sum("finished_PDP");
+            $total_positive = $history->whereBetween('day', [1, $stats->day])->where('district_id', $history->district_id)->sum("positive");
+            $total_recovered = $history->whereBetween('day', [1, $stats->day])->where('district_id', $history->district_id)->sum("recovered");
+            $total_death = $history->whereBetween('day', [1, $stats->day])->where('district_id', $history->district_id)->sum("death");
+            $total_negative = $history->whereBetween('day', [1, $stats->day])->where('district_id', $history->district_id)->sum("negative");
+            $data[$key][trans('general.name')] = $district->kabupaten;
+            $data[$key][trans('general.new_case')] = [
+                trans('general.positive') => $history->positive,
+                trans('general.recovered') => $history->recovered,
+                trans('general.death') => $history->death,
+                trans('general.negative') => $history->negative,
+                trans('general.ODP') => $history->new_ODP,
+                trans('general.PDP') => $history->new_PDP,
+            ];
+            $data[$key][trans('general.active_case')] = [
+                trans('general.under_treatment') => $history->under_treatment,
+                trans('general.ODP') => $total_odp - $total_finished_odp,
+                trans('general.PDP') => $total_pdp - $total_finished_pdp,
+            ];
+            $data[$key][trans('general.finished_case')] = [
+                trans('general.ODP') => $history->finished_ODP,
+                trans('general.PDP') => $history->finished_PDP
+            ];
+            $data[$key][trans('general.cumulative')] = [
+                trans('general.positive') => (int) $total_positive,
+                trans('general.recovered') => (int) $total_recovered,
+                trans('general.death') => (int) $total_death,
+                trans('general.negative') => (int) $total_negative,
+                trans('general.ODP') => (int) $total_odp,
+                trans('general.PDP') => (int) $total_pdp,
+                trans('general.finished_param', ['case' => 'ODP']) => (int) $total_finished_odp,
+                trans('general.finished_param', ['case' => 'PDP']) => (int) $total_finished_pdp,
+            ];
+            $data[$key][trans('general.links')] =
+                [trans('general.self') => [
+                    trans('general.full') => route('district.index') . '/' . $history->district_id,
+                    trans('general.endpoint') => 'kabupaten/' . $history->district_id
+                ]];
+        }
+        return [
+            trans('general.day') => $stats->day,
+            trans('general.date') => $stats->date,
+            trans('general.new_case') =>
+            [
+                trans('general.positive') => $stats->positive,
+                trans('general.recovered') => $stats->recovered,
+                trans('general.death') => $stats->death,
+                trans('general.negative') => $stats->negative,
+                trans('general.ODP') => $stats->new_ODP,
+                trans('general.PDP') => $stats->new_PDP
+            ],
+            trans('general.active_case') =>
+            [
+                trans('general.under_treatment') => $stats->under_treatment,
+                trans('general.ODP') => $stats->active_ODP,
+                trans('general.PDP') => $stats->active_PDP,
+            ],
+            trans('general.finished_case') =>
+            [
+                trans('general.ODP') => $stats->finished_ODP,
+                trans('general.PDP') => $stats->finished_PDP,
+            ],
+            trans('general.cumulative') =>
+            [
+                trans('general.positive') => $stats->cumulative_positive,
+                trans('general.recovered') => $stats->cumulative_recovered,
+                trans('general.death') => $stats->cumulative_death,
+                trans('general.negative') => $stats->cumulative_negative,
+                trans('general.ODP') => $stats->cumulative_ODP,
+                trans('general.PDP') => $stats->cumulative_PDP,
+                trans('general.finished_param', ['case' => 'ODP']) => $stats->cumulative_finished_ODP,
+                trans('general.finished_param', ['case' => 'PDP']) => $stats->cumulative_finished_PDP,
+            ],
+            trans('general.recap') =>
+            [
+                trans('general.percentage') =>
+                [
+                    trans('general.death') => $stats->death_percentage,
+                    trans('general.recovered') => $stats->recovered_percentage,
+                    trans('general.under_treatment') => $stats->under_treatment_percentage,
+                ],
+                trans('general.average') =>
+                [
+                    trans('general.positive') => $stats->daily_positive_case,
+                    trans('general.recovered') => $stats->daily_recovered_case,
+                    trans('general.death') => $stats->daily_death_case,
+
+                ]
+            ],
+            trans('general.district_list') => $data
+        ];
+    }
+}

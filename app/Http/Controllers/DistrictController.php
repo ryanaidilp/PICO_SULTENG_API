@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\District;
+use App\Transformers\DistrictTransformer;
 use Illuminate\Http\Request;
 use JsonFormat;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 
 class DistrictController extends Controller
 {
+    private $fractal;
     public function __construct()
     {
         $this->middleware('throttle:20,2');
+        $this->fractal = new Manager();
+        app('translator')->setLocale('id');
     }
 
     public function show($no)
@@ -22,7 +29,9 @@ class DistrictController extends Controller
                 'message' => 'District not found!',
             ]), 404);
         } else {
-            $response = response(JsonFormat::setJson($district, true, []), 200)
+            $district = new Item($district, new DistrictTransformer);
+            $data = $this->fractal->createData($district)->toArray();
+            $response = response(array_replace(JsonFormat::setJson([], true, []), $data), 200)
                 ->header('Content-Type', 'Application/json');
         }
 
@@ -32,7 +41,10 @@ class DistrictController extends Controller
     public function index()
     {
         if (District::all()->count() > 0) {
-            return response(JsonFormat::setJson(District::all(), true, []), 200)
+            $districts = District::all();
+            $districts = new Collection($districts, new DistrictTransformer);
+            $data = $this->fractal->createData($districts)->toArray();
+            return response(array_replace(JsonFormat::setJson([], true, []), $data), 200)
                 ->header('Content-Type', 'application/json');
         } else {
             return response(JsonFormat::setJson(['District data is still empty!'], true, []), 200);

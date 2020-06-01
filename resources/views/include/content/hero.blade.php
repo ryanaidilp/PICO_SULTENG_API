@@ -4,24 +4,21 @@
             PICO SulTeng API
         </h1>
         <p class="leading-normal text-gray-100 text-base md:text-xl lg:text-2xl mb-8">
-            API untuk aplikasi
-            <a class="hover:underline hover:text-blue-600 text-bold" href="https://banuacoders.com/app/pico">
-                PICO
-            </a>
-            (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
-            <br>
-            API ini dibangun menggunakan microframework
-            <a href="http://lumen.laravel.com" class="hover:underline hover:text-blue-600 text-bold">
-                Lumen.
-            </a>
-
+            @lang('home.api_hero')
         </p>
 
-        <a href="https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/README.md"
+        <a href=
+        "
+        @if(app('translator')->getLocale() != 'id')
+        https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/README.md
+        @else
+        https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/README.id.md
+        @endif
+        "
             class="gradient2 mx-auto lg:mx-0 hover:underline text-gray-300 font-bold rounded my-2 md:my-6 py-4 px-8 shadow-lg w-48">
-            Dokumentasi!
+            {{ __('home.documentation') }}
         </a>
     </div>
 
-    <img src="{{ $path }}" class="browser-mockup flex flex-1 w-90 md:w-1/2 items-center mx-auto content-end" />
+    <img src="{{ $path }}" class="browser-mockup flex flex-1 w-90 md:w-1/2 items-center mx-auto content-end" lazy />
 </div>

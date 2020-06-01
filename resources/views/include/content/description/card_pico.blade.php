@@ -1,6 +1,6 @@
 @extends('layouts.card_small')
 @section('card_small_title')
-Unduh PICO SulTeng Android <b>v3.0.1</b>
+@lang('home.download') <b>v3.0.1</b>
 @overwrite
 @section('card_small_url')
 https://banuacoders.com/app/pico

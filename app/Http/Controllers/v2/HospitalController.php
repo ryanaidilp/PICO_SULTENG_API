@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v2;
 
 use App\Hospital;
+use App\Http\Controllers\Controller;
 use App\Transformers\HospitalTransformer;
+use Illuminate\Http\Request;
 use JsonFormat;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
@@ -20,8 +22,11 @@ class HospitalController extends Controller
         app('translator')->setLocale('id');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('lang')) {
+            app('translator')->setLocale($request->input('lang'));
+        }
         if (Hospital::all()->count() > 0) {
             $resource = new Collection(Hospital::all(), new HospitalTransformer());
             $data = $this->fractal->createData($resource)->toArray();
@@ -36,8 +41,11 @@ class HospitalController extends Controller
         }
     }
 
-    public function show($no)
+    public function show($no, Request $request)
     {
+        if ($request->has('lang')) {
+            app('translator')->setLocale($request->input('lang'));
+        }
         $hospital = Hospital::where('no', $no)->first();
         if ($hospital === null) {
             return response(

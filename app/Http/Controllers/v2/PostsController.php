@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v2;
 
 use App\District;
+use App\Http\Controllers\Controller;
 use App\Transformers\PostsTransformer;
+use Illuminate\Http\Request;
 use JsonFormat;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
@@ -19,8 +21,11 @@ class PostsController extends Controller
         app('translator')->setLocale('id');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('lang')) {
+            app('translator')->setLocale($request->input('lang'));
+        }
         if (District::all()->count() > 0) {
             $districts = District::all();
             $resource = new Collection($districts, new PostsTransformer());

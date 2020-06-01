@@ -14,12 +14,18 @@
             </p>
         </a>
     </div>
-    <div class="flex-none mt-auto bg-white overflow-hidden p-6">
-        <div class="flex items-center justify-start">
+    <div class="w-full mt-auto bg-white overflow-hidden p-6">
+        <div class="w-full justify-between">
             <a href="@yield('card_api_url')"
             target="_blank"
-                class="gradient2 mx-auto lg:mx-0 hover:underline gradient2 text-gray-300 font-extrabold rounded my-6 py-4 px-8 shadow-lg">
-                Tekan Disini
+                class="mx-auto lg:mx-0 hover:underline text-gray-700 font-extrabold rounded my-6 py-4 px-6">
+                API V1
+            </a>
+            <a href="@yield('card_api_url_v2'){{ app('translator')->getLocale() == 'id' ? '' : '?lang=en'}}
+            "
+            target="_blank"
+                class="mx-auto lg:mx-0 hover:underline text-gray-700 font-extrabold rounded my-6 py-4 px-6">
+                API V2
             </a>
         </div>
     </div>

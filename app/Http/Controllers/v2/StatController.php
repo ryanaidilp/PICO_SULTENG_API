@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v2;
 
 use App\Stats;
-use App\Transformers\StatisticTransformer;
+use App\Transformers\v2\StatisticTransformer;
+use Illuminate\Http\Request;
 use JsonFormat;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
@@ -17,7 +18,7 @@ class StatController extends Controller
     {
         $this->middleware('throttle:20,2');
         $this->fractal = new Manager();
-        app('translator')->setLocale('en');
+        app('translator')->setLocale('id');
     }
 
     /**
@@ -25,8 +26,11 @@ class StatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('lang')) {
+            app('translator')->setLocale($request->input('lang'));
+        }
         $stats = Stats::all();
         $resource = new Collection($stats, new StatisticTransformer());
         $data = $this->fractal->createData($resource)->toArray();
@@ -41,16 +45,19 @@ class StatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($day)
+    public function show($day, Request $request)
     {
+        if ($request->has('lang')) {
+            app('translator')->setLocale($request->input('lang'));
+        }
         $stat = Stats::where('day', $day)->first();
         if ($stat === null) {
             return response(JsonFormat::setJson([], false, ['code' => 404, 'message' => 'Stats not found!']), 404);
         } else {
-            $resource = new Item($stat, new StatisticTransformer());
-            $data = $this->fractal->createData($resource)->toArray();
+            $stat = new Item($stat, new StatisticTransformer());
+            $data = $this->fractal->createData($stat)->toArray();
 
-            return response(array_replace(JsonFormat::setJson([], true, []), $data), 200);
+            return response(array_replace(JsonFormat::setJson($stat, true, []), $data), 200);
         }
     }
 }

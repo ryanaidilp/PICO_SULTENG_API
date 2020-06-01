@@ -3,11 +3,14 @@
 1/3
 @overwrite
 @section('card_api_title')
-Kabupaten
+@lang('home.district')
 @overwrite
 @section('card_api_caption')
-Mengembalikan data kasus COVID-19 di semua Kabupaten/Kota di Sulawesi Tengah.
+@lang('home.district_desc')
 @overwrite
 @section('card_api_url')
-https://banuacoders.com/api/pico/kabupaten
+{{ route('district.index') }}
+@overwrite
+@section('card_api_url_v2')
+{{ route('v2.district.index') }}
 @overwrite

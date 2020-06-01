@@ -3,11 +3,14 @@
 1/3
 @overwrite
 @section('card_api_title')
-Provinsi
+@lang('home.province')
 @overwrite
 @section('card_api_caption')
-Mengembalikan data kasus COVID-19 di semua Provinsi di Seluruh Indonesia.
+@lang('home.province_desc')
 @overwrite
 @section('card_api_url')
-https://banuacoders.com/api/pico/provinsi
+{{ route('province.index') }}
+@overwrite
+@section('card_api_url_v2')
+{{ route('v2.province.index') }}
 @overwrite

@@ -3,79 +3,46 @@
 namespace App\Http\Controllers;
 
 use App\Province;
-use Carbon\Carbon;
+use App\Transformers\ProvinceTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use JsonFormat;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 
 class ProvinceController extends Controller
 {
+    private $fractal;
 
     public function __construct()
     {
         $this->middleware('throttle:40,2');
+        $this->fractal = new Manager();
+        app('translator')->setLocale('id');
     }
 
     public function index()
     {
-        if (Province::all()->count() > 0) {
-            return response(JsonFormat::setJson(Province::all(), true, []), 200)
-                ->header("Content-Type", "application/json");
-        } else {
-            return response(JsonFormat::setJson(['Province data is still empty!'], true, []), 200);
-        }
+        $provinces = Province::all();
+        $resource = new Collection($provinces, new ProvinceTransformer());
+        $data = $this->fractal->createData($resource)->toArray();
+
+        return response(array_replace(JsonFormat::setJson([], true, []), $data), 200);
     }
 
     public function show($code)
     {
-        $province = Province::where("kode_provinsi", $code)->first();
+        $province = Province::where('kode_provinsi', $code)->first();
         if ($province != null) {
-            return response(JsonFormat::setJson($province, true, []), 200)
-                ->header("Content-Type", "application/json");
+            $province = new Item($province, new ProvinceTransformer());
+            $data = $this->fractal->createData($province)->toArray();
+
+            return response(array_replace(JsonFormat::setJson([], true, []), $data), 200)
+                ->header('Content-Type', 'application/json');
         } else {
             return response(JsonFormat::setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404)
-                ->header("Content-Type", "application/json");
-        }
-    }
-
-    public function update($code, Request $request)
-    {
-        if ($request->has('API_KEY')) {
-            $API_KEY = $request->get('API_KEY');
-            if ($API_KEY == 'API_KEY') {
-                $province = Province::where("kode_provinsi", $code)->first();
-                if ($province === null) {
-                    return response(JsonFormat::setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404);
-                } else {
-                    $update = Province::where("kode_provinsi", $code)->update(
-                        [
-                            'meninggal' => $request->get("meninggal"),
-                            'sembuh' => $request->get("sembuh"),
-                            'positif' => $request->get('positif')
-                        ]
-                    );
-                    if ($update) {
-                        return response(JsonFormat::setJson("Data Updated Successfully!", true, []), 200)
-                            ->header("Content-Type", "application/json");
-                    } else {
-                        return response(JsonFormat::setJson([], false, [
-                            'code' => 400,
-                            'message' => 'Failed to update!'
-                        ]), 400)
-                            ->header("Content-Type", 'Application/json');
-                    }
-                }
-            } else {
-                return response(JsonFormat::setJson([], false, [
-                    'code' => 401,
-                    'message' => 'Invalid API Key, Unauthorized Access!'
-                ]), 401);
-            }
-        } else {
-            return response(JsonFormat::setJson([], false, [
-                'code' => 401,
-                'message' => 'Unauthorized Access!'
-            ]), 401);
+                ->header('Content-Type', 'application/json');
         }
     }
 
@@ -84,7 +51,7 @@ class ProvinceController extends Controller
         if ($request->has('API_KEY')) {
             $API_KEY = $request->get('API_KEY');
             if ($API_KEY == 'API_KEY') {
-                $response = Http::get("https://api.kawalcorona.com/indonesia/provinsi");
+                $response = Http::get('https://api.kawalcorona.com/indonesia/provinsi');
                 if ($response->successful()) {
                     $arrayProvince = $response->json();
                     foreach ($arrayProvince as $prov) {
@@ -95,61 +62,27 @@ class ProvinceController extends Controller
                             ->update([
                                 'positif' => $positif,
                                 'sembuh' => $sembuh,
-                                'meninggal' => $meninggal
-
+                                'meninggal' => $meninggal,
                             ]);
                     }
-                    return response(JsonFormat::setJson(["Successfully updated all province data!"], true, []), 200);
+
+                    return response(JsonFormat::setJson(['Successfully updated all province data!'], true, []), 200);
                 } else {
                     return response(JsonFormat::setJson([], false, [
                         'code' => 400,
-                        'message' => 'Failed to update province!'
+                        'message' => 'Failed to update province!',
                     ]), 400);
                 }
             } else {
                 return response(JsonFormat::setJson([], false, [
                     'code' => 401,
-                    'message' => 'Invalid API Key, Unauthorized Access!'
+                    'message' => 'Invalid API Key, Unauthorized Access!',
                 ]), 401);
             }
         } else {
             return response(JsonFormat::setJson([], false, [
                 'code' => 401,
-                'message' => 'Unauthorized Access!'
-            ]), 401);
-        }
-    }
-
-    public function store(Request $request)
-    {
-        if ($request->has('API_KEY')) {
-            $API_KEY = $request->get('API_KEY');
-            if ($API_KEY == 'API_KEY') {
-                $data = $this->validate($request, [
-                    'kode_provinsi' => 'required|unique:provinsi',
-                    'provinsi' => 'required|unique:provinsi',
-                    'positif' => 'required',
-                    'meninggal' => 'required',
-                    'sembuh' => 'required',
-                    'map_id' => "",
-                    'updated_at' => Carbon::now(),
-                    'created_at' => Carbon::now()
-                ]);
-                Province::create($data);
-                return (Province::first()->count() > 0) ?
-                    response(JsonFormat::setJson(['status' => 201, 'message' => 'Province created successfully!'], true, []), 201)
-                    :
-                    response(JsonFormat::setJson([], false, ['code' => 400, 'message' => 'Failed to create data!']));
-            } else {
-                return response(JsonFormat::setJson([], false, [
-                    'code' => 401,
-                    'message' => 'Invalid API Key, Unauthorized Access!'
-                ]), 401);
-            }
-        } else {
-            return response(JsonFormat::setJson([], false, [
-                'code' => 401,
-                'message' => 'Unauthorized Access!'
+                'message' => 'Unauthorized Access!',
             ]), 401);
         }
     }

@@ -1,7 +1,7 @@
 @extends('layouts.content')
 
 @section('content_title')
-Deskripsi
+@lang('home.description')
 @overwrite
 @section('content_body')
     @include('include.content.description.desc_body')

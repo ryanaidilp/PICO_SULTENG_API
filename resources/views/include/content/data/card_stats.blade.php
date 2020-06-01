@@ -3,12 +3,14 @@
 1/3
 @overwrite
 @section('card_api_title')
-Statistik
+@lang('home.local_stats')
 @overwrite
 @section('card_api_caption')
-Mengembalikan data situasi harian COVID-19 di Sulawesi Tengah sejak tanggal 22 Maret
-2020.
+@lang('home.local_stats_desc')
 @overwrite
 @section('card_api_url')
-https://banuacoders.com/api/pico/statistik
+{{ route('stats.index') }}
+@overwrite
+@section('card_api_url_v2')
+{{ route('v2.stats.index') }}
 @overwrite
