@@ -8,8 +8,6 @@ class CreateStatsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -18,19 +16,19 @@ class CreateStatsTable extends Migration
             $table->string('day');
             $table->string('date');
             $table->integer('positive');
-            $table->integer('cumulative_positive');
             $table->integer('recovered');
-            $table->integer('cumulative_recovered');
             $table->integer('death');
-            $table->integer('cumulative_death');
+            $table->integer('negative')->default(0);
+            $table->integer('new_ODP')->default(0);
+            $table->integer('new_PDP')->default(0);
+            $table->integer('finished_ODP')->default(0);
+            $table->integer('finished_PDP')->default(0);
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

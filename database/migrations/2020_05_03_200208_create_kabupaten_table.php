@@ -8,8 +8,6 @@ class CreateKabupatenTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -24,15 +22,12 @@ class CreateKabupatenTable extends Migration
             $table->integer('meninggal');
             $table->integer('selesai_pengawasan');
             $table->integer('selesai_pemantauan');
-
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
