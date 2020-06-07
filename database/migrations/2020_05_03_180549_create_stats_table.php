@@ -23,6 +23,9 @@ class CreateStatsTable extends Migration
             $table->integer('new_PDP')->default(0);
             $table->integer('finished_ODP')->default(0);
             $table->integer('finished_PDP')->default(0);
+            $table->double('Rt')->default(0);
+            $table->double('Rt_upper')->default(0);
+            $table->double('Rt_lower')->default(0);
             $table->timestamps();
         });
     }
