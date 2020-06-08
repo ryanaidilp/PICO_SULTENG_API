@@ -31,6 +31,8 @@ return [
     'percentage' => 'percentage',
     'percentage_param' => ':case_percentage',
     'daily_param' => 'daily_:case_case',
+    'daily' => 'daily',
+    'weekly' => 'weekly',
     'average' => 'average',
     'district_list' => 'district_list',
 

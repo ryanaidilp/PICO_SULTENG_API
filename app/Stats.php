@@ -27,6 +27,8 @@ class Stats extends Model
         'daily_positive_case',
         'daily_recovered_case',
         'daily_death_case',
+        'daily_ODP_case',
+        'daily_PDP_case',
     ];
     protected $casts = [
         'positive' => 'integer',
@@ -187,5 +189,15 @@ class Stats extends Model
     public function getDailyDeathCaseAttribute()
     {
         return JsonFormat::averageCount($this->cumulative_death, $this->day);
+    }
+
+    public function getDailyODPCaseAttribute()
+    {
+        return JsonFormat::averageCount($this->cumulative_ODP, $this->day);
+    }
+
+    public function getDailyPDPCaseAttribute()
+    {
+        return JsonFormat::averageCount($this->cumulative_PDP, $this->day);
     }
 }

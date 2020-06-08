@@ -31,7 +31,9 @@ return [
     'percentage' => 'persentase',
     'percentage_param' => 'persentase_:case',
     'daily_param' => 'kasus_:case_harian',
-    'average' => 'rata-rata',
+    'daily' => 'harian',
+    'weekly' => 'mingguan',
+    'average' => 'rata_rata',
     'district_list' => 'daftar_kabupaten',
 
     //Provinsi
