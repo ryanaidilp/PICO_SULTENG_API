@@ -88,9 +88,8 @@ By making this API, we expected that developers who need realtime data on the CO
     | Hospital by id | **/v2/rumahsakit/:id** | <https://banuacoders.com/api/pico/v2/rumahsakit/1> |
     | Statistics | **/v2/statistik** | <https://banuacoders.com/api/pico/v2/statistik> |
     | Statistics by day | **/v2/statistik/:day** | <https://banuacoders.com/api/pico/v2/statistik/12> |
-    | Latest Statistics | **/v2/statistik/terkini** | <https://banuacoders.com/api/pico/v2/statistik/12> |
     | National Statistics | **/v2/nasional** | <https://banuacoders.com/api/pico/v2/nasional> |
-    | Latest National Statistics | **/v2/nasional/terkini** | <https://banuacoders.com/api/pico/v2/nasional/terkini> |
+    | National Statistics by day | **/v2/nasional/:day** | <https://banuacoders.com/api/pico/v2/statistik/12> |
 
     >*) Notes :
     * Every endpoint has it own rate limit (maximum request/minute), you can see the detail in response header :
