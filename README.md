@@ -89,7 +89,7 @@ By making this API, we expected that developers who need realtime data on the CO
     | Statistics | **/v2/statistik** | <https://banuacoders.com/api/pico/v2/statistik> |
     | Statistics by day | **/v2/statistik/:day** | <https://banuacoders.com/api/pico/v2/statistik/12> |
     | National Statistics | **/v2/nasional** | <https://banuacoders.com/api/pico/v2/nasional> |
-    | National Statistics by day | **/v2/nasional/:day** | <https://banuacoders.com/api/pico/v2/statistik/12> |
+    | National Statistics by day | **/v2/nasional/:day** | <https://banuacoders.com/api/pico/v2/nasional/12> |
 
     >*) Notes :
     * Every endpoint has it own rate limit (maximum request/minute), you can see the detail in response header :
