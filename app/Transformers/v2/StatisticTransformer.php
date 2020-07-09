@@ -57,8 +57,8 @@ class StatisticTransformer extends Fractal\TransformerAbstract
             ];
             $data[$key][trans('general.links')] =
                 [trans('general.self') => [
-                    trans('general.full') => route('district.index').'/'.$history->district_id,
-                    trans('general.endpoint') => 'kabupaten/'.$history->district_id,
+                    trans('general.full') => route('v2.district.index') . '/' . $history->district_id,
+                    trans('general.endpoint') => 'v2/kabupaten/' . $history->district_id,
                 ]];
         }
 

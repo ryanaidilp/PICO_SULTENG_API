@@ -31,7 +31,7 @@ class HomeController extends Controller
         $districts = District::all();
         setlocale(LC_TIME, 'id_ID.UTF-8');
         Carbon::setLocale('id_ID.UTF-8');
-        $last_update = $province->updated_at->formatLocalized('%A, %d %B %Y');
+        $last_update = Stats::all()->last()->created_at->formatLocalized('%A, %d %B %Y');
         $count_data = [
             'sum_odp' => $districts->sum('ODP'),
             'sum_pdp' => $districts->sum('PDP'),
