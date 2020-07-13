@@ -34,6 +34,11 @@ return [
     'daily' => 'harian',
     'weekly' => 'mingguan',
     'average' => 'rata_rata',
+    'genders' => 'gender',
+    'age_group' => 'kelompok_usia',
+    'man' => 'laki_laki',
+    'woman' => 'perempuan',
+    'above_55' => 'atas_55',
     'district_list' => 'daftar_kabupaten',
 
     //Provinsi
@@ -45,14 +50,14 @@ return [
     //Kabupaten
     'district' => 'kabupaten',
 
-     //Hospital
-     'address' => 'alamat',
-     'telephone' => 'telepon',
-     'email' => 'email',
-     'longitude' => 'longitude',
-     'latitude' => 'latitude',
+    //Hospital
+    'address' => 'alamat',
+    'telephone' => 'telepon',
+    'email' => 'email',
+    'longitude' => 'longitude',
+    'latitude' => 'latitude',
 
-     //Posts
-     'posts' => 'posko',
+    //Posts
+    'posts' => 'posko',
     'phone' => 'no_hp',
 ];

@@ -3,6 +3,7 @@
 namespace App\Transformers\v2;
 
 use App\District;
+use App\Gender;
 use App\Stats;
 use League\Fractal;
 
@@ -61,7 +62,7 @@ class StatisticTransformer extends Fractal\TransformerAbstract
                     trans('general.endpoint') => 'v2/kabupaten/' . $history->district_id,
                 ]];
         }
-
+        $gender = Gender::where('day', $stats->day)->get()->first();
         return [
             trans('general.day') => $stats->day,
             trans('general.date') => $stats->date,
@@ -97,6 +98,54 @@ class StatisticTransformer extends Fractal\TransformerAbstract
                     trans('general.death') => $stats->death_percentage,
                     trans('general.recovered') => $stats->recovered_percentage,
                     trans('general.under_treatment') => $stats->under_treatment_percentage,
+                ],
+                trans('general.positive') => [
+                    trans('general.man') => [
+                        'total' => $gender->positive_male,
+                        trans('general.age_group') => [
+                            '0_14' => $gender->positive_male_0_14,
+                            '15_19' => $gender->positive_male_15_19,
+                            '20_24' => $gender->positive_male_20_24,
+                            '25_49' => $gender->positive_male_25_49,
+                            '50_54' => $gender->positive_male_50_54,
+                            trans('general.above_55') => $gender->positive_male_55
+                        ]
+                    ],
+                    trans('general.woman') => [
+                        'total' => $gender->positive_female,
+                        trans('general.age_group') => [
+                            '0_14' => $gender->positive_female_0_14,
+                            '15_19' => $gender->positive_female_15_19,
+                            '20_24' => $gender->positive_female_20_24,
+                            '25_49' => $gender->positive_female_25_49,
+                            '50_54' => $gender->positive_female_50_54,
+                            trans('general.above_55') => $gender->positive_female_55
+                        ]
+                    ]
+                ],
+                trans('general.PDP') => [
+                    trans('general.man') => [
+                        'total' => $gender->pdp_male,
+                        trans('general.age_group') => [
+                            '0_14' => $gender->pdp_male_0_14,
+                            '15_19' => $gender->pdp_male_15_19,
+                            '20_24' => $gender->pdp_male_20_24,
+                            '25_49' => $gender->pdp_male_25_49,
+                            '50_54' => $gender->pdp_male_50_54,
+                            trans('general.above_55') => $gender->positive_male_55
+                        ]
+                    ],
+                    trans('general.woman') => [
+                        'total' => $gender->pdp_female,
+                        trans('general.age_group') => [
+                            '0_14' => $gender->pdp_female_0_14,
+                            '15_19' => $gender->pdp_female_15_19,
+                            '20_24' => $gender->pdp_female_20_24,
+                            '25_49' => $gender->pdp_female_25_49,
+                            '50_54' => $gender->pdp_female_50_54,
+                            trans('general.above_55') => $gender->positive_female_55
+                        ]
+                    ]
                 ],
                 trans('general.average') => [
                     trans('general.daily') => [

@@ -34,6 +34,11 @@ return [
     'daily' => 'daily',
     'weekly' => 'weekly',
     'average' => 'average',
+    'genders' => 'genders',
+    'age_group' => 'age_group',
+    'man' => 'man',
+    'woman' => 'woman',
+    'above_55' => 'above_55',
     'district_list' => 'district_list',
 
     //Province
