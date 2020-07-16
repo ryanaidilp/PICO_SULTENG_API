@@ -42,6 +42,11 @@ class Stats extends Model
         return $this->hasMany(LocalCaseHistory::class, 'day', 'day');
     }
 
+    public function gender()
+    {
+        return $this->hasOne(Gender::class, 'day', 'day');
+    }
+
     public function getDeathPercentageAttribute()
     {
         return JsonFormat::percentageValue($this->cumulative_positive, $this->cumulative_death);

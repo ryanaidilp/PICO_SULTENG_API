@@ -62,7 +62,7 @@ class StatisticTransformer extends Fractal\TransformerAbstract
                     trans('general.endpoint') => 'v2/kabupaten/' . $history->district_id,
                 ]];
         }
-        $gender = Gender::where('day', $stats->day)->get()->first();
+        $gender = $stats->gender;
         return [
             trans('general.day') => $stats->day,
             trans('general.date') => $stats->date,

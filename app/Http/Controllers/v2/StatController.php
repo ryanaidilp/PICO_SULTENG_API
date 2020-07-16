@@ -31,7 +31,7 @@ class StatController extends Controller
         if ($request->has('lang')) {
             app('translator')->setLocale($request->input('lang'));
         }
-        $stats = Stats::all();
+        $stats = Stats::with(['histories', 'histories.district', 'gender'])->get();
         $resource = new Collection($stats, new StatisticTransformer());
         $data = $this->fractal->createData($resource)->toArray();
 
