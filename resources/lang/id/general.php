@@ -40,6 +40,7 @@ return [
     'woman' => 'perempuan',
     'above_55' => 'atas_55',
     'district_list' => 'daftar_kabupaten',
+    'infection_rate' => 'angka_reproduksi',
 
     //Provinsi
     'province_code' => 'kode_provinsi',

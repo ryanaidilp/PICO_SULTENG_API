@@ -40,6 +40,7 @@ return [
     'woman' => 'woman',
     'above_55' => 'above_55',
     'district_list' => 'district_list',
+    'infection_rate' => 'infection_rate',
 
     //Province
     'province_code' => 'province_code',

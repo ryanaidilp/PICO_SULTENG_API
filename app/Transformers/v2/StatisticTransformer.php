@@ -94,6 +94,11 @@ class StatisticTransformer extends Fractal\TransformerAbstract
                 trans('general.finished_param', ['case' => 'PDP']) => $stats->cumulative_finished_PDP,
             ],
             trans('general.recap') => [
+                trans('general.infection_rate') => [
+                    'rt_upper' => $stats->Rt_upper,
+                    'rt' => $stats->Rt,
+                    'rt_lower' => $stats->Rt_lower
+                ],
                 trans('general.percentage') => [
                     trans('general.death') => $stats->death_percentage,
                     trans('general.recovered') => $stats->recovered_percentage,
