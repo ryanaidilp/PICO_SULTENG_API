@@ -42,6 +42,11 @@ class Stats extends Model
         return $this->hasMany(LocalCaseHistory::class, 'day', 'day');
     }
 
+    public function testing()
+    {
+        return $this->hasOne(TestHistory::class, 'day', 'id');
+    }
+
     public function gender()
     {
         return $this->hasOne(Gender::class, 'day', 'day');

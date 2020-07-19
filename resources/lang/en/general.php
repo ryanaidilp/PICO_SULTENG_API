@@ -41,6 +41,13 @@ return [
     'above_55' => 'above_55',
     'district_list' => 'district_list',
     'infection_rate' => 'infection_rate',
+    'test' => 'test',
+    'pcr' => 'pcr',
+    'rdt' => 'rdt',
+    'invalid' => 'invalid',
+    'reactive' => 'reactive',
+    'process' => 'process',
+    'total' => 'total',
 
     //Province
     'province_code' => 'province_code',

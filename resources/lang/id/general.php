@@ -41,10 +41,17 @@ return [
     'above_55' => 'atas_55',
     'district_list' => 'daftar_kabupaten',
     'infection_rate' => 'angka_reproduksi',
+    'test' => 'tes',
+    'pcr' => 'pcr',
+    'rdt' => 'rdt',
+    'invalid' => 'invalid',
+    'reactive' => 'reaktif',
+    'process' => 'proses',
+    'total' => 'total',
 
     //Provinsi
     'province_code' => 'kode_provinsi',
-    'updated_at' => 'updated_at',
+    'updated_at' => 'terakhir_diperbarui',
     'province' => 'provinsi',
     'map_id' => 'map_id',
 

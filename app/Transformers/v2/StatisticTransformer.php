@@ -93,6 +93,24 @@ class StatisticTransformer extends Fractal\TransformerAbstract
                 trans('general.finished_param', ['case' => 'ODP']) => $stats->cumulative_finished_ODP,
                 trans('general.finished_param', ['case' => 'PDP']) => $stats->cumulative_finished_PDP,
             ],
+            trans('general.test') => [
+                trans('general.pcr') => [
+                    trans('general.updated_at') => $stats->testing->pcr_from,
+                    trans('general.total') => $stats->testing->pcr_total,
+                    trans('general.positive') => $stats->testing->pcr_positive,
+                    trans('general.negative') => $stats->testing->pcr_negative,
+                    trans('general.invalid') => $stats->testing->pcr_invalid,
+                    trans('general.process') => $stats->testing->pcr_process
+                ],
+                trans('general.rdt') => [
+                    trans('general.updated_at') => $stats->testing->rdt_from,
+                    trans('general.total') => $stats->testing->rdt_total,
+                    trans('general.reactive') => $stats->testing->rdt_positive,
+                    trans('general.negative') => $stats->testing->rdt_negative,
+                    trans('general.invalid') => $stats->testing->rdt_invalid,
+                    trans('general.process') => $stats->testing->rdt_process
+                ],
+            ],
             trans('general.recap') => [
                 trans('general.infection_rate') => [
                     'rt_upper' => $stats->Rt_upper,
@@ -106,7 +124,7 @@ class StatisticTransformer extends Fractal\TransformerAbstract
                 ],
                 trans('general.positive') => [
                     trans('general.man') => [
-                        'total' => $gender->positive_male,
+                        trans('general.total') => $gender->positive_male,
                         trans('general.age_group') => [
                             '0_14' => $gender->positive_male_0_14,
                             '15_19' => $gender->positive_male_15_19,
@@ -117,7 +135,7 @@ class StatisticTransformer extends Fractal\TransformerAbstract
                         ]
                     ],
                     trans('general.woman') => [
-                        'total' => $gender->positive_female,
+                        trans('general.total') => $gender->positive_female,
                         trans('general.age_group') => [
                             '0_14' => $gender->positive_female_0_14,
                             '15_19' => $gender->positive_female_15_19,
@@ -130,7 +148,7 @@ class StatisticTransformer extends Fractal\TransformerAbstract
                 ],
                 trans('general.PDP') => [
                     trans('general.man') => [
-                        'total' => $gender->pdp_male,
+                        trans('general.total') => $gender->pdp_male,
                         trans('general.age_group') => [
                             '0_14' => $gender->pdp_male_0_14,
                             '15_19' => $gender->pdp_male_15_19,
@@ -141,7 +159,7 @@ class StatisticTransformer extends Fractal\TransformerAbstract
                         ]
                     ],
                     trans('general.woman') => [
-                        'total' => $gender->pdp_female,
+                        trans('general.total') => $gender->pdp_female,
                         trans('general.age_group') => [
                             '0_14' => $gender->pdp_female_0_14,
                             '15_19' => $gender->pdp_female_15_19,
