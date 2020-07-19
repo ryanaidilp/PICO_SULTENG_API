@@ -558,11 +558,80 @@ By making this API, we expected that developers who need realtime data on the CO
           "selesai_ODP": 563,
           "selesai_PDP": 76
         },
+        "tes": {
+          "pcr":{
+            "total": 1773,
+            "positif" : 193,
+            "negatif": 1406,
+            "invalid": 0,
+            "proses": 174
+          },
+          "rdt":{
+            "total": 1773,
+            "reaktif" : 193,
+            "negatif": 1406,
+            "invalid": 0,
+            "proses": 174
+          }
+        },
         "rekap" : {
+          "angka_reproduksi" : {
+            "rt_upper": 1.98,
+            "rt": 1.2,
+            "rt_lower": 0.3
+          },
           "persentase": {
             "meninggal": 5.08,
             "sembuh": 18.64,
             "dalam_perawatan": 76.27
+          },
+          "positif": {
+            "laki_laki":{
+              "total":,
+              "kelompok_usia": {
+                "0_14": 2,
+                "15_19": 8,
+                "20_24": 30,
+                "25_49": 48,
+                "50_54": 37,
+                "atas_55": 10
+              }
+            },
+            "perempuan": {
+              "total":,
+              "kelompok_usia": {
+                "0_14": 2,
+                "15_19": 8,
+                "20_24": 30,
+                "25_49": 48,
+                "50_54": 37,
+                "atas_55": 10
+              }
+            }
+          },
+          "PDP": {
+            "laki_laki":{
+              "total":,
+              "kelompok_usia": {
+                "0_14": 2,
+                "15_19": 8,
+                "20_24": 30,
+                "25_49": 48,
+                "50_54": 37,
+                "atas_55": 10
+              }
+            },
+            "perempuan": {
+              "total":,
+              "kelompok_usia": {
+                "0_14": 2,
+                "15_19": 8,
+                "20_24": 30,
+                "25_49": 48,
+                "50_54": 37,
+                "atas_55": 10
+              }
+            }
           },
           "rata_rata": {
             "harian": {
