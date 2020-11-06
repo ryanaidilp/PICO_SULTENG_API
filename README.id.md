@@ -1,15 +1,15 @@
 # PICO SulTeng API
 
-[![License: MIT](https://img.shields.io/github/license/RyanAidilPratama/PICO_SULTENG_API?color=blue)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/RyanAidilPratama/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/RyanAidilPratama/PICO_SULTENG_API) [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/tree/master/tests)
+[![License: MIT](https://img.shields.io/github/license/ryanaidilp/PICO_SULTENG_API?color=blue)](https://github.com/ryanaidilp/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/ryanaidilp/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/ryanaidilp/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/ryanaidilp/PICO_SULTENG_API) [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/ryanaidilp/PICO_SULTENG_API/tree/master/tests)
 
-API untuk aplikasi [PICO](https://github.com/RyanAidilPratama/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
+API untuk aplikasi [PICO](https://github.com/ryanaidilp/PICO_SULTENG_Android) (Pusat Informasi COVID-19) Provinsi Sulawesi Tengah.
 Aplikasi ini dibangun menggunakan microframework [Lumen](https://lumen.laravel.com/).
 
 [![PICO API](https://i.ibb.co/sHzXVXw/image.png)](https://banuacoders.com/api/pico)
 
 ## Daftar Isi
 
-[![Lang : English](https://img.shields.io/badge/lang-en-yellow)](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/README.md)
+[![Lang : English](https://img.shields.io/badge/lang-en-yellow)](https://github.com/ryanaidilp/PICO_SULTENG_API/blob/master/README.md)
 
  > Kamu membaca versi Bahasa Indonesia dari README ini. Tekan badge untuk membaca README dalam bahasa yang berbeda.
 
@@ -594,7 +594,7 @@ To-do list:
 
 ## Lisensi
 
-Lisensi [MIT](https://github.com/RyanAidilPratama/PICO_SULTENG_API/blob/master/LICENSE)
+Lisensi [MIT](https://github.com/ryanaidilp/PICO_SULTENG_API/blob/master/LICENSE)
 
 Copyright (c) 2020 [Fajrian Aidil Pratama](https://www.linkedin.com/in/ryanaidilp/)
 

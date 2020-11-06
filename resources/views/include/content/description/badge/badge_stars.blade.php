@@ -1,4 +1,4 @@
 @extends('layouts.badge')
 @section('badge_url')
-https://img.shields.io/github/stars/RyanAidilPratama/PICO_SULTENG_API
+https://img.shields.io/github/stars/ryanaidilp/PICO_SULTENG_API
 @overwrite
