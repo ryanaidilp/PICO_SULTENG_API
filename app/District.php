@@ -20,6 +20,7 @@ class District extends Model
         'selesai_pengawasan' => 'integer',
         'selesai_pemantauan' => 'integer',
     ];
+    public $primaryKey = "no";
 
     public function posts()
     {

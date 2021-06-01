@@ -11,7 +11,7 @@ class LocalCaseHistory extends Model
 
     public function district()
     {
-        return $this->belongsTo(District::class, 'no');
+        return $this->belongsTo(District::class, 'district_id', 'no');
     }
 
     public function stat()

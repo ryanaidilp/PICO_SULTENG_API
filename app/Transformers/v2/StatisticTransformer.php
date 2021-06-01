@@ -14,7 +14,7 @@ class StatisticTransformer extends Fractal\TransformerAbstract
         $data = array();
         $histories = $stats->histories;
         foreach ($histories as $key => $history) {
-            $district = District::where('no', $history->district_id)->first();
+            $district = $history->district;
             $weekly_positive_avg = $history->day > 7 ? (float) number_format($history->whereBetween('day', [$stats->day - 7, $stats->day])->sum('positive') / 7, 2) : 0;
             $weekly_recovered_avg = $history->day > 7 ? (float) number_format($history->whereBetween('day', [$stats->day - 7, $stats->day])->sum('recovered') / 7, 2) : 0;
             $weekly_death_avg = $history->day > 7 ? (float) number_format($history->whereBetween('day', [$stats->day - 7, $stats->day])->sum('death') / 7, 2) : 0;
