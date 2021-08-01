@@ -12,10 +12,10 @@ bg-red-400
 bg-red-200
 @overwrite
 @section('local_case')
-{{ $stats[sizeof($stats) - 1]->cumulative_positive }}
+{{ $stats[sizeof($stats) - 1]trans('general.cumulative_param', ['case' => trans('general.positive')]) }}
 @overwrite
 @section('local_new_case')
-{{ $stats[sizeof($stats) - 1]->positive }}
+{{ $stats[sizeof($stats) - 1]trans('general.positive') }}
 @overwrite
 @section('nasional_case')
 {{ $count_data['ina_positive'] }}

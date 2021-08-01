@@ -9,82 +9,81 @@ Kasus COVID-19 berdasarkan Kabupaten
 <canvas id="positive_chart_district" class="chartjs" width="undefined" height="200"></canvas>
 <script>
     var barChartDistrict = new Chart(document.getElementById("positive_chart_district"), {
-        "type": "horizontalBar",
-        "data": {
-            "labels":[],
-            "datasets": [{
-                "data": [],
-                "label": "Positif",
-                "borderColor": "rgba(255, 99, 132, 0.2)",
-                "backgroundColor": "rgb(255, 99, 132)"
-            },{
-                "data": [],
-                "label": "Sembuh",
-                "borderColor": "rgba(75, 192, 192, 0.2)",
-                "backgroundColor": "rgb(75, 192, 192)"
-            },
-            {
-                "data": [],
-                "label": "Meninggal",
-                "borderColor": "rgba(255, 159, 64, 0.2)",
-                "backgroundColor": "rgb(255, 159, 64)"
-            },
-            {
-                "data": [],
-                "label": "ODP Aktif",
-                "borderColor": "rgba(54, 162, 235, 0.2)",
-                "backgroundColor": "rgb(54, 162, 235)"
-            },
-            {
-                "data": [],
-                "label": "PDP Aktif",
-                "borderColor": "rgba(185, 19, 114, 0.2)",
-                "backgroundColor": "rgb(185, 19, 114)"
-            },
-        ]},
-        "options": {
-            "plugins" :
-                {
-                    "datalabels" : {
-                        "display" : false
-                    }
-                },
-            "scales": {
+        "type": "horizontalBar"
+        , "data": {
+            "labels": []
+            , "datasets": [{
+                    "data": []
+                    , "label": "Positif"
+                    , "borderColor": "rgba(255, 99, 132, 0.2)"
+                    , "backgroundColor": "rgb(255, 99, 132)"
+                }, {
+                    "data": []
+                    , "label": "Sembuh"
+                    , "borderColor": "rgba(75, 192, 192, 0.2)"
+                    , "backgroundColor": "rgb(75, 192, 192)"
+                }
+                , {
+                    "data": []
+                    , "label": "Meninggal"
+                    , "borderColor": "rgba(255, 159, 64, 0.2)"
+                    , "backgroundColor": "rgb(255, 159, 64)"
+                }
+                , {
+                    "data": []
+                    , "label": "ODP Aktif"
+                    , "borderColor": "rgba(54, 162, 235, 0.2)"
+                    , "backgroundColor": "rgb(54, 162, 235)"
+                }
+                , {
+                    "data": []
+                    , "label": "PDP Aktif"
+                    , "borderColor": "rgba(185, 19, 114, 0.2)"
+                    , "backgroundColor": "rgb(185, 19, 114)"
+                }
+            , ]
+        }
+        , "options": {
+            "plugins": {
+                "datalabels": {
+                    "display": false
+                }
+            }
+            , "scales": {
                 "yAxes": [{
-                    "stacked": true,
-                    "gridLines": {
-                        "display":false,
-                        "color": "#fff",
-                        "zeroLineColor": "#fff",
-                        "zeroLineWidth": 0
+                    "stacked": true
+                    , "gridLines": {
+                        "display": false
+                        , "color": "#fff"
+                        , "zeroLineColor": "#fff"
+                        , "zeroLineWidth": 0
                     }
-                }],
-                "xAxes": [{
-                    "stacked" : true,
-                    "ticks": {
-                        "beginAtZero": true
-                    },
-                    "scaleLabel":{
-                        "display":false
-                    },
-                    "gridLines": {
-                    },
                 }]
+                , "xAxes": [{
+                    "stacked": true
+                    , "ticks": {
+                        "beginAtZero": true
+                    }
+                    , "scaleLabel": {
+                        "display": false
+                    }
+                    , "gridLines": {}
+                , }]
             }
         }
     });
     var updateBarChartDistrict = function() {
         $.ajax({
-            type: "GET",
-            url: "{{ route('district.index') }}",
-            dataType: "json",
-            success: function (response) {
+            type: "GET"
+            , url: "{{ route('regency.index') }}"
+            , dataType: "json"
+            , success: function(response) {
                 districtList = []
-                districtPositive =[]
-                districtRecovered =[]
-                districtDeath =[]
-                districtODP =[]
-                districtPDP =[]
+                districtPositive = []
+                districtRecovered = []
+                districtDeath = []
+                districtODP = []
+                districtPDP = []
                 for (let i = 0; i < response.data.length; i++) {
                     districtList.push(response.data[i].kabupaten)
                     districtPositive.push(response.data[i].positif)
@@ -106,7 +105,7 @@ Kasus COVID-19 berdasarkan Kabupaten
     updateBarChartDistrict()
     setInterval((() => {
         updateBarChartDistrict()
-    }),  5 * 60 * 1000)
+    }), 5 * 60 * 1000)
+
 </script>
 @overwrite
-
