@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,6 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        require_once base_path('app') . '/Helper/JsonFormat.php';
+        setlocale(LC_TIME, 'id_ID.UTF-8');
+        Carbon::setLocale('id_ID.UTF-8');
+        require_once base_path('app') . '/Helpers/ApiHelper.php';
     }
 }

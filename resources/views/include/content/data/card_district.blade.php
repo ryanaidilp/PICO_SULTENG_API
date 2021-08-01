@@ -9,8 +9,8 @@
 @lang('home.district_desc')
 @overwrite
 @section('card_api_url')
-{{ route('district.index') }}
+{{ route('regency.index') }}
 @overwrite
 @section('card_api_url_v2')
-{{ route('v2.district.index') }}
+{{ route('v2.regency.index') }}
 @overwrite

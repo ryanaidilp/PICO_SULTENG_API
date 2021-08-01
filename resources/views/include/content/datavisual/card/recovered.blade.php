@@ -12,10 +12,10 @@ bg-green-400
 bg-green-200
 @overwrite
 @section('local_case')
-{{ $stats[sizeof($stats) - 1]->cumulative_recovered }}
+{{ $stats[sizeof($stats) - 1]trans('general.cumulative_param', ['case' => trans('general.recovered')]) }}
 @overwrite
 @section('local_new_case')
-{{ $stats[sizeof($stats) - 1]->recovered }}
+{{ $stats[sizeof($stats) - 1]trans('general.recovered') }}
 @overwrite
 @section('nasional_case')
 {{ $count_data['ina_recovered'] }}

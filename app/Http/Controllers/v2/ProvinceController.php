@@ -2,53 +2,27 @@
 
 namespace App\Http\Controllers\v2;
 
+use App\Services\ProvinceService;
 use App\Http\Controllers\Controller;
-use App\Province;
-use App\Transformers\ProvinceTransformer;
-use Illuminate\Http\Request;
-use JsonFormat;
-use League\Fractal\Manager;
-use League\Fractal\Resource\Collection;
-use League\Fractal\Resource\Item;
+use App\Transformers\Api\v1\ProvinceTransformer;
 
 class ProvinceController extends Controller
 {
-    private $fractal;
 
-    public function __construct()
+    public function index()
     {
-        $this->middleware('throttle:40,2');
-        $this->fractal = new Manager();
-        app('translator')->setLocale('id');
+        $provinces = (new ProvinceService(ProvinceTransformer::class))->all();
+
+        return $this->response($provinces);
     }
 
-    public function index(Request $request)
+    public function show($code)
     {
-        if ($request->has('lang')) {
-            app('translator')->setLocale($request->input('lang'));
-        }
-        $provinces = Province::all();
-        $resource = new Collection($provinces, new ProvinceTransformer());
-        $data = $this->fractal->createData($resource)->toArray();
-
-        return response(array_replace(JsonFormat::setJson([], true, []), $data), 200);
-    }
-
-    public function show($code, Request $request)
-    {
-        if ($request->has('lang')) {
-            app('translator')->setLocale($request->input('lang'));
-        }
-        $province = Province::where('kode_provinsi', $code)->first();
+        $province = (new ProvinceService(ProvinceTransformer::class))->getById($code);
         if ($province != null) {
-            $province = new Item($province, new ProvinceTransformer());
-            $data = $this->fractal->createData($province)->toArray();
-
-            return response(array_replace(JsonFormat::setJson([], true, []), $data), 200)
-                ->header('Content-Type', 'application/json');
+            return $this->response($province);
         } else {
-            return response(JsonFormat::setJson([], false, ['code' => 404, 'message' => 'Province Not Found!']), 404)
-                ->header('Content-Type', 'application/json');
+            return $this->responseNotFound('Provinsi dengan kode ' . $code . ' tidak ditemukan.');;
         }
     }
 }
