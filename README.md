@@ -1,6 +1,8 @@
-﻿# PICO SulTeng API
+# PICO SulTeng API
 
-[![License: MIT](https://img.shields.io/github/license/ryanaidilp/PICO_SULTENG_API?color=blue)](https://github.com/ryanaidilp/PICO_SULTENG_API/blob/master/LICENSE) ![Commits/month](https://img.shields.io/github/commit-activity/m/ryanaidilp/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/ryanaidilp/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/ryanaidilp/PICO_SULTENG_API) [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/ryanaidilp/PICO_SULTENG_API/tree/master/tests)
+[![License: MIT](https://img.shields.io/github/license/ryanaidilp/PICO_SULTENG_API?color=blue)](https://github.com/ryanaidilp/PICO_SULTENG_API/blob/master/LICENSE) 
+
+![Commits/month](https://img.shields.io/github/commit-activity/m/ryanaidilp/PICO_SULTENG_API) ![Stars](https://img.shields.io/github/stars/ryanaidilp/PICO_SULTENG_API) [![Website: up](https://img.shields.io/website?url=https%3A%2F%2Fbanuacoders.com%2Fapi%2Fpico)](https://banuacoders.com/api/pico) ![Last Commit](https://img.shields.io/github/last-commit/ryanaidilp/PICO_SULTENG_API) [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/ryanaidilp/PICO_SULTENG_API/tree/master/tests)
 
 API for [PICO](https://github.com/ryanaidilp/PICO_SULTENG_Android) (*Pusat Informasi COVID-19*/COVID-19 Information Center) of Central Sulawesi. This API build using microframework [Lumen](https://lumen.laravel.com).
 
@@ -26,15 +28,15 @@ You are reading the English version of this README. Click on the language badge 
 
 * ### Data for COVID-19 situation in Central Sulawesi
 
-  * [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
-  * [Health Department of Central Sulawesi](https://dinkes.sultengprov.go.id)
-  * [Detexi](https://corona.detexi.id)
+  + [Website COVID-19 Provinsi Sulawesi Tengah](http://corona.sultengprov.go.id)
+  + [Health Department of Central Sulawesi](https://dinkes.sultengprov.go.id)
+  + [Detexi](https://corona.detexi.id)
 
 * ### Data for COVID-19 situation in Indonesia
 
-  * [Kawal Corona](https://kawalcorona.com/api) : Data for COVID-19 cases by Province.
-  * [Kawal COVID-19](https://kawalcovid19.id) : Data for COVID-19 in Indonesia.
-  * [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Statistical data on the COVID-19 situation in Indonesia.
+  + [Kawal Corona](https://kawalcorona.com/api) : Data for COVID-19 cases by Province.
+  + [Kawal COVID-19](https://kawalcovid19.id) : Data for COVID-19 in Indonesia.
+  + [INACOVID-19](https://bnpb-inacovid19.hub.arcgis.com/) : Statistical data on the COVID-19 situation in Indonesia.
 
 ## General info
 
@@ -51,6 +53,7 @@ By making this API, we expected that developers who need realtime data on the CO
   | 1       |   baseurl/{endpoint}   |
   | 2       |   baseurl/v2/{endpoint}   |
   
+
 ## Build With
 
 * [Lumen](https://lumen.laravel.com/) - version 7.0.2
@@ -60,10 +63,9 @@ By making this API, we expected that developers who need realtime data on the CO
 
 * ### API
 
-  * Access the API via <https://banuacoders.com/api/pico> then add the endpoint you want to hit. Here's an example of using endpoints in url:
+  + Access the API via <https://banuacoders.com/api/pico> then add the endpoint you want to hit. Here's an example of using endpoints in url:
 
-  * **Version 1**
-
+  + **Version 1**
     | Data | Endpoint | URL |
     |------|----------|-----|
     | Posts | **/posko** | <https://banuacoders.com/api/pico/posko> |
@@ -75,8 +77,8 @@ By making this API, we expected that developers who need realtime data on the CO
     | Hospital by id | **/rumahsakit/:id** | <https://banuacoders.com/api/pico/rumahsakit/1> |
     | Statistics | **/statistik** | <https://banuacoders.com/api/pico/statistik> |
     | Statistics by day | **/statistik/:day** | <https://banuacoders.com/api/pico/statistik/12> |
-  * **Version 2**
 
+  + **Version 2**
     | Data | Endpoint | URL |
     |------|----------|-----|
     | Posts | **/v2/posko** | <https://banuacoders.com/api/pico/v2/posko> |
@@ -92,128 +94,112 @@ By making this API, we expected that developers who need realtime data on the CO
     | National Statistics by day | **/v2/nasional/:day** | <https://banuacoders.com/api/pico/v2/nasional/12> |
 
     >*) Notes :
-    * Every endpoint has it own rate limit (maximum request/minute), you can see the detail in response header :
+
+    - Every endpoint has it own rate limit (maximum request/minute), you can see the detail in response header :
       * **X-RateLimit-Limit : 20** (Maximum amount request)
       * **X-RateLimit-Remaining: 0** (Request count left before limit)
       * **Retry-After: 80** (Amount of time you need to wait before doing another request)
-    * Rate limit for each endpoint :
+    - Rate limit for each endpoint :
       * province/*provinsi* : 40 request/minute
       * other : 20 request/minute
-    * In version 2, you can add an optional **query param** (lang) to change the language of the data. Supported language so far :
+    - In version 2, you can add an optional **query param** (lang) to change the language of the data. Supported language so far :
       * **id/no param** : Indonesian/Bahasa Indonesia (default)
       * **en** : English
 
-  &nbsp;
+  &nbsp; 
 
 * ### Repository
 
-  * Clone this repository to your local machine.
-  * Open terminal / CMD then go to the **root directory** of the clone results.
-  * Run this command `cp .env.example .env`
-  * Edit the contents of the file **.env** and fill it in according to your local configuration.
-  * To make sure **Throttle Request/Rate Limiter** is working properly, change your `CACHE_DRIVER` in `.env` file to `CACHE_DRIVER=file`.
-  * Run the `composer update` /`composer install` command to install the required *dependencies*.
-  * After the dependency installation process is complete, run the `php artisan key:generate` command to generate **APP_KEY**.
-  * Run `php artisan migrate --seed` command to migrate and seed your database.
-  * Make sure your device are connected to the internet, because the seeder using data from internet to seed your local database.
-  * After that, run the `php artisan serve` command to run the application.
-  * If it is successful and there are no errors in the configuration, the application will run and can be accessed via **127.0.0.1:8000** or **localhost:8000**.
+  + Clone this repository to your local machine.
+  + Open terminal / CMD then go to the **root directory** of the clone results.
+  + Run this command `cp .env.example .env`
+  + Edit the contents of the file **.env** and fill it in according to your local configuration.
+  + To make sure **Throttle Request/Rate Limiter** is working properly, change your `CACHE_DRIVER` in `.env` file to `CACHE_DRIVER=file`.
+  + Run the `composer update` /`composer install` command to install the required *dependencies*.
+  + After the dependency installation process is complete, run the `php artisan key:generate` command to generate **APP_KEY**.
+  + Run `php artisan migrate --seed` command to migrate and seed your database.
+  + Make sure your device are connected to the internet, because the seeder using data from internet to seed your local database.
+  + After that, run the `php artisan serve` command to run the application.
+  + If it is successful and there are no errors in the configuration, the application will run and can be accessed via **127.0.0.1:8000** or **localhost:8000**.
 
 ## Response Examples
 
-* ### **POSTS DATA**
+* ### **TASK FORCE DATA**
 
-  * JSON Example (v1)/{"posts_object"} :
+  + JSON Example (v1)/{"task_force_object"} :
+    
 
-    ```json
+```json
     {
-        "no" : 1,
-        "nama": "Banggai",
-        "posko" :
+        "kabupaten":"Banggai Kepulauan",
+        "kontak":
         [
             {
-                "no": 1,
-                "nama": "dr. Anang (Kepala Dinkes Banggai)",
-                "no_hp":
-                [
-                        "081xxxxxxx"
-                ]
-            },
-            {
-                "no":  2,
-                "nama" : "Ibu Nur Datu Adam (Jubir)",
-                "no_hp":
-                [
-                    "085xxxxxxx"
-                ]
+                "jenis_kontak":"Telepon",
+                "kontak":"082292105885",
+                "nama":"Arabia Tamrin",
+                "label":"Telpon",
+                "prefix":"tel:"
             }
         ]
     }
-    ```
+```
 
-  * JSON Example (v2)/{"posts_object"} :
+  + JSON Example (v2)/{"task_force_object"} :
+    
 
-    ```json
+```json
     {
-        "no" : 1,
-        "name": "Banggai",
-        "post" :
+        "kabupaten":"Banggai Kepulauan",
+        "kontak":
         [
             {
-                "no": 1,
-                "name": "dr. Anang (Kepala Dinkes Banggai)",
-                "phone_number":
-                [
-                        "081xxxxxxx"
-                ]
-            },
-            {
-                "no":  2,
-                "name" : "Ibu Nur Datu Adam (Jubir)",
-                "phone_number":
-                [
-                    "085xxxxxxx"
-                ]
+                "jenis_kontak":"Telepon",
+                "kontak":"082292105885",
+                "nama":"Arabia Tamrin",
+                "label":"Telpon",
+                "prefix":"tel:"
             }
         ]
     }
-    ```
+```
 
-  * **GET /posko** (v1)
-
+  + **GET /posko** (v1)
     >Returning data of the COVID-19 Task Force Command Post in Central Sulawesi.
 
-    * **URL Params**
+    - **URL Params**
       * None (v1)
       * *Optional* : `?lang=[string`] (v2)
-    * **Data Params**
+    - **Data Params**
       * None
-    * **Headers**
+    - **Headers**
       * Content-Type: application/json
-    * **Success Response :**
+    - **Success Response :**
       * **Code :**   200
       * **Content :**
+        
 
-        ```json
+```json
         {
             "success": true,
             "errors": [],
             "data":
             [
-                {"posts_object"},
-                {"posts_object"},
-                {"posts_object"},
+                {"task_force_object"},
+                {"task_force_object"},
+                {"task_force_object"},
             ]
         }
-        ```
+```
 
 * ### **DISTRICT DATA**
 
-  * JSON Example (v1) /{"district_object"} :
+  + JSON Example (v1) /{"district_object"} :
+    
 
-    ```json
+```json
     {
-        "no": 5,
+        "no": 7205,
         "kabupaten": "Donggala",
         "ODP": 6,
         "PDP": 0,
@@ -227,13 +213,14 @@ By making this API, we expected that developers who need realtime data on the CO
         "dalam_pemantauan": 0,
         "updated_at": "2020-04-29T17:00:00.000000Z"
     }
-    ```
+```
 
-  * JSON Example (v2) /{"district_object"} :
+  + JSON Example (v2) /{"district_object"} :
+    
 
-    ```json
+```json
     {
-        "no": 5,
+        "no": 7205,
         "kabupaten": "Donggala",
         "updated_at": "2020-04-29T17:00:00.000000Z",
         "positif": 0,
@@ -248,24 +235,24 @@ By making this API, we expected that developers who need realtime data on the CO
         "dalam_pengawasan": 6,
         "rasio_kematian": 6,
     }
-    ```
+```
 
-  * **GET /kabupaten**
-
+  + **GET /kabupaten**
     > Returns data on COVID-19 cases in all districts / cities in Central Sulawesi.
 
-    * **URL Params**
+    - **URL Params**
       * None (v1)
       * *Optional* : `?lang=[string]` (v2)
-    * **Data Params**
+    - **Data Params**
       * None
-    * **Headers**
+    - **Headers**
       * Content-Type : application/json
-    * **Success Response :**
+    - **Success Response :**
       * **Code :**   200
       * **Content :**
+        
 
-        ```json
+```json
         {
             "success": true,
             "errors": [],
@@ -276,36 +263,35 @@ By making this API, we expected that developers who need realtime data on the CO
                 {"district_object"},
             ]
         }
-        ```
+```
 
-  * **GET /kabupaten/:id**
-
+  + **GET /kabupaten/:id**
     > Returns data on COVID-19 cases in selected district.
 
-    * **URL Params**
+    - **URL Params**
       * *Required:* `id=[integer]`
       * *Optional* : `?lang=[string`] (v2)
-    * **Data Params**
+    - **Data Params**
       * None
-    * **Headers**
+    - **Headers**
       * Content-Type : application/json
-    * **Success Response:**
+    - **Success Response:**
       * **Code :**  200
       * **Content :**
 
-        ```json
-        {
-            "success": true,
-            "errors": [],
-            "data": {"district_object"}
-        }
-        ```
+```json
+{
+    "success": true,
+    "errors": [],
+    "data": {"district_object"}
+}
+```
 
-    * **Error Response:**
-      * **Code :** 404
-      * **Content :**  
+* **Error Response:**
+  + **Code :** 404
+  + **Content :**  
 
-        ```json
+```json
         {
            "success": false,
             "errors" :
@@ -315,15 +301,15 @@ By making this API, we expected that developers who need realtime data on the CO
              },
              "data": []
         }
-        ```
+```
 
 * ### **PROVINCE DATA**
-
     > The **"map_id"** property is used on [AnyChart-Android](https://github.com/AnyChart/AnyChart-Android).
 
-  * JSON Example (v1)/{"province_object"} :
+  + JSON Example (v1)/{"province_object"} :
+    
 
-    ```json
+```json
     {
         "kode_provinsi":31,
         "provinsi":"DKI Jakarta",
@@ -333,14 +319,15 @@ By making this API, we expected that developers who need realtime data on the CO
         "map_id":"ID.JR",
         "updated_at": "2020-04-29T17:00:00.000000Z"
     }
-    ```
+```
 
-  * JSON Example (v2)/{"province_object"} :
+  + JSON Example (v2)/{"province_object"} :
+    
 
-    ```json
+```json
     {
         "kode_provinsi":31,
-        "updated_at": "2020-04-29T17:00:00.000000Z"
+        "updated_at": "2020-04-29T17:00:00.000000Z",
         "provinsi":"DKI Jakarta",
         "positif":515,
         "dalam_perawatan":444,
@@ -349,24 +336,24 @@ By making this API, we expected that developers who need realtime data on the CO
         "rasio_kematian":5,
         "map_id":"ID.JR",
     }
-    ```
+```
 
-  * **GET /provinsi**
-
+  + **GET /provinsi**
     > Returns data on COVID-19 cases in all provinces throughout Indonesia.
 
-    * **URL Params**
+    - **URL Params**
       * None (v1)
       * *Optional* : `?lang=[string`] (v2)
-    * **Data Params**
+    - **Data Params**
       * None
-    * **Headers**
+    - **Headers**
       * Content-Type: application/json
-    * **Success Response :**
+    - **Success Response :**
       * **Code :** 200
       * **Content :**
+        
 
-        ```json
+```json
         {
             "success": true,
             "errors": [],
@@ -377,36 +364,37 @@ By making this API, we expected that developers who need realtime data on the CO
                 {"province_object"},
             ],
         }
-        ```
+```
 
-  * **GET /provinsi/:code**
-
+  + **GET /provinsi/:code**
     > Returns data on COVID-19 cases in selected province.
 
-    * **URL Params**
+    - **URL Params**
       * *Required:* `code=[integer]`
       * *Optional* : `?lang=[string`] (v2)
-    * **Data Params**
+    - **Data Params**
       * None
-    * **Headers**
+    - **Headers**
       * Content-Type: application/json
-    * **Success Response:**
+    - **Success Response:**
       * **Code :**  200
       * **Content :**
+        
 
-        ```json
+```json
         {
             "success": true,
             "errors": [],
             "data": {"province_object"},
         }
-        ```
+```
 
-    * **Error Response:**
-      * **Code :** 404
-      * **Content :**  
+* **Error Response:**
+  + **Code :** 404
+  + **Content :**  
+        
 
-        ```json
+```json
         {
             "success": false,
             "errors":
@@ -416,40 +404,61 @@ By making this API, we expected that developers who need realtime data on the CO
             },
             "data": [],
         }
-        ```
+```
 
 * ### **COVID-19 REFERRAL HOSPITAL DATA**
 
-  * JSON Example/{"hospital_object"} :
+  + JSON Example/{"hospital_object"} :
+    
 
-    ```json
+```json
     {
-        "no": 1,
-        "nama": "RSUD Undata Palu",
-        "alamat": "Jl. R. E. Martadinata, Tondo Kecamatan Mantikulore 94119",
-        "telepon": "04514908020",
-        "email": "rsundata@yahoo.com",
-        "longitude": "119.88185800",
-        "latitude": "-0.85783860"
+        "no":"7271014",
+        "nama":"RS Umum Daerah Undata Palu",
+        "longitude":119.881858,
+        "latitude":-0.8578386,
+        "jumlah_igd":0,
+        "terakhir_diperbarui":"2021-07-24T01:58:08.000000Z",
+        "kontak":
+        [
+            {
+                "jenis_kontak":"Telepon",
+                "kontak":"0451421270",
+                "prefix":"tel:",
+                "label":"Telpon"
+            }
+            
+        ],
+        "tempat_tidur":
+        [
+            {
+                "jenis_tempat_tidur":"IGD Khusus Covid",
+                "total":4,
+                "tersedia":0,
+                "terisi":4,
+                "antrian":0,
+                "terakhir_diperbarui":"2021-07-24T01:58:08.000000Z"
+            },
+        ]
     }
-    ```
+```
 
-  * **GET /rumahsakit**
-
+  + **GET /rumahsakit**
     > Returns data from the COVID-19 referral hospital in Central Sulawesi.
 
-    * **URL Params**
+    - **URL Params**
       * None
       * *Optional* : `?lang=[string`] (v2)
-    * **Data Params**
+    - **Data Params**
       * None
-    * **Headers**
+    - **Headers**
       * Content-Type: application/json
-    * **Success Response :**
+    - **Success Response :**
       * **Code :**  200
       * **Content :**
+        
 
-        ```json
+```json
         {
           "success": true,
           "errors": [],
@@ -460,35 +469,37 @@ By making this API, we expected that developers who need realtime data on the CO
             {"hospital_object"},
           ],
         }
-        ```
+```
 
-  * **GET /rumahsakit/:id**
+  + **GET /rumahsakit/:id**
      > Returns Hospital data based on selected number/id.
 
-    * **URL Params**
+    - **URL Params**
       * *Required:* `id=[integer]`
       * *Optional* : `?lang=[string`] (v2)
-    * **Data Params**
+    - **Data Params**
       * None
-    * **Heders**
+    - **Heders**
       * Content-Type: application/json
-    * **Success Response:**
+    - **Success Response:**
       * **Code :**   200
       * **Content :**
+        
 
-        ```json
+```json
         {
             "success": true,
             "errors": [],
             "data": {"hospital_object"},
         }
-        ```
+```
 
-    * **Error Response:**
-      * **Code :** 404
-      * **Content :**  
+  + **Error Response:**
+    - **Code :** 404
+    - **Content :**  
+        
 
-        ```json
+```json
         {
             "success": false,
             "errors":
@@ -498,18 +509,19 @@ By making this API, we expected that developers who need realtime data on the CO
             },
             "data" :  [],
         }
-        ```
+```
 
 * ### **STATISTICS**
 
   Returns daily data of COVID-19 outbreak in Central Sulawesi since March 22, 2020.
 
-  * JSON Example (v1)/{"stats_object"} :
+  + JSON Example (v1)/{"stats_object"} :
+    
 
-    ```json
+```json
     {
         "day" : 42,
-        "date" : "2 May 2020",
+        "date" : "2020-05-02T16:00:00.000000Z",
         "positive" : 12,
         "cumulative_positive" : 59,
         "recovered" : 0,
@@ -519,18 +531,16 @@ By making this API, we expected that developers who need realtime data on the CO
         "death_percentage" : 5.08,
         "recovered_percentage" : 18.64,
         "under_treatment_percentage" : 76.27,
-        "daily_positive_case" : 1.4,
-        "daily_recovered_case" : 0.26,
-        "daily_death_case" : 0.07
     }
-    ```
+```
 
-  * JSON Example (v2)/{"stats_object"} :
+  + JSON Example (v2)/{"stats_object"} :
+    
 
-    ```json
+```json
     {
         "hari_ke" : 42,
-        "tanggal" : "2 May 2020",
+        "tanggal" : "2020-05-02T16:00:00.000000Z",
         "kasus_baru" : {
           "positif": 0,
           "sembuh": 0,
@@ -558,22 +568,7 @@ By making this API, we expected that developers who need realtime data on the CO
           "selesai_ODP": 563,
           "selesai_PDP": 76
         },
-        "tes": {
-          "pcr":{
-            "total": 1773,
-            "positif" : 193,
-            "negatif": 1406,
-            "invalid": 0,
-            "proses": 174
-          },
-          "rdt":{
-            "total": 1773,
-            "reaktif" : 193,
-            "negatif": 1406,
-            "invalid": 0,
-            "proses": 174
-          }
-        },
+      
         "rekap" : {
           "angka_reproduksi" : {
             "rt_upper": 1.98,
@@ -585,91 +580,26 @@ By making this API, we expected that developers who need realtime data on the CO
             "sembuh": 18.64,
             "dalam_perawatan": 76.27
           },
-          "positif": {
-            "laki_laki":{
-              "total":,
-              "kelompok_usia": {
-                "0_14": 2,
-                "15_19": 8,
-                "20_24": 30,
-                "25_49": 48,
-                "50_54": 37,
-                "atas_55": 10
-              }
-            },
-            "perempuan": {
-              "total":,
-              "kelompok_usia": {
-                "0_14": 2,
-                "15_19": 8,
-                "20_24": 30,
-                "25_49": 48,
-                "50_54": 37,
-                "atas_55": 10
-              }
-            }
-          },
-          "PDP": {
-            "laki_laki":{
-              "total":,
-              "kelompok_usia": {
-                "0_14": 2,
-                "15_19": 8,
-                "20_24": 30,
-                "25_49": 48,
-                "50_54": 37,
-                "atas_55": 10
-              }
-            },
-            "perempuan": {
-              "total":,
-              "kelompok_usia": {
-                "0_14": 2,
-                "15_19": 8,
-                "20_24": 30,
-                "25_49": 48,
-                "50_54": 37,
-                "atas_55": 10
-              }
-            }
-          },
-          "rata_rata": {
-            "harian": {
-              "positif": 1.37,
-              "sembuh": 0.26,
-              "meninggal": 0.07,
-              "ODP": 2.13,
-              "PDP": 1.03
-            },
-            "mingguan": {
-              "positif": 1.37,
-              "sembuh": 0.26,
-              "meninggal": 0.07,
-              "ODP": 2.13,
-              "PDP": 1.03
-            }
-          }
         },
-        "daftar_kabupaten":[{"district_object"}]
     }
-    ```
+```
 
-  * **GET /statistik**
-
+  + **GET /statistik**
     > Returns statistics of COVID-19 outbreak in Central Sulawesi.
 
-    * **URL Params**
+    - **URL Params**
       * None (v1)
       * *Optional* : `?lang=[string`] (v2)
-    * **Data Params**
+    - **Data Params**
       * None
-    * **Headers**
+    - **Headers**
       * Content-Type: application/json
-    * **Success Response :**
+    - **Success Response :**
       * **Code :**  200
       * **Content :**
+        
 
-        ```json
+```json
         {
           "success": true,
           "errors": [],
@@ -680,35 +610,39 @@ By making this API, we expected that developers who need realtime data on the CO
             {"stats_object"},
           ],
         }
-        ```
+```
 
-  * **GET /statistik/:day**
+  + **GET /statistik/:day**
      > Returns statistics of COVID-19 outbreak in Central Sulawesi on selected day.
 
-    * **URL Params**
+    - **URL Params**
       * *Required:* `day=[integer]`
       * *Optional* : `?lang=[string`] (v2)
-    * **Data Params**
+    - **Data Params**
       * None
-    * **Heders**
+    - **Heders**
       * Content-Type: application/json
-    * **Success Response:**
+    - **Success Response:**
       * **Code :**   200
       * **Content :**
+        
 
-        ```json
+```json
         {
             "success": true,
             "errors": [],
             "data": {"stats_object"},
         }
-        ```
+```
 
-    * **Error Response:**
-      * **Code :** 404
-      * **Content :**  
+  + **Error Response:**
+    - **Code :** 404
+    - **Content :**  
+        
 
-        ```json
+  
+
+```json
         {
             "success": false,
             "errors":
@@ -718,7 +652,7 @@ By making this API, we expected that developers who need realtime data on the CO
             },
             "data" :  [],
         }
-        ```
+  ```
 
 ## Features
 
