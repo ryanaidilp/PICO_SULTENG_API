@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateGendersTable extends Migration
+class CreateProvinceGenderCasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateGendersTable extends Migration
      */
     public function up()
     {
-        Schema::create('genders', function (Blueprint $table) {
-            $table->foreignId('day')->references('id')->on('stats');
+        Schema::create('province_gender_cases', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('day')->constrained('national_cases', 'id');
+            $table->integer('province_id');
             $table->integer('positive_male');
             $table->integer('positive_female');
             $table->integer('pdp_male');
@@ -43,6 +45,7 @@ class CreateGendersTable extends Migration
             $table->integer('pdp_female_25_49');
             $table->integer('pdp_female_50_54');
             $table->integer('pdp_female_55');
+            $table->foreign('province_id')->references('id')->on('provinces');
             $table->timestamps();
         });
     }
@@ -54,6 +57,6 @@ class CreateGendersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genders');
+        Schema::dropIfExists('province_gender_cases');
     }
 }
