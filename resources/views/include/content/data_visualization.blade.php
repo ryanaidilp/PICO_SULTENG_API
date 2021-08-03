@@ -24,12 +24,12 @@ Situasi COVID-19 di Sulawesi Tengah
 @include('include.content.datavisual.chart.pie.combined')
 @include('include.content.datavisual.chart.bar.district_bar')
 
-@include('include.content.datavisual.map.lokal.chart')
-@include('include.content.datavisual.map.nasional.chart')
+{{-- @include('include.content.datavisual.map.lokal.chart')
+@include('include.content.datavisual.map.nasional.chart')  --}}
 
-@include('include.content.datavisual.table.province')
+{{-- @include('include.content.datavisual.table.province')
 @include('include.content.datavisual.table.district')
 @include('include.content.datavisual.table.hospital')
-@include('include.content.datavisual.table.posts')
+@include('include.content.datavisual.table.posts')  --}}
 
 @overwrite

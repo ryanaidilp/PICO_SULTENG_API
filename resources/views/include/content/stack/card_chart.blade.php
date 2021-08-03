@@ -6,14 +6,14 @@ img-bw
 1/2
 @overwrite
 @section('card_title')
-DATABASE
+PROGRAMMING LANGUAGE
 @overwrite
 @section('card_caption')
-Chart JS
+PHP
 @overwrite
 @section('card_url')
-https://chartjs.org
+https://php.net
 @overwrite
 @section('card_image')
-https://i.ibb.co/GFRT6Fm/charts.png
+https://i.ibb.co/ZxHxpVc/lumen.png
 @overwrite

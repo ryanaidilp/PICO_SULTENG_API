@@ -64,8 +64,21 @@ return [
     'email' => 'email',
     'longitude' => 'longitude',
     'latitude' => 'latitude',
+    'igd_count' => 'igd_count',
 
     //Posts
     'posts' => 'post',
     'phone' => 'phone_number',
+
+    'contacts' => 'contacts',
+    'contact' => 'contact',
+    'contact_type' => 'contact_type',
+    'label' => 'label',
+    'prefix' => 'prefix',
+    'beds' => 'beds',
+    'bed_type' => 'bed_type',
+    'total' => 'total',
+    'available' => 'available',
+    'occupied' => 'occupied',
+    'queue' => 'queue',
 ];

@@ -1,5 +1,4 @@
-<div class="w-full text-xl text-gray-800 px-6 my-4">
-    Terakhir diperbarui : <span
-        class="font-bold ">{{ $count_data['last_update'] . " " .$province->updated_at->format('H:i:s') }}
-        WITA</span>
+<div class="w-full px-6 my-4 text-xl text-gray-800">
+    Terakhir diperbarui : <span class="font-bold ">{{ $count_data['last_update'] }}
+    </span>
 </div>

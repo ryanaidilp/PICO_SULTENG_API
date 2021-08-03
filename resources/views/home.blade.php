@@ -15,10 +15,10 @@
 @include('include.content.tech_stack')
 @include('include.content.description')
 @include('include.content.data')
-@include('include.content.data_visualization')
+{{-- @include('include.content.data_visualization')  --}}
 @include('include.content.footer')
 @endsection
-@include('include.settings.map.config')
-@include('include.settings.table.config')
-@include('include.settings.analytics')
+{{-- @include('include.settings.map.config')  --}}
+{{-- @include('include.settings.table.config')  --}}
+{{-- @include('include.settings.analytics')  --}}
 @include('include.settings.updater')

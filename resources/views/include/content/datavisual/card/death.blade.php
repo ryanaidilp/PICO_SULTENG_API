@@ -12,10 +12,10 @@ bg-orange-400
 bg-orange-200
 @overwrite
 @section('local_case')
-{{ $stats[sizeof($stats) - 1]->cumulative_death }}
+{{ $stats[sizeof($stats) - 1]trans('general.cumulative_param', ['case' => trans('general.positive')]) }}
 @overwrite
 @section('local_new_case')
-{{ $stats[sizeof($stats) - 1]->death }}
+{{ $stats[sizeof($stats) - 1]trans('general.death') }}
 @overwrite
 @section('nasional_case')
 {{ $count_data['ina_death'] }}

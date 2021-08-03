@@ -64,8 +64,21 @@ return [
     'email' => 'email',
     'longitude' => 'longitude',
     'latitude' => 'latitude',
+    'igd_count' => 'jumlah_igd',
 
     //Posts
     'posts' => 'posko',
     'phone' => 'no_hp',
+
+    'contacts' => 'kontak',
+    'contact' => 'kontak',
+    'contact_type' => 'jenis_kontak',
+    'label' => 'label',
+    'prefix' => 'prefix',
+    'beds' => 'tempat_tidur',
+    'bed_type' => 'jenis_tempat_tidur',
+    'total' => 'total',
+    'available' => 'tersedia',
+    'occupied' => 'terisi',
+    'queue' => 'antrian',
 ];

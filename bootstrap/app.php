@@ -72,17 +72,15 @@ $app->configure('app');
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
-
-$app->routeMiddleware([
-    'throttle' => App\Http\Middleware\ThrottleRequests::class
+$app->middleware([
+    // App\Http\Middleware\ExampleMiddleware::class
+    App\Http\Middleware\CheckLocale::class
 ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    // 'auth' => App\Http\Middleware\Authenticate::class,
+    'throttle' => App\Http\Middleware\ThrottleRequests::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -98,7 +96,7 @@ $app->routeMiddleware([
 $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
-$app->register(\Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
@@ -109,8 +107,7 @@ $app->register(\Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 | can respond to, as well as the controllers that may handle them.
 |
 */
-$app->alias('cache', 'Illuminate\Cache\CacheManager');
-$app->alias('auth', 'Illuminate\Auth\AuthManager');
+
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
