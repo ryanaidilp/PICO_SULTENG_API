@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\RegencyCase;
 use App\Models\NationalCase;
 use App\Transformers\Serializers\AppSerializer;
+use App\Transformers\Api\v2\RegencyCaseTransformer;
 
 class RegencyCaseService
 {
@@ -26,6 +27,15 @@ class RegencyCaseService
         ])->latest("day")->first();
         $cases = $case->regency_cases;
         return $this->format($cases);
+    }
+
+    public function show($regency_id)
+    {
+        $regency = RegencyCase::with(['regency:id,name', 'national_case:id,date'])
+            ->where('regency_id', $regency_id)
+            ->get();
+
+        return $this->format($regency);
     }
 
 
