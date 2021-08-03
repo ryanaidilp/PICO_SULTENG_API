@@ -15,11 +15,13 @@ class RegencyCase extends Model
     protected $table = 'regency_cases';
     protected $guarded = [];
     protected $appends = [
-        "death_ratio",
-        "under_treatment",
-        "cumulative_under_treatment",
-        "active_person_under_supervision",
-        "active_person_under_observation",
+        'death_ratio',
+        'under_treatment',
+        'recovered_percentage',
+        'under_treatment_percentage',
+        'cumulative_under_treatment',
+        'active_person_under_supervision',
+        'active_person_under_observation',
     ];
 
     /**
@@ -47,6 +49,19 @@ class RegencyCase extends Model
     {
         return ($this->cumulative_positive > 0) ?
             percentageValue($this->cumulative_positive, $this->cumulative_deceased) : 0;
+    }
+
+    public function getRecoveredPercentageAttribute()
+    {
+        return ($this->cumulative_positive > 0) ?
+            percentageValue($this->cumulative_positive, $this->cumulative_recovered) : 0;
+    }
+
+    public function getUnderTreatmentPercentageAttribute()
+    {
+        $under_treatment = $this->cumulative_positive - ($this->cumulative_recovered + $this->cumulative_deceased);
+        return ($this->cumulative_positive > 0) ?
+            percentageValue($this->cumulative_positive, $under_treatment) : 0;
     }
 
     public function getUnderTreatmentAttribute()
