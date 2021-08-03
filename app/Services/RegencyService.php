@@ -18,10 +18,10 @@ class RegencyService
 
     public function show($regency_id)
     {
-        $regencies = Regency::where("id", "=", $regency_id)
+        $regency = Regency::where("id", "=", $regency_id)
             ->with("case")
             ->first();
-        return $this->format($regencies);
+        return $this->format($regency);
     }
 
 
